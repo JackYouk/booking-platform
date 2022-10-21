@@ -33,24 +33,7 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-          <Link to='/'><Image
-            src={navbarLogo}
-            height="73.72px"
-            width="285.94px"
-            fit='contain'
-            duration={900}
-            easing=
-            'cubic-bezier(0.7, 0, 0.6, 1)'
-            showLoading=
-            {false}
-            errorIcon=
-            {true}
-            shift={null}
-            distance="100px"
-            shiftDuration={90}
-            bgColor="inherit"
-          />
-          </Link>
+          <Link to='/'><div style={{textDecoration: 'none', color: 'white'}}>Vive</div></Link>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Menu">
               <IconButton onClick={handleOpenUserMenu} sx={{ display: { xs: { p: 0 }, md: { pl: 15 } } }}>
