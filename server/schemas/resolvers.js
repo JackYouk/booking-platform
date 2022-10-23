@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile, Team } = require('../models');
+const { Profile, Agent } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -18,17 +18,9 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    teams: async () => {
-      return Team.find();
+    agents: async () => {
+      return Agent.find();
     },
-    myTeam: async (parent, args, context) => {
-      if(context.user){
-        const loggedInUser = await Profile.findOne({_id: context.user._id})
-        const myTeam = await Team.findOne({_id: loggedInUser.currentTeam._id});
-        return myTeam;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    }
   },
 
   Mutation: {
@@ -54,54 +46,19 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addTeam: async (parent, {name, squadSize, game, deviceType, skill}, context) => {
+    addAgent: async (parent, {name, bio}, context) => {
       if (context.user) {
-        // const owner = await Profile.findById(context.user._id);
-        // console.log(owner, '--------------------------------60')
         console.log(context.user)
 
-        const team = await Team.create({
+        const agent = await Agent.create({
           name,
-          squadSize,
-          game,
-          deviceType,
-          skill,
-          owner: context.user,
-          squadMembers: [context.user]
+          bio,
         });
 
-        await Profile.findOneAndUpdate({_id: context.user._id}, {currentTeam: team});
-
-        return team;
+        return agent;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    editTags: async (parent, {xboxUsername, psnUsername, steamUsername, nintendoUsername}, context) => {
-      if(context.user){
-        const updatedUser = await Profile.findOneAndUpdate({_id: context.user._id}, {
-          xboxUsername,
-          psnUsername,
-          steamUsername,
-          nintendoUsername,
-        });
-
-        return updatedUser;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    joinTeam: async (parent, {teamId}, context) => {
-      if(context.user){
-        const profile = await Profile.findOne({_id: context.user._id});
-        const team = await Team.findOneAndUpdate({_id: teamId}, {
-          $push: {squadMembers: profile}
-        });
-
-        await Profile.findOneAndUpdate({_id: context.user._id}, {currentTeam: team});
-
-        return team;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    }
   },
 };
 

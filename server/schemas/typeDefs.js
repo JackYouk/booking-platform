@@ -1,27 +1,25 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  type Tag {
+    _id: ID
+    type: String
+  }
+
   type Profile {
     _id: ID
     username: String
     email: String
     password: String
-    xboxUsername: String
-    psnUsername: String
-    steamUsername: String
-    nintendoUsername: String
-    currentTeam: Team
+    interests: [Tag]
   }
 
-  type Team {
+  type Agent {
     _id: ID
     name: String
-    squadSize: Int
-    game: String
-    deviceType: String
-    skill: String
-    owner: Profile
-    squadMembers: [Profile]
+    bio: string
+    expertIn: [Tag]
+    clients: [Profile]
   }
 
   type Auth {
@@ -32,19 +30,16 @@ const typeDefs = gql`
   type Query {
     profiles: [Profile]
     profile(profileId: ID!): Profile
-    teams: [Team]
-    myTeam: Team
+    agents: [Agent]
     me: Profile
   }
 
   type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    editTags(xboxUsername: String, psnUsername: String, steamUsername: String, nintendoUsername: String): Profile
-    addTeam(name: String!, squadSize: Int!, game: String!, deviceType: String!, skill: String!): Team
-    deleteTeam(teamId: ID!, profileId: ID!): Team
-    joinTeam(teamId: ID!): Team
-    leaveTeam(teamId: ID!, profileId: ID!): Team
+    adminLogin(email: String!, password: String!): Auth
+    addAgent(name: String!, bio: String!): Agent
+    deleteAgent(agentId: ID!, adminId: ID!): Team
   }
 `;
 

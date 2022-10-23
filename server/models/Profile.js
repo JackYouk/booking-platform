@@ -20,22 +20,6 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  xboxUsername: {
-    type: String,
-  },
-  psnUsername: {
-    type: String,
-  },
-  steamUsername: {
-    type: String,
-  },
-  nintendoUsername: {
-    type: String,
-  },
-  currentTeam: {
-    type: Schema.Types.ObjectId,
-    ref: 'Team',
-  },
 });
 
 // set up pre-save middleware to create password
