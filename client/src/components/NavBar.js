@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Current Team', 'Logout'];
-
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -62,10 +59,7 @@ const ResponsiveAppBar = () => {
                     <Link to="/profile">  <Typography textAlign="center">Profile</Typography> </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/currentTeam">  <Typography textAlign="center">Current Team</Typography> </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="/createTeam">  <Typography textAlign="center">Create Team</Typography> </Link>
+                    <Link to="/createAgent">  <Typography textAlign="center">Create Agent</Typography> </Link>
                   </MenuItem>
 
                   <MenuItem onClick={() => Auth.logout()}>
@@ -90,7 +84,10 @@ const ResponsiveAppBar = () => {
                   onClose={handleCloseUserMenu}
                 >
                   <MenuItem>
-                    <Link to="/signinup">  <Typography textAlign="center">Login/Signup</Typography> </Link>
+                    <Link to="/login">  <Typography textAlign="center">Login</Typography> </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/signup">  <Typography textAlign="center">Signup</Typography> </Link>
                   </MenuItem>
                 </Menu>
               )}

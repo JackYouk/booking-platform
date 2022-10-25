@@ -1,17 +1,15 @@
 // imports
-import { useState } from "react";
-
-import TeamCard from "../components/TeamCard";
 import * as React from 'react';
 import {CircularProgress, Box, Grid} from '@mui/material';
 
 
 import { useQuery } from '@apollo/client';
-import { QUERY_TEAMS } from "../utils/queries";
+import { QUERY_AGENTS } from "../utils/queries";
+import AgentCard from "../components/AgentCard";
 
 
 const Home = () => {
-    const {loading, data} = useQuery(QUERY_TEAMS);
+    const {loading, data} = useQuery(QUERY_AGENTS);
 
     return (
         
@@ -22,10 +20,10 @@ const Home = () => {
                 </Box>
             ) : (
                 <Grid container spacing={2}>
-                    {data.teams.map(teamData => {
+                    {data.agents.map(agentData => {
                         return (
-                            <Grid item xs="auto" key={teamData.teamId}>
-                                <TeamCard data={teamData}/> 
+                            <Grid item xs="auto" key={agentData._id}>
+                                <AgentCard data={agentData}/> 
                             </Grid> 
                         );     
                     })}

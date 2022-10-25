@@ -17,7 +17,7 @@ const typeDefs = gql`
   type Agent {
     _id: ID
     name: String
-    bio: string
+    bio: String
     expertIn: [Tag]
     clients: [Profile]
   }
@@ -39,7 +39,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
     addAgent(name: String!, bio: String!): Agent
-    deleteAgent(agentId: ID!, adminId: ID!): Team
+    deleteAgent(agentId: ID!, adminId: ID!): Agent
   }
 `;
 

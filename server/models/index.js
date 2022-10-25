@@ -1,4 +1,5 @@
 const Profile = require('./Profile');
-const Team = require('./Team');
+const Agent = require('./Agent');
+const Tag = require('./Tag')
 
-module.exports = { Profile, Team };
+module.exports = { Profile, Agent, Tag };

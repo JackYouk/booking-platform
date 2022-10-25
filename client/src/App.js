@@ -1,11 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 
-import CreateTeam from './pages/CreateTeam';
 import Profile from './pages/Profile'
-import CurrentTeam from './pages/CurrentTeam';
 
 import { createTheme, ThemeProvider } from "@mui/material";
-import LogComponent from "./components/LogComponent";
 import ResponsiveAppBar from "./components/NavBar";
 import Home from "./pages/Home";
 
@@ -16,6 +13,8 @@ import {
     createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { Login, Signup } from './pages/LoginSignup';
+import CreateAgent from './pages/CreateAgent';
 
 
 
@@ -64,8 +63,13 @@ function App() {
                     />
 
                     <Route
-                        path="/signinup"
-                        element={<LogComponent />}
+                        path="/signup"
+                        element={<Signup />}
+                    />
+
+                    <Route
+                        path="/login"
+                        element={<Login />}
                     />
 
                     <Route
@@ -74,13 +78,8 @@ function App() {
                     />
 
                     <Route
-                        path="/createTeam"
-                        element={<CreateTeam />}
-                    />
-
-                    <Route
-                        path="/currentTeam"
-                        element={<CurrentTeam />}
+                        path="/createAgent"
+                        element={<CreateAgent />}
                     />
                 </Routes>
             </ThemeProvider>

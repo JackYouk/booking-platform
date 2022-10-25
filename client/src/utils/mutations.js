@@ -25,56 +25,12 @@ export const LOGIN = gql`
   }
 `;
 
-export const EDIT_TAGS = gql`
-  mutation Mutation($xboxUsername: String, $psnUsername: String, $steamUsername: String, $nintendoUsername: String) {
-    editTags(xboxUsername: $xboxUsername, psnUsername: $psnUsername, steamUsername: $steamUsername, nintendoUsername: $nintendoUsername) {
-      username
-      xboxUsername
-      psnUsername
-      nintendoUsername
-      steamUsername
-    }
-  }
-`;
-
-export const ADD_TEAM = gql`
-  mutation Mutation($name: String!, $squadSize: Int!, $game: String!, $deviceType: String!, $skill: String!) {
-    addTeam(name: $name, squadSize: $squadSize, game: $game, deviceType: $deviceType, skill: $skill) {
-      name
-      squadSize
-      game
-      deviceType
-      skill
-      owner {
-        username
-      }
-      squadMembers {
-        username
-        email
-        xboxUsername
-        psnUsername
-        steamUsername
-        nintendoUsername
-      }
-    }
-  }
-`
-
-export const JOIN_TEAM = gql`
-  mutation Mutation($teamId: ID!) {
-    joinTeam(teamId: $teamId) {
+export const ADD_AGENT = gql`
+  mutation Mutation($name: String!, $bio: String!) {
+    addAgent(name: $name, bio: $bio) {
       _id
       name
-      squadSize
-      game
-      deviceType
-      skill
-      owner {
-        username
-      }
-      squadMembers {
-        username
-      }
+      bio
     }
   }
 `;
