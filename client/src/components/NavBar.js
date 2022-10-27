@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Tooltip, MenuItem } from '@mui/material';
-
 import { Image } from 'mui-image';
-import navbarLogo from './../images/dashboard-logo-lfg-white.png';
 import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';

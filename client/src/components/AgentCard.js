@@ -1,19 +1,12 @@
 import * as React from 'react';
-import { Button, CardActionArea, CardActions, Typography, CardMedia, Card, CardContent } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-
-import auth from '../utils/auth';
-
+import { CardActionArea, Typography, CardMedia, Card, CardContent } from '@mui/material';
 import blankprofile from '../images/blankprofile.png'
 
 
 const AgentCard = (props) => {
     
-
-
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 200 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"

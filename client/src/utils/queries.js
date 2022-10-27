@@ -19,3 +19,12 @@ export const QUERY_AGENTS = gql`
     }
   }
 `;
+
+export const QUERY_TAGS = gql`
+  query Tags {
+    tags {
+      _id
+      type
+    }
+  }
+`;

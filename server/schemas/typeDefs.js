@@ -32,6 +32,7 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile
     agents: [Agent]
     me: Profile
+    tags: [Tag]
   }
 
   type Mutation {
@@ -40,6 +41,7 @@ const typeDefs = gql`
     adminLogin(email: String!, password: String!): Auth
     addAgent(name: String!, bio: String!): Agent
     deleteAgent(agentId: ID!, adminId: ID!): Agent
+    createTag(type: String!): Tag
   }
 `;
 

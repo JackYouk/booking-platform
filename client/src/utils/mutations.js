@@ -34,3 +34,12 @@ export const ADD_AGENT = gql`
     }
   }
 `;
+
+export const CREATE_TAG = gql`
+  mutation Mutation($type: String!) {
+    createTag(type: $type) {
+      _id
+      type
+    }
+  }
+`;
