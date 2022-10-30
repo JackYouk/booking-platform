@@ -2,16 +2,20 @@ import { useState } from "react";
 
 // mui
 import * as React from "react";
-import { Button, TextField, CircularProgress, Grid, FormControl, InputLabel, Select, MenuItem, Box, Typography, createTheme } from "@mui/material";
-import { redirect } from "react-router-dom";
+import { Button, TextField, FormGroup, Grid, FormControlLabel, Checkbox, MenuItem, Box, Typography, createTheme, CircularProgress, ToggleButton } from "@mui/material";
+
+import { Link, redirect } from "react-router-dom";
 
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_AGENT } from "../utils/mutations";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_TAGS } from "../utils/queries";
 import auth from "../utils/auth";
+
+import Tag from "../components/Tag";
 
 
 const CreateAgent = () => {
+    // CHECK ADMIN ==============================================================================
     const isAdmin = () => {
         if (!auth.loggedIn()) {
             return false;
@@ -23,7 +27,17 @@ const CreateAgent = () => {
         return false;
     }
 
+    // QUERY TAGS + TAG STATE ==============================================================================
+    const { loading, data } = useQuery(QUERY_TAGS);
 
+    const [tagState, setTagState] = useState([]);
+
+    const handleTagChange = (event) => {
+        
+    }
+
+
+    // FORM STATE ==============================================================================
     const [formState, setFormState] = useState({
         name: '',
         bio: '',
@@ -39,7 +53,9 @@ const CreateAgent = () => {
         });
     };
 
-    const [addAgent, { error, data }] = useMutation(ADD_AGENT, {
+    // ADD AGENT MUTATION ==============================================================================
+
+    const [addAgent] = useMutation(ADD_AGENT, {
         variables: {
             name: formState.name,
             bio: formState.bio,
@@ -57,46 +73,88 @@ const CreateAgent = () => {
         }
     };
 
+    // STYLING ==============================================================================
     const style = {
         p: 1,
         width: '100%',
     };
 
+    // 
+    let testcount = 0;
+    console.log(testcount)
+    const addCount = () => {
+        testcount++;
+        console.log(testcount)
+    }
+
+
     return (
         <div>
             {isAdmin() ? (
-                <Box
-                    sx={{ justifyContent: 'center', m: 'auto', textAlign: 'center', width: { xs: '75%', sm: '60%', md: '50%', lg: '40%', xl: '30%' } }}
-                >
-                    <Box sx={style}>
-                        <Typography component='h1' variant="h4">Create Agent</Typography>
-                    </Box>
+                <div>
+                    {loading ? (
+                        <Box sx={{ display: 'flex' }}>
+                            <CircularProgress />
+                        </Box>
+                    ) : (
+                        <Box
+                            sx={{ justifyContent: 'center', m: 'auto', textAlign: 'center', width: { xs: '75%', sm: '60%', md: '50%', lg: '40%', xl: '30%' } }}
+                        >
+                            <Box sx={style}>
+                                <Typography component='h1' variant="h4">Create Agent</Typography>
+                            </Box>
 
-                    <Box sx={style} >
-                        <TextField
-                            sx={{ width: "100%" }}
-                            label="Agent Name"
-                            name="name"
-                            type='text'
-                            onChange={handleChange}
-                        />
-                    </Box>
-                    <Box sx={style} >
-                        <TextField
-                            sx={{ width: "100%" }}
-                            label="Agent Bio"
-                            name="bio"
-                            type='text'
-                            onChange={handleChange}
-                        />
-                    </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Agent Name"
+                                    name="name"
+                                    type='text'
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Agent Bio"
+                                    name="bio"
+                                    type='text'
+                                    onChange={handleChange}
+                                />
+                            </Box>
 
-                    <Box sx={style}>
-                        <Button variant="contained" onClick={handleSubmit}>
-                            Create Agent
-                        </Button>
-                    </Box>
-                </Box>
+                            <Box sx={style} >
+                                <Grid container spacing={2}>
+                                    {data.tags.map(tagData => {
+                                        return (
+                                            <Grid item xs="auto" key={tagData._id}>
+                                                {/* <Tag type={tagData.type} onClick={() => addCount()} /> */}
+                                                <ToggleButton
+                                                    color="primary"
+                                                    selected={false}
+                                                    // onChange={}
+                                                >
+                                                    {tagData.type}
+                                                </ToggleButton>
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
+
+                                <Link to="/createTag" style={{ textDecoration: 'none' }}>
+                                    <Button variant="text" textAlign="center">Create a new tag (Link)</Button>
+                                </Link>
+                            </Box>
+
+                            <Box sx={style}>
+                                <Button variant="contained" onClick={handleSubmit}>
+                                    Create Agent
+                                </Button>
+                            </Box>
+                        </Box>
+                    )}
+                </div>
+
             ) : (
                 <h3>Error: Admin not logged in</h3>
             )}

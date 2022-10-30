@@ -47,14 +47,25 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addAgent: async (parent, {name, bio}, context) => {
+    addAgent: async (parent, {name, bio, expertIn}, context) => {
       if (context.user) {
-        const agent = await Agent.create({
+        const createdAgent = await Agent.create({
           name,
           bio,
+          expertIn,
         });
+        // if(!expertIn){
+        //   return createdAgent;
+        // }
+        // expertIn.forEach( async (tagId) => {
+        //   const tag = await Tag.findOne({_id: tagId})
+        // });
+        // const taggedAgent = await Agent.updateOne(
+        //   {_id: createdAgent._id},
+        //   {$push: expert}
+        // );
 
-        return agent;
+        return createdAgent;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

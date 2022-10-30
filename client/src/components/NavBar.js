@@ -53,12 +53,9 @@ const ResponsiveAppBar = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem>
+                  {/* <MenuItem>
                     <Link to="/profile">  <Typography textAlign="center">Profile</Typography> </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="/createAgent">  <Typography textAlign="center">Create Agent</Typography> </Link>
-                  </MenuItem>
+                  </MenuItem> */}
 
                   <MenuItem onClick={() => Auth.logout()}>
                     <Typography textAlign="center">Log Out</Typography>

@@ -26,11 +26,15 @@ export const LOGIN = gql`
 `;
 
 export const ADD_AGENT = gql`
-  mutation Mutation($name: String!, $bio: String!) {
-    addAgent(name: $name, bio: $bio) {
+  mutation Mutation($name: String!, $bio: String!, $expertIn: [ID]) {
+    addAgent(name: $name, bio: $bio, expertIn: $expertIn) {
       _id
       name
       bio
+      expertIn {
+        _id
+        type
+      }
     }
   }
 `;
