@@ -25,6 +25,8 @@ const Filter = () => {
     
     const {loading, data} = useQuery(QUERY_TAGS);
 
+    let selectedTags = [];
+
     return ( 
         <div style={{margin: '10px'}}>
             {loading ? (
@@ -36,7 +38,7 @@ const Filter = () => {
                     {data.tags.map(tagData => {
                         return (
                             <Grid item xs="auto" key={tagData._id}>
-                                 <Tag type={tagData.type} />
+                                 <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} />
                             </Grid> 
                         );     
                     })}

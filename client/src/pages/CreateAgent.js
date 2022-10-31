@@ -27,14 +27,10 @@ const CreateAgent = () => {
         return false;
     }
 
-    // QUERY TAGS + TAG STATE ==============================================================================
+    // QUERY TAGS + SELECTED TAGS ARRAY ==============================================================================
     const { loading, data } = useQuery(QUERY_TAGS);
 
-    const [tagState, setTagState] = useState([]);
-
-    const handleTagChange = (event) => {
-        
-    }
+    let selectedIdsArr = [];
 
 
     // FORM STATE ==============================================================================
@@ -59,13 +55,15 @@ const CreateAgent = () => {
         variables: {
             name: formState.name,
             bio: formState.bio,
+            expertIn: selectedIdsArr,
         }
     });
 
     const handleSubmit = async (event) => {
+        console.log(selectedIdsArr);
         event.preventDefault();
         try {
-            const { data } = await addAgent({ ...formState });
+            const { data } = await addAgent({ ...formState, expertIn: selectedIdsArr });
             window.location.href = '/';
             return data;
         } catch (error) {
@@ -79,15 +77,7 @@ const CreateAgent = () => {
         width: '100%',
     };
 
-    // 
-    let testcount = 0;
-    console.log(testcount)
-    const addCount = () => {
-        testcount++;
-        console.log(testcount)
-    }
-
-
+    // HTML ========================================================================================
     return (
         <div>
             {isAdmin() ? (
@@ -98,7 +88,7 @@ const CreateAgent = () => {
                         </Box>
                     ) : (
                         <Box
-                            sx={{ justifyContent: 'center', m: 'auto', textAlign: 'center', width: { xs: '75%', sm: '60%', md: '50%', lg: '40%', xl: '30%' } }}
+                            sx={{ justifyContent: 'center', m: 'auto', width: { xs: '75%', sm: '60%', md: '50%', lg: '40%', xl: '30%' } }}
                         >
                             <Box sx={style}>
                                 <Typography component='h1' variant="h4">Create Agent</Typography>
@@ -128,21 +118,14 @@ const CreateAgent = () => {
                                     {data.tags.map(tagData => {
                                         return (
                                             <Grid item xs="auto" key={tagData._id}>
-                                                {/* <Tag type={tagData.type} onClick={() => addCount()} /> */}
-                                                <ToggleButton
-                                                    color="primary"
-                                                    selected={false}
-                                                    // onChange={}
-                                                >
-                                                    {tagData.type}
-                                                </ToggleButton>
+                                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedIdsArr}/>
                                             </Grid>
                                         );
                                     })}
                                 </Grid>
 
                                 <Link to="/createTag" style={{ textDecoration: 'none' }}>
-                                    <Button variant="text" textAlign="center">Create a new tag (Link)</Button>
+                                    <Button variant="text">Create a new tag (Link)</Button>
                                 </Link>
                             </Box>
 
