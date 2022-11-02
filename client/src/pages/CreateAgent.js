@@ -63,7 +63,11 @@ const CreateAgent = () => {
         console.log(selectedIdsArr);
         event.preventDefault();
         try {
-            const { data } = await addAgent({ ...formState, expertIn: selectedIdsArr });
+            const { data } = await addAgent({ 
+                name: formState.name,
+                bio: formState.bio,
+                expertIn: selectedIdsArr 
+            });
             window.location.href = '/';
             return data;
         } catch (error) {

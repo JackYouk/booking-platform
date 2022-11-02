@@ -33,6 +33,8 @@ const typeDefs = gql`
     agents: [Agent]
     me: Profile
     tags: [Tag]
+    agent(agentId: ID!): Agent
+    filteredAgents(tagIds: [ID]!): [Agent]
   }
 
   type Mutation {

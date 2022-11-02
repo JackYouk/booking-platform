@@ -21,7 +21,6 @@ const Searchbar = () => {
 }
 
 const Filter = () => {
-    const [selected, setSelected] = useState(false);
     
     const {loading, data} = useQuery(QUERY_TAGS);
 
@@ -58,15 +57,19 @@ const CardContainer = () => {
                     <CircularProgress />
                 </Box>
             ) : (
-                <Grid container spacing={2}>
+                // <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                   <Grid container spacing={2}>
+                
                     {data.agents.map(agentData => {
+                        console.log(agentData);
                         return (
                             <Grid item xs="auto" key={agentData._id}>
-                                <AgentCard data={agentData}/> 
+                                <AgentCard key={agentData._id} data={agentData}/> 
                             </Grid> 
                         );     
                     })}
-                </Grid>
+                   </Grid>
+                // </div>
             )}   
         </div>
     );

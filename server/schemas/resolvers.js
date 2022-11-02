@@ -17,11 +17,34 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     agents: async () => {
-      return Agent.find();
+      const agents = await Agent.find();
+      return agents;
     },
     tags: async () => {
-      return Tag.find();
+      const tags = await Tag.find();
+      return tags;
     },
+    agent: async (parent, {agentId}) => {
+      return Agent.findOne({_id: agentId});
+    },
+    filteredAgents: async (parent, {tagIds}) => {
+      const allAgents = await Agent.find();
+      let filteredAgents = [];
+      allAgents.map(async (agent, index) => {
+        const agentTags = agent.expertIn;
+        if(agentTags.length > 0 && tagIds.length > 0){
+          agentTags.forEach(async (agentTag) => {
+            tagIds.forEach(async (tagId) => {
+              if(tagId === agentTag._id){
+                const filteredAgent = await Agent.findOne({_id: agent._id})
+                filteredAgents.push(filteredAgent);
+              }
+            });
+          });
+        }
+      });
+      return filteredAgents;
+    }
   },
 
   Mutation: {
@@ -54,16 +77,6 @@ const resolvers = {
           bio,
           expertIn,
         });
-        // if(!expertIn){
-        //   return createdAgent;
-        // }
-        // expertIn.forEach( async (tagId) => {
-        //   const tag = await Tag.findOne({_id: tagId})
-        // });
-        // const taggedAgent = await Agent.updateOne(
-        //   {_id: createdAgent._id},
-        //   {$push: expert}
-        // );
 
         return createdAgent;
       }

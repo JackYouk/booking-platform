@@ -16,6 +16,10 @@ export const QUERY_AGENTS = gql`
       _id
       name
       bio
+      expertIn {
+        _id
+        type
+      }
     }
   }
 `;
