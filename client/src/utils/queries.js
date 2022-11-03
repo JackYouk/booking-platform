@@ -32,3 +32,17 @@ export const QUERY_TAGS = gql`
     }
   }
 `;
+
+export const QUERY_FILTERED_AGENTS = gql`
+  query FilteredAgents($tagIds: [ID]!) {
+    filteredAgents(tagIds: $tagIds) {
+      _id
+      name
+      bio
+      expertIn {
+        _id
+        type
+      }
+    }
+  }
+`;

@@ -4,7 +4,7 @@ import {CircularProgress, Box, Grid, Button, ToggleButton, TextField} from '@mui
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_AGENTS, QUERY_TAGS } from "../utils/queries";
+import { QUERY_AGENTS, QUERY_FILTERED_AGENTS, QUERY_TAGS } from "../utils/queries";
 import AgentCard from "../components/AgentCard";
 import Tag from '../components/Tag';
 
@@ -20,11 +20,12 @@ const Searchbar = () => {
     );
 }
 
+let selectedTags = [];
+
 const Filter = () => {
     
     const {loading, data} = useQuery(QUERY_TAGS);
 
-    let selectedTags = [];
 
     return ( 
         <div style={{margin: '10px'}}>
@@ -47,11 +48,43 @@ const Filter = () => {
     );
 }
 
-const CardContainer = () => {
+const FilteredAgents = () => {
+    const {loading, data} = useQuery(QUERY_FILTERED_AGENTS, {
+        variables: {tagIds: selectedTags},
+        pollInterval: 100,
+    });
+
+    return ( 
+        <div style={{margin: '10px'}}>
+            <h1>Filtered Agents</h1>
+            {loading ? (
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress />
+                </Box>
+            ) : (
+                // <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                   <Grid container spacing={2}>
+                
+                    {data.filteredAgents.map(agentData => {
+                        return (
+                            <Grid item xs="auto" key={agentData._id}>
+                                <AgentCard key={agentData._id} data={agentData}/> 
+                            </Grid> 
+                        );     
+                    })}
+                   </Grid>
+                // </div>
+            )}   
+        </div>
+    );
+}
+
+const AllAgents = () => {
     const {loading, data} = useQuery(QUERY_AGENTS);
 
     return ( 
         <div style={{margin: '10px'}}>
+            <h1>All Agents</h1>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
@@ -61,7 +94,6 @@ const CardContainer = () => {
                    <Grid container spacing={2}>
                 
                     {data.agents.map(agentData => {
-                        console.log(agentData);
                         return (
                             <Grid item xs="auto" key={agentData._id}>
                                 <AgentCard key={agentData._id} data={agentData}/> 
@@ -84,8 +116,8 @@ const Home = () => {
                 <Searchbar />
                 <Filter />
             </div>
-            
-            <CardContainer />
+            <FilteredAgents />
+            <AllAgents />
         </div>
     );
 }
