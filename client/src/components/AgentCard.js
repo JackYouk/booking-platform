@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { CardActionArea, Typography, CardMedia, Card, CardContent } from '@mui/material';
+import { CardActionArea, Typography, CardMedia, Card, CardContent, Button } from '@mui/material';
 import blankprofile from '../images/blankprofile.png'
 
 
 const AgentCard = (props) => {
-    
+
     return (
         <Card sx={{ maxWidth: 200 }}>
             <CardActionArea>
@@ -21,7 +21,7 @@ const AgentCard = (props) => {
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         {props.data.bio}
                     </Typography>
-                    {props.data.expertIn?.map((tag)=> {
+                    {props.data.expertIn.map((tag) => {
                         return (
                             <button>{tag.type}</button>
                         );

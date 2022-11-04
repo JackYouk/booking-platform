@@ -21,7 +21,14 @@ const resolvers = {
       return agents;
     },
     tags: async () => {
-      const tags = await Tag.find();
+      let tags = [];
+      const findTags = async () => {
+        tags = await Tag.find();
+        if(!tags[0].type){
+          findTags();
+        }
+      }
+      await findTags();
       return tags;
     },
     agent: async (parent, { agentId }) => {
@@ -32,12 +39,14 @@ const resolvers = {
       const allAgents = await Agent.find();
 
       const checkDupe = (checkId) => {
+        let isDupe = false;
         filteredAgents.forEach(filteredAgent => {
-          if(filteredAgent._id === checkId){
-            return true;
+          if(filteredAgent._conditions._id.toString() === checkId.toString()){
+            console.log('trueeeeeeeeeeeeeeeeee')
+            isDupe = true;
           }
         });
-        return false;
+        return isDupe;
       }
 
       const checkMatch = (tag) => {
@@ -46,7 +55,7 @@ const resolvers = {
             agent.expertIn.forEach(expertTagId => {
               if(expertTagId.toString() === tag){
                 const filteredAgent = Agent.findOne({_id: agent._id});
-                const isDupe = checkDupe(filteredAgent._id);
+                const isDupe = checkDupe(agent._id);
                 if(!isDupe){
                   filteredAgents.push(filteredAgent);
                 }
