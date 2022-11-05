@@ -46,3 +46,17 @@ export const QUERY_FILTERED_AGENTS = gql`
     }
   }
 `;
+
+export const QUERY_AGENT = gql`
+  query Agent($agentId: ID!) {
+    agent(agentId: $agentId) {
+      _id
+      name
+      bio
+      expertIn {
+        _id
+        type
+      }
+    }
+  }
+`;

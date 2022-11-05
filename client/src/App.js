@@ -16,6 +16,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Login, Signup } from './pages/LoginSignup';
 import CreateAgent from './pages/CreateAgent';
 import CreateTag from './pages/CreateTag';
+import Agent from './pages/Agent'
 
 
 
@@ -86,6 +87,11 @@ function App() {
                     <Route
                         path="/createTag"
                         element={<CreateTag />}
+                    />
+
+                    <Route
+                        path="/agent/*"
+                        element={<Agent />}
                     />
                 </Routes>
             </ThemeProvider>
