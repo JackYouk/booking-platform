@@ -99,12 +99,13 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addAgent: async (parent, { name, bio, expertIn }, context) => {
+    addAgent: async (parent, { name, bio, expertIn, imgPath }, context) => {
       if (context.user) {
         const createdAgent = await Agent.create({
           name,
           bio,
           expertIn,
+          imgPath,
         });
 
         return createdAgent;

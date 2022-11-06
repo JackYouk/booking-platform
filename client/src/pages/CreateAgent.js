@@ -13,6 +13,8 @@ import auth from "../utils/auth";
 
 import Tag from "../components/Tag";
 
+import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget'
+
 
 const CreateAgent = () => {
     // CHECK ADMIN ==============================================================================
@@ -26,6 +28,26 @@ const CreateAgent = () => {
         }
         return false;
     }
+
+    // CLOUDINARY WIDGET ==============================================================================
+    const cloudName = "vortexconsultantimgs";
+    const uploadPreset = "fifvosaj";
+    const cloudinaryWidget = window.cloudinary.createUploadWidget(
+        {
+          cloudName: cloudName,
+          uploadPreset: uploadPreset,
+          // showAdvancedOptions: true,  //add advanced options (public_id and tag)
+          // maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+        },
+        (error, result) => {
+          if (!error && result && result.event === "success") {
+            console.log("Done! Here is the image info: ", result.info);
+            document
+              .getElementById("uploadedimage")
+              .setAttribute("src", result.info.secure_url);
+          }
+        }
+      );
 
     // QUERY TAGS + SELECTED TAGS ARRAY ==============================================================================
     const { loading, data } = useQuery(QUERY_TAGS);
@@ -56,6 +78,7 @@ const CreateAgent = () => {
             name: formState.name,
             bio: formState.bio,
             expertIn: selectedIdsArr,
+            imgPath: document.getElementById("uploadedimage").getAttribute('src'),
         }
     });
 
@@ -63,10 +86,11 @@ const CreateAgent = () => {
         console.log(selectedIdsArr);
         event.preventDefault();
         try {
-            const { data } = await addAgent({ 
+            const { data } = await addAgent({
                 name: formState.name,
                 bio: formState.bio,
-                expertIn: selectedIdsArr 
+                expertIn: selectedIdsArr,
+                imgPath: document.getElementById("uploadedimage").getAttribute('src'),
             });
             window.location.href = '/';
             return data;
@@ -115,6 +139,11 @@ const CreateAgent = () => {
                                     type='text'
                                     onChange={handleChange}
                                 />
+                            </Box>
+
+                            <Box sx={style} >
+                                <Button variant="text" onClick={() => cloudinaryWidget.open()}>Upload Image</Button>
+                                <img id="uploadedimage" src=""></img>
                             </Box>
 
                             <Box sx={style} >

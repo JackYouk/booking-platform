@@ -20,6 +20,7 @@ const typeDefs = gql`
     bio: String
     expertIn: [Tag]
     clients: [Profile]
+    imgPath: String
   }
 
   type Auth {
@@ -41,7 +42,7 @@ const typeDefs = gql`
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
-    addAgent(name: String!, bio: String!, expertIn: [ID]): Agent
+    addAgent(name: String!, bio: String!, expertIn: [ID], imgPath: String): Agent
     deleteAgent(agentId: ID!, adminId: ID!): Agent
     createTag(type: String!): Tag
   }

@@ -5,17 +5,16 @@ import { Link } from 'react-router-dom';
 
 
 const AgentCard = (props) => {
-
+    console.log(props.data.imgPath)
     return (
         <Link to={'/agent/' + props.data._id}>
             <Card sx={{ maxWidth: 200 }}>
                 <CardActionArea>
                     <CardMedia
-                        component="img"
-                        // height="140"
-                        image={blankprofile}
-                        alt="game img"
-                    />
+                        height='200px'
+                    >
+                        <img src={props.data.imgPath} alt='agent image' style={{height: '300px'}} />
+                    </CardMedia>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.data.name}

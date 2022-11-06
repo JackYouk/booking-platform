@@ -26,8 +26,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_AGENT = gql`
-  mutation Mutation($name: String!, $bio: String!, $expertIn: [ID]) {
-    addAgent(name: $name, bio: $bio, expertIn: $expertIn) {
+  mutation Mutation($name: String!, $bio: String!, $expertIn: [ID], $imgPath: String) {
+    addAgent(name: $name, bio: $bio, expertIn: $expertIn, imgPath: $imgPath) {
       _id
       name
       bio
@@ -35,6 +35,7 @@ export const ADD_AGENT = gql`
         _id
         type
       }
+      imgPath
     }
   }
 `;

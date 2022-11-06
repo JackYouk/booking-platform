@@ -11,6 +11,9 @@ const agentSchema = new Schema({
         type: String,
         required: true,
     },
+    imgPath: {
+        type: String,
+    },
     expertIn: [
         {
             type: Schema.Types.ObjectId,
@@ -23,6 +26,7 @@ const agentSchema = new Schema({
             ref: 'Profile',
         },
     ],
+
 },
 {
     toJSON: {

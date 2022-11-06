@@ -20,6 +20,7 @@ export const QUERY_AGENTS = gql`
         _id
         type
       }
+      imgPath
     }
   }
 `;
@@ -43,6 +44,7 @@ export const QUERY_FILTERED_AGENTS = gql`
         _id
         type
       }
+      imgPath
     }
   }
 `;
@@ -57,6 +59,7 @@ export const QUERY_AGENT = gql`
         _id
         type
       }
+      imgPath
     }
   }
 `;

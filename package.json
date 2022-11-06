@@ -17,6 +17,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "apollo-server-express": "^3.10.2"
+    "apollo-server-express": "^3.10.2",
+    "react-cloudinary-upload-widget": "^1.6.0"
   }
 }
