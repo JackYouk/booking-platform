@@ -43,7 +43,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
     addAgent(name: String!, bio: String!, expertIn: [ID], imgPath: String): Agent
-    deleteAgent(agentId: ID!, adminId: ID!): Agent
+    deleteAgent(agentId: ID!): Agent
     createTag(type: String!): Tag
   }
 `;

@@ -13,8 +13,6 @@ import auth from "../utils/auth";
 
 import Tag from "../components/Tag";
 
-import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget'
-
 
 const CreateAgent = () => {
     // CHECK ADMIN ==============================================================================
@@ -42,6 +40,8 @@ const CreateAgent = () => {
         (error, result) => {
           if (!error && result && result.event === "success") {
             console.log("Done! Here is the image info: ", result.info);
+            picture = result.info.secure_url;
+            console.log(picture);
             document
               .getElementById("uploadedimage")
               .setAttribute("src", result.info.secure_url);
@@ -72,13 +72,13 @@ const CreateAgent = () => {
     };
 
     // ADD AGENT MUTATION ==============================================================================
-
+    let picture = '';
     const [addAgent] = useMutation(ADD_AGENT, {
         variables: {
             name: formState.name,
             bio: formState.bio,
             expertIn: selectedIdsArr,
-            imgPath: document.getElementById("uploadedimage").getAttribute('src'),
+            imgPath: picture,
         }
     });
 
@@ -90,7 +90,7 @@ const CreateAgent = () => {
                 name: formState.name,
                 bio: formState.bio,
                 expertIn: selectedIdsArr,
-                imgPath: document.getElementById("uploadedimage").getAttribute('src'),
+                imgPath: picture,
             });
             window.location.href = '/';
             return data;

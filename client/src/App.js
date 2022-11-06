@@ -17,6 +17,7 @@ import { Login, Signup } from './pages/LoginSignup';
 import CreateAgent from './pages/CreateAgent';
 import CreateTag from './pages/CreateTag';
 import Agent from './pages/Agent'
+import DeleteAgent from './pages/DeleteAgent';
 
 
 
@@ -87,6 +88,11 @@ function App() {
                     <Route
                         path="/createTag"
                         element={<CreateTag />}
+                    />
+
+                    <Route
+                        path="/deleteAgent"
+                        element={<DeleteAgent />}
                     />
 
                     <Route

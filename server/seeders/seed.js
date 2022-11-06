@@ -1,11 +1,11 @@
 const db = require('../config/connection');
-const { Profile, Team } = require('../models');
+const { Profile, Team, Agent } = require('../models');
 const profiles = require('./profiles');
 
 db.once('open', async () => {
   try {
     await Profile.deleteMany({});
-    await Team.deleteMany({})
+    await Agent.deleteMany({});
     await Profile.create(profiles);
 
 

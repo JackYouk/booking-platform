@@ -48,3 +48,11 @@ export const CREATE_TAG = gql`
     }
   }
 `;
+
+export const DELETE_AGENT = gql`
+  mutation Mutation($agentId: ID!) {
+    deleteAgent(agentId: $agentId) {
+      _id
+    }
+  }
+`;

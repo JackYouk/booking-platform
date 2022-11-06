@@ -122,6 +122,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    deleteAgent: async (parent, {agentId}, context) => {
+      if(context.user){
+        const agent = await Agent.deleteOne({_id: agentId});
+        return agent;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
   },
 };
 
