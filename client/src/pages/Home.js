@@ -1,6 +1,6 @@
 // imports
 import * as React from 'react';
-import { CircularProgress, Box, Grid, Button, ToggleButton, TextField } from '@mui/material';
+import { CircularProgress, Box, Grid, Button, ToggleButton, TextField, Autocomplete, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
@@ -9,14 +9,38 @@ import AgentCard from "../components/AgentCard";
 import Tag from '../components/Tag';
 
 const Searchbar = () => {
-
+    const { loading, data } = useQuery(QUERY_AGENTS);
+    const handleSubmit = (event) => {
+        let agentId = '';
+        data.agents.forEach(agent => {
+            if(agent.name === event.target.value){
+                agentId = agent._id
+            }
+        })
+        window.location.href = `/agent/${agentId}`;
+    }
     return (
         <div style={{ margin: '10px' }}>
-
-            <TextField id="outlined-basic" label="search" variant="outlined">
-                <SearchIcon />
-            </TextField>
-        </div>
+            {loading ? (
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress />
+                </Box>
+            ): (
+                <Stack spacing = { 2 } sx = {{ width: 300 }}>
+                    <Autocomplete
+                        id="free-solo-demo"
+                        freeSolo
+                        options={data.agents.map((option) => option.name)}
+                        renderInput={(params) => <TextField {...params} label="Search" onKeyUp={(event) => {
+                            if(event.key === 'Enter'){
+                                console.log(params)
+                                handleSubmit(event)
+                            }
+                        }} />}
+                    />
+                </Stack>
+            )}           
+        </div >
     );
 }
 
@@ -38,7 +62,7 @@ const Filter = () => {
             ) : (
                 <Grid container spacing={2}>
                     {data.tags.map(tagData => {
-                        if(!tagData.type){
+                        if (!tagData.type) {
                             refetch();
                         }
                         return (

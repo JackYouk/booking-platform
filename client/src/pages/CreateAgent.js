@@ -69,7 +69,11 @@ const CreateAgent = () => {
                 document
                     .getElementById("uploadedimage")
                     .setAttribute("src", result.info.secure_url);
-            }
+
+                setPicUrl(result.info.secure_url);
+                console.log(picState);
+
+                }
         }
     );
 
@@ -78,6 +82,7 @@ const CreateAgent = () => {
     const [picState, setPicState] = useState('777');
     const setPicUrl = (picUrl) => {
         setPicState(picUrl);
+        return;
     }
     const [addAgent] = useMutation(ADD_AGENT, {
         variables: {
