@@ -27,27 +27,7 @@ const CreateAgent = () => {
         return false;
     }
 
-    // CLOUDINARY WIDGET ==============================================================================
-    const cloudName = "vortexconsultantimgs";
-    const uploadPreset = "fifvosaj";
-    const cloudinaryWidget = window.cloudinary.createUploadWidget(
-        {
-          cloudName: cloudName,
-          uploadPreset: uploadPreset,
-          // showAdvancedOptions: true,  //add advanced options (public_id and tag)
-          // maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
-        },
-        (error, result) => {
-          if (!error && result && result.event === "success") {
-            console.log("Done! Here is the image info: ", result.info);
-            picture = result.info.secure_url;
-            console.log(picture);
-            document
-              .getElementById("uploadedimage")
-              .setAttribute("src", result.info.secure_url);
-          }
-        }
-      );
+
 
     // QUERY TAGS + SELECTED TAGS ARRAY ==============================================================================
     const { loading, data } = useQuery(QUERY_TAGS);
@@ -71,14 +51,40 @@ const CreateAgent = () => {
         });
     };
 
+    // CLOUDINARY WIDGET ==============================================================================
+    const cloudName = "vortexconsultantimgs";
+    const uploadPreset = "fifvosaj";
+    const cloudinaryWidget = window.cloudinary.createUploadWidget(
+        {
+            cloudName: cloudName,
+            uploadPreset: uploadPreset,
+            // showAdvancedOptions: true,  //add advanced options (public_id and tag)
+            // maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+        },
+        (error, result) => {
+            if (!error && result && result.event === "success") {
+                console.log("Done! Here is the image info: ", result.info);
+                setPicUrl(result.info.secure_url);
+                console.log(picState);
+                document
+                    .getElementById("uploadedimage")
+                    .setAttribute("src", result.info.secure_url);
+            }
+        }
+    );
+
+
     // ADD AGENT MUTATION ==============================================================================
-    let picture = '';
+    const [picState, setPicState] = useState('777');
+    const setPicUrl = (picUrl) => {
+        setPicState(picUrl);
+    }
     const [addAgent] = useMutation(ADD_AGENT, {
         variables: {
             name: formState.name,
             bio: formState.bio,
             expertIn: selectedIdsArr,
-            imgPath: picture,
+            imgPath: picState,
         }
     });
 
@@ -90,7 +96,7 @@ const CreateAgent = () => {
                 name: formState.name,
                 bio: formState.bio,
                 expertIn: selectedIdsArr,
-                imgPath: picture,
+                imgPath: picState,
             });
             window.location.href = '/';
             return data;
@@ -99,6 +105,7 @@ const CreateAgent = () => {
         }
     };
 
+    
     // STYLING ==============================================================================
     const style = {
         p: 1,
@@ -151,7 +158,7 @@ const CreateAgent = () => {
                                     {data.tags.map(tagData => {
                                         return (
                                             <Grid item xs="auto" key={tagData._id}>
-                                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedIdsArr}/>
+                                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedIdsArr} />
                                             </Grid>
                                         );
                                     })}
