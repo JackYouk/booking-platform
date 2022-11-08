@@ -12,12 +12,13 @@ const Tag = (props) => {
             props.selectedIds.push(tagId);
         }
         if(isSelected){
-            const idIndex = props.selectedIds.map((selectedId, index) => {
+            props.selectedIds.map((selectedId, index) => {
                 if(selectedId === tagId){
-                    return index;
+                    props.selectedIds.splice(index, 1);
+                    return;
                 }
             });
-            props.selectedIds.splice(idIndex, 1);
+            
         }
         setSelected(!isSelected);
     }
