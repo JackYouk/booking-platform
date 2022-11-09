@@ -19,6 +19,7 @@ import CreateTag from './pages/CreateTag';
 import Agent from './pages/Agent'
 import DeleteAgent from './pages/DeleteAgent';
 import DeleteTag from './pages/DeleteTag';
+import Admin from './pages/Admin';
 
 
 
@@ -80,6 +81,11 @@ function App() {
                         path="/profile"
                         element={<Profile />}
                     />
+
+                    <Route
+                        path="/admin"
+                        element={<Admin />}
+                    />  
 
                     <Route
                         path="/createAgent"
