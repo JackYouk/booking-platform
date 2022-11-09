@@ -128,7 +128,14 @@ const resolvers = {
         return agent;
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+    deleteTag: async (parent, {tagId}, context) => {
+      if(context.user){
+        const tag = await Tag.deleteOne({_id: tagId});
+        return tag;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

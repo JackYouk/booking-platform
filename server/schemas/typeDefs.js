@@ -45,6 +45,7 @@ const typeDefs = gql`
     addAgent(name: String!, bio: String!, expertIn: [ID], imgPath: String): Agent
     deleteAgent(agentId: ID!): Agent
     createTag(type: String!): Tag
+    deleteTag(tagId: ID!): Tag
   }
 `;
 

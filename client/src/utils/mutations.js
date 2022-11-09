@@ -56,3 +56,11 @@ export const DELETE_AGENT = gql`
     }
   }
 `;
+
+export const DELETE_TAG = gql`
+  mutation Mutation($tagId: ID!) {
+    deleteTag(tagId: $tagId) {
+      _id
+    }
+  }
+`;

@@ -18,6 +18,7 @@ import CreateAgent from './pages/CreateAgent';
 import CreateTag from './pages/CreateTag';
 import Agent from './pages/Agent'
 import DeleteAgent from './pages/DeleteAgent';
+import DeleteTag from './pages/DeleteTag';
 
 
 
@@ -93,6 +94,11 @@ function App() {
                     <Route
                         path="/deleteAgent"
                         element={<DeleteAgent />}
+                    />
+
+                    <Route
+                        path="/deleteTag"
+                        element={<DeleteTag />}
                     />
 
                     <Route
