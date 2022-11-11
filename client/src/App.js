@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 import Profile from './pages/Profile'
 
 import { createTheme, ThemeProvider } from "@mui/material";
-import ResponsiveAppBar from "./components/NavBar";
-import Home from "./pages/Home";
+import ResponsiveAppBar from "./components/navbar/NavBar";
+import Platform from "./pages/Platform";
 
 import {
     ApolloClient,
@@ -20,7 +20,6 @@ import Agent from './pages/Agent'
 import DeleteAgent from './pages/DeleteAgent';
 import DeleteTag from './pages/DeleteTag';
 import Admin from './pages/Admin';
-
 
 
 const httpLink = createHttpLink({
@@ -64,7 +63,7 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={<Home />}
+                        element={<Platform />}
                     />
 
                     <Route

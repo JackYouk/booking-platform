@@ -8,6 +8,7 @@ import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE, LOGIN } from "../utils/mutations";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -45,12 +46,14 @@ const Login = () => {
   };
 
   return (
+    <div >
+    <div style={{marginTop: '15vh'}}>
     <Grid
       container
       direction="column"
       justifyContent="center"
       alignItems="center"
-      spacing={3}
+      spacing={3}   
     >
       <Grid item xs={12}>
         <h1>Login</h1>
@@ -81,8 +84,10 @@ const Login = () => {
           Login
         </Button>
       </Grid>
-      <Grid sx={{ bottom: "2px" }}>Don't have an account? Click below</Grid>
+      <Grid item xs={12}>Don't have an account? <Link to='/signup'>Create one here</Link></Grid>
     </Grid>
+    </div>
+    </div>
   );
 };
 
@@ -123,6 +128,8 @@ const Signup = () => {
   };
 
   return (
+    <div>
+    <div style={{marginTop: '15vh'}}>
     <Grid
       container
       direction="column"
@@ -169,8 +176,10 @@ const Signup = () => {
           Sign up
         </Button>
       </Grid>
-      <Grid sx={{ bottom: "2px" }}>Already have an account? Click below</Grid>
+      <Grid item xs={12}>Already have an account? <Link to='/login'>Login here</Link></Grid>
     </Grid>
+    </div>
+    </div>
   );
 };
 

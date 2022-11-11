@@ -20,13 +20,13 @@ const Searchbar = () => {
         window.location.href = `/agent/${agentId}`;
     }
     return (
-        <div style={{ margin: '10px' }}>
+        <div style={{ marginTop: '40px' }}>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ): (
-                <Stack spacing = { 2 } sx = {{ width: 300 }}>
+                <Stack spacing = { 2 } sx = {{ minWidth: '50vw' }}>
                     <Autocomplete
                         id="free-solo-demo"
                         freeSolo
@@ -85,14 +85,14 @@ const FilteredAgents = () => {
     
 
     return (
-        <div style={{ margin: '10px' }}>
+        <div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ) : (
                 <div>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} justifyContent='center'>
                         {data.filteredAgents.map(agentData => {
                             return (
                                 <Grid item xs="auto" key={agentData._id}>
@@ -140,12 +140,21 @@ const Home = () => {
 
     return (
         <div>
-            <div style={{ display: 'flex', }}>
+            <div style={{ display: 'flex', justifyContent: 'center'}}>
                 <Searchbar />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center'}}>
                 <Filter />
             </div>
-            <FilteredAgents />
-            <AllAgents />
+            
+            <div style={{ display: 'flex', justifyContent: 'center'}}>
+                <FilteredAgents />
+            </div>
+            
+            <div style={{ display: 'flex', justifyContent: 'center'}}>
+                <AllAgents />
+            </div>
+            
         </div>
     );
 }
