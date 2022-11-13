@@ -27,7 +27,7 @@ const ResponsiveAppBar = ({ headerSetting = {} }) => {
 
 
   return (
-    <AppBar position="static" style={{ backgroundColor: 'black' }}>
+    <AppBar  style={{ backgroundColor: 'black' }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           <Link to='/' style={{ textDecoration: 'none' }}>

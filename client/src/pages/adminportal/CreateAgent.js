@@ -7,11 +7,11 @@ import { Button, TextField, FormGroup, Grid, FormControlLabel, Checkbox, MenuIte
 import { Link, redirect } from "react-router-dom";
 
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_AGENT } from "../utils/mutations";
-import { QUERY_TAGS } from "../utils/queries";
-import auth from "../utils/auth";
+import { ADD_AGENT } from "../../utils/mutations";
+import { QUERY_TAGS } from "../../utils/queries";
+import auth from "../../utils/auth";
 
-import Tag from "../components/Tag";
+import Tag from "../../components/Tag";
 
 
 const CreateAgent = () => {

@@ -6,9 +6,9 @@ import { Button, TextField, CircularProgress, Grid, FormControl, InputLabel, Sel
 import { redirect } from "react-router-dom";
 
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_AGENT, CREATE_TAG } from "../utils/mutations";
-import { QUERY_ME } from "../utils/queries";
-import auth from "../utils/auth";
+import { ADD_AGENT, CREATE_TAG } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
+import auth from "../../utils/auth";
 
 
 const CreateTag = () => {

@@ -1,10 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import Profile from './pages/Profile'
-
 import { createTheme, ThemeProvider } from "@mui/material";
-import ResponsiveAppBar from "./components/navbar/NavBar";
-import Platform from "./pages/Platform";
 
 import {
     ApolloClient,
@@ -13,13 +9,16 @@ import {
     createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
+import Platform from "./pages/Platform";
+import Landing from './pages/Landing'
 import { Login, Signup } from './pages/LoginSignup';
-import CreateAgent from './pages/CreateAgent';
-import CreateTag from './pages/CreateTag';
+import CreateAgent from './pages/adminportal/CreateAgent';
+import CreateTag from './pages/adminportal/CreateTag';
 import Agent from './pages/Agent'
-import DeleteAgent from './pages/DeleteAgent';
+import DeleteAgent from './pages/adminportal/DeleteAgent';
 import DeleteTag from './pages/DeleteTag';
-import Admin from './pages/Admin';
+import Admin from './pages/adminportal/Admin';
 
 
 const httpLink = createHttpLink({
@@ -49,21 +48,24 @@ function App() {
     const theme = createTheme({
         palette: {
             primary: {
-                main: '#002984',
+                main: '#292929',
             },
             secondary: {
-                main: '#ff7961'
+                main: '#D4AF37'
             }
         }
     })
     return (
         <ApolloProvider client={client}>
             <ThemeProvider theme={theme}>
-                <ResponsiveAppBar />
                 <Routes>
                     <Route
                         path="/"
                         element={<Platform />}
+                    />
+                    <Route
+                        path="/landingpage"
+                        element={<Landing />}
                     />
 
                     <Route
@@ -77,10 +79,12 @@ function App() {
                     />
 
                     <Route
-                        path="/profile"
-                        element={<Profile />}
+                        path="/agent/*"
+                        element={<Agent />}
                     />
 
+
+                    {/* Admin portal */}
                     <Route
                         path="/admin"
                         element={<Admin />}
@@ -106,10 +110,7 @@ function App() {
                         element={<DeleteTag />}
                     />
 
-                    <Route
-                        path="/agent/*"
-                        element={<Agent />}
-                    />
+                    
                 </Routes>
             </ThemeProvider>
         </ApolloProvider>

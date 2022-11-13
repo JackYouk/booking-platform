@@ -8,21 +8,21 @@ const AgentCard = (props) => {
     console.log(props.data.imgPath)
     return (
         <Link to={'/agent/' + props.data._id} style={{textDecoration: 'none', }}>
-            <Card sx={{ maxWidth: 200, minHeight: 400}}>
+            <Card sx={{ width: 200}}>
                 <CardActionArea >
                     <CardMedia height='200px'>
-                        <img src={props.data.imgPath} alt='agent image' style={{height: '300px'}} />
+                        <img src={props.data.imgPath} alt='agent image' style={{height: '160px'}} />
                     </CardMedia>
-                    <CardContent >
+                    <CardContent style={{minHeight: '160px', backgroundColor: 'black', color: 'white'}}>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.data.name}
                         </Typography>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        <Typography sx={{ mb: 1.5 }} >
                             {props.data.bio}
                         </Typography>
                         {props.data.expertIn.map((tag) => {
                             return (
-                                <Chip label={tag.type} variant="outlined" size='small' style={{marginRight: '3px'}} />
+                                <Chip label={tag.type} variant="outlined" size='small' style={{marginRight: '3px', color: 'white'}} />
                                 // <button>{tag.type}</button>
                             );
                         })}

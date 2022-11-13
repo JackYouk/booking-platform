@@ -1,9 +1,9 @@
-import auth from "../utils/auth";
+import auth from "../../utils/auth";
 import { Button, Box, Typography, CircularProgress, FormControl, Select, MenuItem, InputLabel} from "@mui/material";
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_AGENTS } from "../utils/queries";
+import { QUERY_AGENTS } from "../../utils/queries";
 import { useState } from "react";
-import { DELETE_AGENT } from "../utils/mutations";
+import { DELETE_AGENT } from "../../utils/mutations";
 
 
 const DeleteAgent = () => {

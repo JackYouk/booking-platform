@@ -9,6 +9,7 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE, LOGIN } from "../utils/mutations";
 import { Link } from "react-router-dom";
+import ResponsiveAppBar from "../components/navbar/NavBar";
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -25,7 +26,7 @@ const Login = () => {
     });
   };
 
-  const [login, {error, data}] = useMutation(LOGIN, {
+  const [login, { error, data }] = useMutation(LOGIN, {
     email: formState.email,
     password: formState.password,
   });
@@ -47,46 +48,48 @@ const Login = () => {
 
   return (
     <div >
-    <div style={{marginTop: '15vh'}}>
-    <Grid
-      container
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      spacing={3}   
-    >
-      <Grid item xs={12}>
-        <h1>Login</h1>
-      </Grid>
+      <ResponsiveAppBar />
+      <div style={{ marginTop: '15vh' }}>
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={3}
+        >
+          <Grid item xs={12}>
+            <h1>Login</h1>
+          </Grid>
 
-      <Grid item xs={12}>
-        <TextField
-          id="standard-basic"
-          label="Email"
-          variant="standard"
-          name="email"
-          value={formState.email}
-          onChange={handleChange}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          id="standard-basic"
-          label="Password"
-          variant="standard"
-          name="password"
-          value={formState.password}
-          onChange={handleChange}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Button variant="contained" onClick={handleSubmit}>
-          Login
-        </Button>
-      </Grid>
-      <Grid item xs={12}>Don't have an account? <Link to='/signup'>Create one here</Link></Grid>
-    </Grid>
-    </div>
+          <Grid item xs={12}>
+            <TextField
+              id="standard-basic"
+              label="Email"
+              variant="outlined"
+              name="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="standard-basic"
+              label="Password"
+              variant="outlined"
+              name="password"
+              type='password'
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" style={{ backgroundColor: 'black' }} onClick={handleSubmit}>
+              Login
+            </Button>
+          </Grid>
+          <Grid item xs={12}>Don't have an account? <Link to='/signup'>Create one here</Link></Grid>
+        </Grid>
+      </div>
     </div>
   );
 };
@@ -98,7 +101,7 @@ const Signup = () => {
     password: "",
   });
 
-  const [addProfile, {error, data}] = useMutation(ADD_PROFILE, {
+  const [addProfile, { error, data }] = useMutation(ADD_PROFILE, {
     variables: {
       username: formState.username,
       email: formState.email,
@@ -115,12 +118,12 @@ const Signup = () => {
     });
   };
 
-  
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const {data} = await addProfile({...formState});
+      const { data } = await addProfile({ ...formState });
       Auth.login(data.addProfile.token);
     } catch (error) {
       console.error(error);
@@ -129,56 +132,58 @@ const Signup = () => {
 
   return (
     <div>
-    <div style={{marginTop: '15vh'}}>
-    <Grid
-      container
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      spacing={3}
-    >
-      <Grid item xs={12}>
-        <h1>Sign Up</h1>
-      </Grid>
+      <ResponsiveAppBar />
+      <div style={{ marginTop: '15vh' }}>
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={3}
+        >
+          <Grid item xs={12}>
+            <h1>Sign Up</h1>
+          </Grid>
 
-      <Grid item xs={12}>
-        <TextField
-          id="standard-basic"
-          label="Username"
-          variant="standard"
-          name="username"
-          value={formState.username}
-          onChange={handleChange}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          id="standard-basic"
-          label="Email"
-          variant="standard"
-          name="email"
-          value={formState.email}
-          onChange={handleChange}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          id="standard-basic"
-          label="Password"
-          variant="standard"
-          name="password"
-          value={formState.password}
-          onChange={handleChange}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Button variant="contained" onClick={handleSubmit}>
-          Sign up
-        </Button>
-      </Grid>
-      <Grid item xs={12}>Already have an account? <Link to='/login'>Login here</Link></Grid>
-    </Grid>
-    </div>
+          <Grid item xs={12}>
+            <TextField
+              id="standard-basic"
+              label="Username"
+              variant="outlined"
+              name="username"
+              value={formState.username}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="standard-basic"
+              label="Email"
+              variant="outlined"
+              name="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="standard-basic"
+              label="Password"
+              variant="outlined"
+              name="password"
+              type='password'
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" style={{ backgroundColor: 'black' }} onClick={handleSubmit}>
+              Sign up
+            </Button>
+          </Grid>
+          <Grid item xs={12}>Already have an account? <Link to='/login'>Login here</Link></Grid>
+        </Grid>
+      </div>
     </div>
   );
 };

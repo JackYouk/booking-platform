@@ -1,4 +1,4 @@
-import auth from "../utils/auth";
+import auth from "../../utils/auth";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 

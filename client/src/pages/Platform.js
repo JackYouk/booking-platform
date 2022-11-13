@@ -7,6 +7,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_AGENTS, QUERY_FILTERED_AGENTS, QUERY_TAGS } from "../utils/queries";
 import AgentCard from "../components/AgentCard";
 import Tag from '../components/Tag';
+import ResponsiveAppBar from '../components/navbar/NavBar';
+
 
 const Searchbar = () => {
     const { loading, data } = useQuery(QUERY_AGENTS);
@@ -31,7 +33,7 @@ const Searchbar = () => {
                         id="free-solo-demo"
                         freeSolo
                         options={data.agents.map((option) => option.name)}
-                        renderInput={(params) => <TextField {...params} label="Search" onKeyUp={(event) => {
+                        renderInput={(params) => <TextField {...params} label="Search by Agent" onKeyUp={(event) => {
                             if(event.key === 'Enter'){
                                 console.log(params)
                                 handleSubmit(event)
@@ -112,14 +114,14 @@ const AllAgents = () => {
 
     return (
         <div style={{ margin: '10px' }}>
-            <h1>All Agents</h1>
+            <h3 style={{display: 'flex', justifyContent: "center"}}>All Agents</h3>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ) : (
                 // <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} justifyContent='center'>
 
                     {data.agents.map(agentData => {
                         return (
@@ -140,6 +142,10 @@ const Home = () => {
 
     return (
         <div>
+            <div style={{marginBottom: '10vh'}}>
+                <ResponsiveAppBar  />
+            </div>
+            
             <div style={{ display: 'flex', justifyContent: 'center'}}>
                 <Searchbar />
             </div>
@@ -154,8 +160,8 @@ const Home = () => {
             <div style={{ display: 'flex', justifyContent: 'center'}}>
                 <AllAgents />
             </div>
-            
         </div>
+        
     );
 }
 
