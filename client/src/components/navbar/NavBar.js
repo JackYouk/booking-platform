@@ -7,25 +7,6 @@ import Auth from '../../utils/auth'
 
 const ResponsiveAppBar = ({ headerSetting = {} }) => {
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-
   return (
     <AppBar  style={{ backgroundColor: 'black' }}>
       <Container maxWidth="xl" >
@@ -35,7 +16,7 @@ const ResponsiveAppBar = ({ headerSetting = {} }) => {
           </Link>
 
           {Auth.loggedIn() ? (
-            <a onClick={() => Auth.logout()}>
+            <a style={{cursor: 'pointer'}} onClick={() => Auth.logout()}>
               Logout
             </a>
           ) : (

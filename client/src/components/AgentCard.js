@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 const AgentCard = (props) => {
-    console.log(props.data.imgPath)
     return (
         <Link to={'/agent/' + props.data._id} style={{textDecoration: 'none', }}>
             <Card sx={{ width: 200}}>

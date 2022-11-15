@@ -52,8 +52,11 @@ function App() {
             },
             secondary: {
                 main: '#D4AF37'
-            }
-        }
+            },
+        },
+        typography: {
+            fontFamily: 'arial',
+        },
     })
     return (
         <ApolloProvider client={client}>

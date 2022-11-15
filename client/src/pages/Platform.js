@@ -28,7 +28,7 @@ const Searchbar = () => {
                     <CircularProgress />
                 </Box>
             ): (
-                <Stack spacing = { 2 } sx = {{ minWidth: '50vw' }}>
+                <Stack spacing = { 2 } sx = {{ minWidth: '50vw'}}>
                     <Autocomplete
                         id="free-solo-demo"
                         freeSolo
