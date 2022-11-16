@@ -15,33 +15,33 @@ const Searchbar = () => {
     const handleSubmit = (event) => {
         let agentId = '';
         data.agents.forEach(agent => {
-            if(agent.name === event.target.value){
+            if (agent.name === event.target.value) {
                 agentId = agent._id
             }
         })
         window.location.href = `/agent/${agentId}`;
     }
     return (
-        <div style={{ marginTop: '40px' }}>
+        <div>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
-            ): (
-                <Stack spacing = { 2 } sx = {{ minWidth: '50vw'}}>
+            ) : (
+                <Stack spacing={2} sx={{ minWidth: '20vw' }}>
                     <Autocomplete
                         id="free-solo-demo"
                         freeSolo
                         options={data.agents.map((option) => option.name)}
                         renderInput={(params) => <TextField {...params} label="Search by Agent" onKeyUp={(event) => {
-                            if(event.key === 'Enter'){
+                            if (event.key === 'Enter') {
                                 console.log(params)
                                 handleSubmit(event)
                             }
                         }} />}
                     />
                 </Stack>
-            )}           
+            )}
         </div >
     );
 }
@@ -84,7 +84,7 @@ const FilteredAgents = () => {
         variables: { tagIds: selectedTags },
         pollInterval: 100,
     });
-    
+
 
     return (
         <div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
@@ -114,7 +114,7 @@ const AllAgents = () => {
 
     return (
         <div style={{ margin: '10px' }}>
-            <h3 style={{display: 'flex', justifyContent: "center"}}>All Agents</h3>
+            <h3 style={{ display: 'flex', justifyContent: "center" }}>All Agents</h3>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
@@ -137,31 +137,94 @@ const AllAgents = () => {
     );
 }
 
+const AgentsByTag = (tagId) => {
+    const { loading, data } = useQuery(QUERY_FILTERED_AGENTS, {
+        variables: { tagIds: tagId.tagId }
+    })
+    return (
+        <div>
+            
+            <div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
+                {loading ? (
+                    <Box sx={{ display: 'flex' }}>
+                        <CircularProgress />
+                    </Box>
+                ) : (
+                    <div>
+                        <Grid container spacing={2} justifyContent='center'>
+                            {data.filteredAgents.map(agentData => {
+                                return (
+                                    <Grid item xs="auto" key={agentData._id}>
+                                        <AgentCard key={agentData._id} data={agentData} />
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+const AgentsByTagContainer = () => {
+    const { loading, data } = useQuery(QUERY_TAGS);
+    return (
+        <div>
+            {loading ? (
+                <></>
+            ) : (
+                <>
+                    {data.tags.map(tag => {
+                        return (
+                            <>
+                            <h3>{tag.type}</h3>
+                            <AgentsByTag tagId={tag._id} />
+                            </>
+                        );
+                    })}
+                </>
+            )}
+        </div>
+    );
+}
+
+
+
+
 const Home = () => {
 
 
     return (
         <div>
-            <div style={{marginBottom: '10vh'}}>
-                <ResponsiveAppBar  />
+            <div style={{ marginBottom: '10vh' }}>
+                <ResponsiveAppBar />
             </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Searchbar /> <Filter />
+            </div>
+
             
-            <div style={{ display: 'flex', justifyContent: 'center'}}>
-                <Searchbar />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center'}}>
-                <Filter />
-            </div>
-            
-            <div style={{ display: 'flex', justifyContent: 'center'}}>
+
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <FilteredAgents />
             </div>
-            
-            <div style={{ display: 'flex', justifyContent: 'center'}}>
+
+            {/* colored line */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ margin: '10px', width: '80vw', height: '2px', backgroundColor: '#D4AF37' }}></div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <AgentsByTagContainer />
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <AllAgents />
             </div>
         </div>
-        
+
     );
 }
 
