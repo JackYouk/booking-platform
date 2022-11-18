@@ -15,7 +15,7 @@ import Landing from './pages/Landing'
 import { Login, Signup } from './pages/LoginSignup';
 import CreateAgent from './pages/adminportal/CreateAgent';
 import CreateTag from './pages/adminportal/CreateTag';
-import Agent from './pages/Agent'
+import Agent from './pages/Agent';
 import DeleteAgent from './pages/adminportal/DeleteAgent';
 import DeleteTag from './pages/adminportal/DeleteTag';
 import Admin from './pages/adminportal/Admin';

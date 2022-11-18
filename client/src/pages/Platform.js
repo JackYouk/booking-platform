@@ -22,25 +22,36 @@ const Searchbar = () => {
         window.location.href = `/agent/${agentId}`;
     }
     return (
-        <div>
+        <div style={{marginRight: '40px'}}>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ) : (
-                <Stack spacing={2} sx={{ minWidth: '355px' }}>
+                // <Stack spacing={2} sx={{ minWidth: '355px' }}>
                     <Autocomplete
                         id="free-solo-demo"
                         freeSolo
                         options={data.agents.map((option) => option.name)}
-                        renderInput={(params) => <TextField {...params} label="Search by Agent" onKeyUp={(event) => {
-                            if (event.key === 'Enter') {
-                                console.log(params)
-                                handleSubmit(event)
-                            }
-                        }} />}
+                        alignItems='center'
+                        renderInput={(params) => (
+                            <div ref={params.InputProps.ref}>
+                                <TextField
+                                    label={<div style={{ display: 'flex', alignItems: 'center', margin: '10px' }}><SearchIcon /> Search by agent</div>}
+                                    
+                                    type="text"
+                                    {...params.inputProps}
+                                    onKeyUp={(event) => {
+                                        if (event.key === 'Enter') {
+                                            console.log(params)
+                                            handleSubmit(event)
+                                        }
+                                    }}
+                                />
+                            </div>
+                        )}
                     />
-                </Stack>
+                // </Stack>
             )}
         </div >
     );
@@ -56,7 +67,7 @@ const Filter = () => {
     }
 
     return (
-        <div style={{ margin: '10px' }}>
+        <div >
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
@@ -70,7 +81,7 @@ const Filter = () => {
                         console.log(tagData)
                         return (
                             <Grid item xs="auto" key={tagData._id}>
-                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} iconUrl={tagData.imgPath}/>
+                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} iconUrl={tagData.imgPath} />
                             </Grid>
                         );
                     })}
@@ -144,7 +155,7 @@ const AgentsByTag = (tagId) => {
     })
     return (
         <div>
-            
+
             <div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
                 {loading ? (
                     <Box sx={{ display: 'flex' }}>
@@ -179,8 +190,8 @@ const AgentsByTagContainer = () => {
                     {data.tags.map(tag => {
                         return (
                             <>
-                            <h3>{tag.type}</h3>
-                            <AgentsByTag tagId={tag._id} />
+                                <h3>{tag.type}</h3>
+                                <AgentsByTag tagId={tag._id} />
                             </>
                         );
                     })}
@@ -197,25 +208,19 @@ const Home = () => {
 
 
     return (
-        <div > 
+        <div >
             <div style={{ marginBottom: '10vh' }}>
                 <ResponsiveAppBar />
             </div>
 
-            <div >
-                <Grid container justifyContent='center' alignItems='center'>
-                    <Grid item xs='auto' justifyContent='center'>
-                        <Searchbar /> 
-                    </Grid>
-                    <Grid item sm='10' md='6' justifyContent='center'>
-                        <Filter />
-                    </Grid>
-                </Grid>
+            <div style={{ display: 'flex', justifyContent: 'center',  }}>
+                <Searchbar/>
+                <Filter />
             </div>
 
-            
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <FilteredAgents />
             </div>
 
