@@ -7,6 +7,9 @@ const tagSchema = new Schema({
         unique: true,
         trim: true,
     },
+    imgPath: {
+        type: String,
+    },
 },
 {
     toJSON: {

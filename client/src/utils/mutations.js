@@ -41,10 +41,11 @@ export const ADD_AGENT = gql`
 `;
 
 export const CREATE_TAG = gql`
-  mutation Mutation($type: String!) {
-    createTag(type: $type) {
+  mutation Mutation($type: String!, $imgPath: String) {
+    createTag(type: $type, imgPath: $imgPath) {
       _id
       type
+      imgPath
     }
   }
 `;

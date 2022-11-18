@@ -21,7 +21,7 @@ const CreateAgent = () => {
             return false;
         }
         const loggedInUser = auth.getProfile()
-        if (loggedInUser.data.email === 'admin@za555.com') {
+        if (loggedInUser.data.email === 'zadmin@nimdaz.org') {
             return true;
         }
         return false;
@@ -52,6 +52,13 @@ const CreateAgent = () => {
     };
 
     // CLOUDINARY WIDGET ==============================================================================
+    
+    const [picState, setPicState] = useState('777');
+    const setPicUrl = (picUrl) => {
+        setPicState(picUrl);
+        return;
+    }
+    
     const cloudName = "vortexconsultantimgs";
     const uploadPreset = "fifvosaj";
     const cloudinaryWidget = window.cloudinary.createUploadWidget(
@@ -79,11 +86,7 @@ const CreateAgent = () => {
 
 
     // ADD AGENT MUTATION ==============================================================================
-    const [picState, setPicState] = useState('777');
-    const setPicUrl = (picUrl) => {
-        setPicState(picUrl);
-        return;
-    }
+    
     const [addAgent] = useMutation(ADD_AGENT, {
         variables: {
             name: formState.name,
@@ -163,7 +166,7 @@ const CreateAgent = () => {
                                     {data.tags.map(tagData => {
                                         return (
                                             <Grid item xs="auto" key={tagData._id}>
-                                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedIdsArr} />
+                                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedIdsArr} iconUrl={tagData.imgPath} />
                                             </Grid>
                                         );
                                     })}

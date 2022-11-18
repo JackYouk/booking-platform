@@ -17,11 +17,40 @@ const CreateTag = () => {
             return false;
         }
         const loggedInUser = auth.getProfile()
-        if (loggedInUser.data.email === 'admin@za555.com') {
+        if (loggedInUser.data.email === 'zadmin@nimdaz.org') {
             return true;
         }
         return false;
     }
+
+    // image upload
+    const [picState, setPicState] = useState('777');
+    const setPicUrl = (picUrl) => {
+        setPicState(picUrl);
+        return;
+    }
+
+    const cloudName = "vortexconsultantimgs";
+    const uploadPreset = "fifvosaj";
+    const cloudinaryWidget = window.cloudinary.createUploadWidget(
+        {
+            cloudName: cloudName,
+            uploadPreset: uploadPreset,
+            // showAdvancedOptions: true,  //add advanced options (public_id and tag)
+            // maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+        },
+        (error, result) => {
+            if (!error && result && result.event === "success") {
+                console.log("Done! Here is the image info: ", result.info);
+                setPicUrl(result.info.secure_url);
+                document
+                    .getElementById("uploadedimage")
+                    .setAttribute("src", result.info.secure_url);
+
+                setPicUrl(result.info.secure_url);
+            }
+        }
+    );
 
 
     const [formState, setFormState] = useState({
@@ -41,13 +70,17 @@ const CreateTag = () => {
     const [createTag, { error, data }] = useMutation(CREATE_TAG, {
         variables: {
             type: formState.type,
+            imgPath: picState,
         }
     });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const { data } = await createTag({ ...formState });
+            const { data } = await createTag({
+                type: formState.type,
+                imgPath: picState,
+            });
             window.location.href = '/';
             return data;
         } catch (error) {
@@ -78,6 +111,11 @@ const CreateTag = () => {
                             type='text'
                             onChange={handleChange}
                         />
+                    </Box>
+
+                    <Box sx={style} >
+                        <Button variant="text" onClick={() => cloudinaryWidget.open()}>Upload Image</Button>
+                        <img id="uploadedimage" src=""></img>
                     </Box>
 
                     <Box sx={style}>

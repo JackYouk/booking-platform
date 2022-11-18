@@ -112,10 +112,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    createTag: async (parent, { type }, context) => {
+    createTag: async (parent, { type, imgPath }, context) => {
       if (context.user) {
         const tag = await Tag.create({
-          type
+          type,
+          imgPath,
         });
 
         return tag;

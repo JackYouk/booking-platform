@@ -12,7 +12,7 @@ const DeleteAgent = () => {
             return false;
         }
         const loggedInUser = auth.getProfile()
-        if (loggedInUser.data.email === 'admin@za555.com') {
+        if (loggedInUser.data.email === 'zadmin@nimdaz.org') {
             return true;
         }
         return false;

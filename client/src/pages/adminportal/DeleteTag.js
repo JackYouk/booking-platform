@@ -1,9 +1,9 @@
-import auth from "../utils/auth";
+import auth from "../../utils/auth";
 import { Button, Box, Typography, CircularProgress, FormControl, Select, MenuItem, InputLabel} from "@mui/material";
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_TAGS } from "../utils/queries";
+import { QUERY_TAGS } from "../../utils/queries";
 import { useState } from "react";
-import { DELETE_TAG } from "../utils/mutations";
+import { DELETE_TAG } from "../../utils/mutations";
 
 
 const DeleteAgent = () => {
@@ -12,7 +12,7 @@ const DeleteAgent = () => {
             return false;
         }
         const loggedInUser = auth.getProfile()
-        if (loggedInUser.data.email === 'admin@za555.com') {
+        if (loggedInUser.data.email === 'zadmin@nimdaz.org') {
             return true;
         }
         return false;

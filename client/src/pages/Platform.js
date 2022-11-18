@@ -28,7 +28,7 @@ const Searchbar = () => {
                     <CircularProgress />
                 </Box>
             ) : (
-                <Stack spacing={2} sx={{ minWidth: '20vw' }}>
+                <Stack spacing={2} sx={{ minWidth: '355px' }}>
                     <Autocomplete
                         id="free-solo-demo"
                         freeSolo
@@ -67,9 +67,10 @@ const Filter = () => {
                         if (!tagData.type) {
                             refetch();
                         }
+                        console.log(tagData)
                         return (
                             <Grid item xs="auto" key={tagData._id}>
-                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} />
+                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} iconUrl={tagData.imgPath}/>
                             </Grid>
                         );
                     })}
@@ -196,13 +197,20 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div > 
             <div style={{ marginBottom: '10vh' }}>
                 <ResponsiveAppBar />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Searchbar /> <Filter />
+            <div >
+                <Grid container justifyContent='center' alignItems='center'>
+                    <Grid item xs='auto' justifyContent='center'>
+                        <Searchbar /> 
+                    </Grid>
+                    <Grid item sm='10' md='6' justifyContent='center'>
+                        <Filter />
+                    </Grid>
+                </Grid>
             </div>
 
             

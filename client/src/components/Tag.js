@@ -32,8 +32,26 @@ const Tag = (props) => {
             selected={isSelected}
             onChange={handleChange}
             value={props.id}
+            alignItems='center'
+            justifyContent='center'
         >
-            {props.type}
+            
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                {props.iconUrl ? (
+                    <>
+                        <img 
+                            src={props.iconUrl} 
+                            style={{width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px'}} 
+                            alt='tag img' 
+                        />
+                    </>
+                ) : (
+                    <>
+                    </>
+                )}
+                {props.type}
+            </div>
+            
         </ToggleButton>
     );
 }

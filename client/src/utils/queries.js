@@ -30,6 +30,7 @@ export const QUERY_TAGS = gql`
     tags {
       _id
       type
+      imgPath
     }
   }
 `;
