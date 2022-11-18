@@ -7,7 +7,6 @@ import ResponsiveAppBar from "../components/navbar/NavBar";
 
 const Agent = () => {
     const paramId = useParams()['*'];
-    console.log(paramId);
 
     const { loading, data } = useQuery(QUERY_AGENT, {
         variables: { agentId: paramId },

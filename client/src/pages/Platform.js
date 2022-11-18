@@ -43,7 +43,6 @@ const Searchbar = () => {
                                     {...params.inputProps}
                                     onKeyUp={(event) => {
                                         if (event.key === 'Enter') {
-                                            console.log(params)
                                             handleSubmit(event)
                                         }
                                     }}
@@ -78,7 +77,6 @@ const Filter = () => {
                         if (!tagData.type) {
                             refetch();
                         }
-                        console.log(tagData)
                         return (
                             <Grid item xs="auto" key={tagData._id}>
                                 <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} iconUrl={tagData.imgPath} />
