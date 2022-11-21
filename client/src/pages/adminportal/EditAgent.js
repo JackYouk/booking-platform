@@ -143,7 +143,7 @@ const EditAgent = () => {
 
     const [editAgent] = useMutation(EDIT_AGENT, {
         variables: {
-            _id: selectedAgent,
+            id: selectedAgent,
             name: formState.name,
             bio: formState.bio,
             expertIn: selectedIdsArr,
@@ -156,7 +156,7 @@ const EditAgent = () => {
         console.log(selectedAgent);
         try {
             const { data } = await editAgent({
-                _id: selectedAgent,
+                id: selectedAgent,
                 name: formState.name,
                 bio: formState.bio,
                 expertIn: selectedIdsArr,

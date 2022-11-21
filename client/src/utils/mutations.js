@@ -67,11 +67,19 @@ export const DELETE_TAG = gql`
 `;
 
 export const EDIT_AGENT = gql`
-mutation EditAgent($id: ID!, $name: String, $bio: String, $expertIn: [ID], $imgPath: String) {
-  editAgent(_id: $id, name: $name, bio: $bio, expertIn: $expertIn, imgPath: $imgPath) {
-    _id
+  mutation Mutation($id: ID!, $name: String, $bio: String, $expertIn: [ID], $imgPath: String) {
+    editAgent(_id: $id, name: $name, bio: $bio, expertIn: $expertIn, imgPath: $imgPath) {
+      _id
+      name
+      bio
+      expertIn {
+        _id
+        type
+        imgPath
+      }
+      imgPath
+    }
   }
-}
 `;
 
 export const EDIT_TAG = gql`
