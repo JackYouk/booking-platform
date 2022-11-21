@@ -65,3 +65,19 @@ export const DELETE_TAG = gql`
     }
   }
 `;
+
+export const EDIT_AGENT = gql`
+mutation EditAgent($id: ID!, $name: String, $bio: String, $expertIn: [ID], $imgPath: String) {
+  editAgent(_id: $id, name: $name, bio: $bio, expertIn: $expertIn, imgPath: $imgPath) {
+    _id
+  }
+}
+`;
+
+export const EDIT_TAG = gql`
+  mutation Mutation($id: ID!, $type: String, $imgPath: String) {
+    editTag(_id: $id, type: $type, imgPath: $imgPath) {
+      _id
+    }
+  }
+`;

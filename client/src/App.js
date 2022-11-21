@@ -19,6 +19,7 @@ import Agent from './pages/Agent';
 import DeleteAgent from './pages/adminportal/DeleteAgent';
 import DeleteTag from './pages/adminportal/DeleteTag';
 import Admin from './pages/adminportal/Admin';
+import EditAgent from './pages/adminportal/EditAgent';
 
 
 const httpLink = createHttpLink({
@@ -113,7 +114,11 @@ function App() {
                         element={<DeleteTag />}
                     />
 
-                    
+                    <Route
+                        path="/editAgent"
+                        element={<EditAgent />}
+                    />
+
                 </Routes>
             </ThemeProvider>
         </ApolloProvider>
