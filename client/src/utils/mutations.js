@@ -86,6 +86,8 @@ export const EDIT_TAG = gql`
   mutation Mutation($id: ID!, $type: String, $imgPath: String) {
     editTag(_id: $id, type: $type, imgPath: $imgPath) {
       _id
+      type
+      imgPath
     }
   }
 `;

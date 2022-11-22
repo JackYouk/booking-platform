@@ -138,17 +138,16 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     editAgent: async (parent, {_id, name, bio, expertIn, imgPath}, context) => {
-      console.log('hitttttt')
       if(context.user){
         const agent = await Agent.updateOne({_id}, {$set: {name, bio, expertIn, imgPath}});
-        console.log(agent);
         return agent;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
     editTag: async (parent, {_id, type, imgPath}, context) => {
       if(context.user){
-        const tag = Agent.updateOne({_id}, {$set: {type, imgPath}});
+        const tag = await Tag.updateOne({_id}, {$set: {type, imgPath}});
+        console.log(tag);
         return tag;
       }
       throw new AuthenticationError('You need to be logged in!');

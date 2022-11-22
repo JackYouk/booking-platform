@@ -20,7 +20,7 @@ import DeleteAgent from './pages/adminportal/DeleteAgent';
 import DeleteTag from './pages/adminportal/DeleteTag';
 import Admin from './pages/adminportal/Admin';
 import EditAgent from './pages/adminportal/EditAgent';
-
+import EditTag from './pages/adminportal/EditTag'
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -117,6 +117,11 @@ function App() {
                     <Route
                         path="/editAgent"
                         element={<EditAgent />}
+                    />
+
+                    <Route
+                        path="/editTag"
+                        element={<EditTag />}
                     />
 
                 </Routes>

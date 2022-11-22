@@ -34,6 +34,9 @@ const Admin = () => {
                     <Link to='/editAgent'>
                         <Button>Edit Agent</Button>
                     </Link>
+                    <Link to='/editTag'>
+                        <Button>Edit Tag</Button>
+                    </Link>
                 </div>
 
             ) : (
