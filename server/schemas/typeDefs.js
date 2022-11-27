@@ -22,6 +22,9 @@ const typeDefs = gql`
     expertIn: [Tag]
     clients: [Profile]
     imgPath: String
+    packages: String
+    availability: String
+    contacts: String
   }
 
   type Auth {

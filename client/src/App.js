@@ -21,6 +21,7 @@ import DeleteTag from './pages/adminportal/DeleteTag';
 import Admin from './pages/adminportal/Admin';
 import EditAgent from './pages/adminportal/EditAgent';
 import EditTag from './pages/adminportal/EditTag'
+import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -52,7 +53,7 @@ function App() {
                 main: '#292929',
             },
             secondary: {
-                main: '#D4AF37'
+                main: '#D5AD6D'
             },
         },
         typography: {
@@ -125,6 +126,7 @@ function App() {
                     />
 
                 </Routes>
+                <Footer />
             </ThemeProvider>
         </ApolloProvider>
     );
