@@ -28,7 +28,8 @@ const Tag = (props) => {
         //     {props.type}
         // </Button>
         <ToggleButton
-            color="secondary"
+            color="primary"
+            style={{backgroundColor: 'white', color: 'black', outlineColor: ''}}
             selected={isSelected}
             onChange={handleChange}
             value={props.id}

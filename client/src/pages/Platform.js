@@ -22,7 +22,7 @@ const Searchbar = () => {
         window.location.href = `/agent/${agentId}`;
     }
     return (
-        <div style={{marginRight: '40px'}}>
+        <div>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
@@ -38,7 +38,7 @@ const Searchbar = () => {
                             <div ref={params.InputProps.ref}>
                                 <TextField
                                     label={<div style={{ display: 'flex', alignItems: 'center', margin: '10px' }}><SearchIcon /> Search by agent</div>}
-                                    
+                                    style={{minWidth: '90vw'}}
                                     type="text"
                                     {...params.inputProps}
                                     onKeyUp={(event) => {
@@ -124,14 +124,14 @@ const AllAgents = () => {
 
     return (
         <div style={{ margin: '10px' }}>
-            <h3 style={{ display: 'flex', justifyContent: "center" }}>All Agents</h3>
+            <h3 style={{ display: 'flex', justifyContent: "left" }}>All Agents</h3>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ) : (
                 // <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <Grid container spacing={2} justifyContent='center'>
+                <Grid container spacing={2} justifyContent='left'>
 
                     {data.agents.map(agentData => {
                         return (
@@ -154,14 +154,14 @@ const AgentsByTag = (tagId) => {
     return (
         <div>
 
-            <div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ margin: '10px', display: 'flex', justifyContent: 'left' }}>
                 {loading ? (
                     <Box sx={{ display: 'flex' }}>
                         <CircularProgress />
                     </Box>
                 ) : (
                     <div>
-                        <Grid container spacing={2} justifyContent='center'>
+                        <Grid container spacing={2} justifyContent='left'>
                             {data.filteredAgents.map(agentData => {
                                 return (
                                     <Grid item xs="auto" key={agentData._id}>
@@ -188,7 +188,7 @@ const AgentsByTagContainer = () => {
                     {data.tags.map(tag => {
                         return (
                             <>
-                                <h3>{tag.type}</h3>
+                                <h3 style={{marginLeft: '10px'}}>{tag.type}</h3>
                                 <AgentsByTag tagId={tag._id} />
                             </>
                         );
@@ -211,9 +211,13 @@ const Home = () => {
                 <ResponsiveAppBar />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center',  }}>
-                <Searchbar/>
-                <Filter />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left', margin: '10px' }}>
+                <div style={{margin: '3px'}}>
+                    <Searchbar/>
+                </div>
+                <div style={{margin: '3px', padding: '10px', backgroundColor: 'black', borderRadius: '5px', maxWidth: '90vw'}}>
+                    <Filter />
+                </div>
             </div>
 
 

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 
 import { createTheme, ThemeProvider } from "@mui/material";
 
@@ -57,7 +57,7 @@ function App() {
             },
         },
         typography: {
-            fontFamily: 'arial',
+            fontFamily: 'helvetica, Montserrat Semi Bold, arial',
         },
     })
     return (
@@ -125,6 +125,11 @@ function App() {
                         element={<EditTag />}
                     />
 
+
+                    <Route
+                        path="*"
+                        element={<Navigate to="/" />}
+                    />
                 </Routes>
                 <Footer />
             </ThemeProvider>
