@@ -7,6 +7,7 @@ const Footer = () => {
             <Link style={{color: 'white', margin: '10px', textDecoration: 'none'}} to='/'> © 2022. All rights reserved by Vive Ventures.</Link>
             <Link style={{color: 'white', margin: '10px'}} to='/privacy-policy'>Privacy Policy</Link>
             <Link style={{color: 'white', margin: '10px'}} to='/refund-policy'>Refund Policy</Link>
+            <Link style={{color: 'white', margin: '10px'}} to='/admin'>Admin Portal</Link>
         </div>
     )
 }
