@@ -206,18 +206,19 @@ const Home = () => {
 
 
     return (
-        <div >
+        <div>
             <div style={{ marginBottom: '10vh' }}>
                 <ResponsiveAppBar />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left', margin: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'left', margin: '10px' }}>
                 <div style={{margin: '3px'}}>
                     <Searchbar/>
-                </div>
-                <div style={{margin: '3px', padding: '10px', backgroundColor: 'black', borderRadius: '5px', maxWidth: '90vw'}}>
+                    <div style={{margin: '3px', padding: '10px', backgroundColor: 'black', borderRadius: '5px', margin: '10px'}}>
                     <Filter />
+                    </div>
                 </div>
+                
             </div>
 
 

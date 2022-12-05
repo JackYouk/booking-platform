@@ -18,13 +18,14 @@ const typeDefs = gql`
   type Agent {
     _id: ID
     name: String
-    bio: String
+    industries: String
     expertIn: [Tag]
-    clients: [Profile]
+    bio: String
+    credentials: String
+    rating: String
     imgPath: String
-    packages: String
-    availability: String
-    contacts: String
+    packages: [String]
+    contacts: [String]
   }
 
   type Auth {
