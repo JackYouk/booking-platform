@@ -7,6 +7,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { InlineWidget } from "react-calendly";
+
 
 const Agent = () => {
     const paramId = useParams()['*'];
@@ -81,8 +83,17 @@ const Agent = () => {
                         </Grid>
                         <Grid item sm={10} md={4} style={{ display: 'flex', justifyContent: 'center', width: '50vw'}}>
                             <div>
-                                <div style={{width: '30vw', height: '300px', margin: '10px', backgroundColor: 'black', color: 'white'}}>Packages</div>
-                                <div style={{width: '30vw', height: '300px', margin: '10px', backgroundColor: 'black', color: 'white'}}>Calendly Plugin</div>
+                                <InlineWidget 
+                                    url="https://calendly.com/jackyoukstetter1/test"
+                                    pageSettings={{
+                                        backgroundColor: 'ffffff',
+                                        hideEventTypeDetails: false,
+                                        hideLandingPageDetails: false,
+                                        primaryColor: 'D5AD6D',
+                                        textColor: 'black'
+                                      }} 
+                                      styles={{width: '100vw', height: '100vh'}}
+                                />
                             </div>
                         </Grid>
                     </Grid>

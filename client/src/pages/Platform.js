@@ -97,14 +97,14 @@ const FilteredAgents = () => {
 
 
     return (
-        <div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ margin: '10px', display: 'flex', justifyContent: 'left' }}>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ) : (
                 <div>
-                    <Grid container spacing={2} justifyContent='center'>
+                    <Grid container spacing={2} justifyContent='left'>
                         {data.filteredAgents.map(agentData => {
                             return (
                                 <Grid item xs="auto" key={agentData._id}>
@@ -160,7 +160,7 @@ const AgentsByTag = (tagId) => {
                         <CircularProgress />
                     </Box>
                 ) : (
-                    <div>
+                    <div style={{display: 'flex', justifyContent: 'left'}}>
                         <Grid container spacing={2} justifyContent='left'>
                             {data.filteredAgents.map(agentData => {
                                 return (
@@ -206,7 +206,7 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div style={{ marginBottom: '10vh' }}>
                 <ResponsiveAppBar />
             </div>
@@ -231,14 +231,22 @@ const Home = () => {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div style={{ margin: '10px', width: '80vw', height: '2px', backgroundColor: '#D4AF37' }}></div>
             </div>
+        
+            {/* <div style={{ display: 'flex', justifyContent: 'left',  }}>
+                
+            </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'left' }}>
+                
+            </div> */}
+            <Grid container justifyContent='center'>
+                <Grid item sm={10} md={10}>
                 <AgentsByTagContainer />
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                </Grid>
+                <Grid item sm={10} md={10}>
                 <AllAgents />
-            </div>
+                </Grid>
+            </Grid>
         </div>
 
     );
