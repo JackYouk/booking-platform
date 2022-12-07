@@ -1,6 +1,6 @@
 // imports
 import * as React from 'react';
-import { CircularProgress, Box, Grid, Button, ToggleButton, TextField, Autocomplete, Stack } from '@mui/material';
+import { CircularProgress, Box, Grid, Button, ToggleButton, TextField, Autocomplete, Stack, styled } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
@@ -21,6 +21,28 @@ const Searchbar = () => {
         })
         window.location.href = `/agent/${agentId}`;
     }
+    const CssTextField = styled(TextField)({
+        '& .MuiInput-underline:after': {
+          borderBottomColor: 'black',
+        },
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: 'black',
+            // borderRadius: '20px'
+            // width: '200px',
+
+          },
+          '&:hover fieldset': {
+            borderColor: 'black',
+            // borderRadius: '20px'
+            
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'black',
+          },
+        },
+      });
+      
     return (
         <div>
             {loading ? (
@@ -32,12 +54,14 @@ const Searchbar = () => {
                     <Autocomplete
                         id="free-solo-demo"
                         freeSolo
+                        color='secondary'
                         options={data.agents.map((option) => option.name)}
                         alignItems='center'
                         renderInput={(params) => (
                             <div ref={params.InputProps.ref}>
-                                <TextField
-                                    label={<div style={{ display: 'flex', alignItems: 'center', margin: '10px' }}><SearchIcon /> Search by agent</div>}
+                                <CssTextField
+                                    color='secondary'
+                                    label={<div style={{ display: 'flex', alignItems: 'center', margin: '10px', color: '#D5AD6D' }}><SearchIcon /> Search by agent</div>}
                                     style={{minWidth: '90vw'}}
                                     type="text"
                                     {...params.inputProps}
@@ -72,7 +96,7 @@ const Filter = () => {
                     <CircularProgress />
                 </Box>
             ) : (
-                <Grid container spacing={2}>
+                <Grid container spacing={1}>
                     {data.tags.map(tagData => {
                         if (!tagData.type) {
                             refetch();
@@ -211,19 +235,18 @@ const Home = () => {
                 <ResponsiveAppBar />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'left', margin: '10px' }}>
-                <div style={{margin: '3px'}}>
-                    <Searchbar/>
-                    <div style={{margin: '3px', padding: '10px', backgroundColor: 'black', borderRadius: '5px', margin: '10px'}}>
-                    <Filter />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left', margin: '10px', width: '90vw' }}>
+                    <div style={{width: ''}}>
+                        <Searchbar />
                     </div>
-                </div>
-                
+                    <div style={{marginTop: '10px'}}>
+                        <Filter />
+                    </div>
             </div>
 
 
 
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'left' }}>
                 <FilteredAgents />
             </div>
 
@@ -232,18 +255,12 @@ const Home = () => {
                 <div style={{ margin: '10px', width: '80vw', height: '2px', backgroundColor: '#D4AF37' }}></div>
             </div>
         
-            {/* <div style={{ display: 'flex', justifyContent: 'left',  }}>
-                
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'left' }}>
-                
-            </div> */}
+            
             <Grid container justifyContent='center'>
-                <Grid item sm={10} md={10}>
+                <Grid item xs={12} md={11}>
                 <AgentsByTagContainer />
                 </Grid>
-                <Grid item sm={10} md={10}>
+                <Grid item xs={12} md={11}>
                 <AllAgents />
                 </Grid>
             </Grid>

@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const AgentCard = (props) => {
     return (
         <Link to={'/agent/' + props.data._id} style={{textDecoration: 'none', }}>
-            <Card sx={{ width: 189}}>
+            <Card sx={{ width: 169}}>
                 <CardActionArea >
-                    <CardMedia height='189px'>
-                        <img src={props.data.imgPath} alt='agent image' style={{height: '160px'}} />
+                    <CardMedia height='169px'>
+                        <img src={props.data.imgPath} alt='agent image' style={{height: '169px'}} />
                     </CardMedia>
-                    <CardContent style={{minHeight: '160px', backgroundColor: 'black', color: 'white'}}>
+                    <CardContent style={{minHeight: '169px', backgroundColor: 'black', color: 'white'}}>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.data.name}
                         </Typography>

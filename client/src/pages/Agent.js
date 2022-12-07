@@ -20,20 +20,20 @@ const Agent = () => {
     return (
         <div style={{maxWidth: '100vw',}}>
             <ResponsiveAppBar />
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '8vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '8vh' }}>
                 {loading ? (
                     <Box sx={{ display: 'flex' }}>
                         <CircularProgress />
                     </Box>
                 ) : (
                     <div style={{display: 'flex', justifyContent: 'center', width: '100vw'}}>
-                    <Grid container display='flex' justifyContent='center' style={{margin: '15px', width: '100vw'}}>
-                        <Grid item sm={10} md={6}>
+                    <Grid container display='flex' justifyContent='center' style={{ width: '100vw'}}>
+                        <Grid item sm={10} md={10} xl={6}>
                             <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', width: '100vw' }}>
                                 <img src={data.agent.imgPath} alt={'picture of ' + data.agent.name} style={{ width: '150px', height: '150px', borderRadius: '50%' }} />
                                 <div style={{ margin: '20px', display: 'flex', flexDirection: 'column' }}>
-                                    <h1 style={{ fontSize: '40px' }}>{data.agent.name}</h1>
+                                    <h1 style={{ fontSize: '30px', fontWeight: 'bold' }}>{data.agent.name}</h1>
                                     <h2 style={{ fontSize: '20px' }}>Industries</h2>
                                     <div>
                                         <InstagramIcon />
@@ -47,7 +47,7 @@ const Agent = () => {
                                 </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
-                                <h2 style={{ fontSize: '30px' }}>Bio</h2>
+                                <h2 style={{ fontSize: '25px' }}>Bio</h2>
                                 <p style={{ fontSize: '15px', maxWidth: '800px'}}>Verse 1: E-40
                                     'Member that game Fat Bank Take Skinny Bank?
                                     Well now we play Skinny Bank Take Fat Bank
@@ -81,7 +81,7 @@ const Agent = () => {
                             </div>
                             </div>
                         </Grid>
-                        <Grid item sm={10} md={4} style={{ display: 'flex', justifyContent: 'center', width: '50vw'}}>
+                        <Grid item sm={10} md={4} style={{ display: 'flex', justifyContent: 'center', }}>
                             <div>
                                 <InlineWidget 
                                     url="https://calendly.com/jackyoukstetter1/test"
@@ -92,7 +92,8 @@ const Agent = () => {
                                         primaryColor: 'D5AD6D',
                                         textColor: 'black'
                                       }} 
-                                      styles={{width: '100vw', height: '100vh'}}
+                                    width='90vw'
+                                      styles={{width: '90vw', height: '100vh', margin: 'none'}}
                                 />
                             </div>
                         </Grid>

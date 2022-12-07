@@ -26,7 +26,7 @@ const Tag = (props) => {
     return (
         <div>
             {isSelected ? (
-                <Button color='secondary' variant='contained' onClick={() => {
+                <Button color='secondary' variant='contained'  onClick={() => {
                     handleChange();
                     setSelected(!isSelected);
                 }}>
@@ -47,7 +47,7 @@ const Tag = (props) => {
                     </div>
                 </Button>
             ) : (
-                <Button color='secondary' variant='outlined' onClick={() => {
+                <Button color='secondary' variant='outlined' style={{backgroundColor: 'black'}} onClick={() => {
                     handleChange();
                     setSelected(!isSelected);
                 }}>
