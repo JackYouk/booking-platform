@@ -90,7 +90,13 @@ const CreateAgent = () => {
     const [addAgent] = useMutation(ADD_AGENT, {
         variables: {
             name: formState.name,
+            industries: formState.industries,
             bio: formState.bio,
+            acheivements: formState.acheivements,
+            instagram: formState.instagram,
+            twitter: formState.twitter,
+            linkedin: formState.linkedin,
+            rating: formState.rating,
             expertIn: selectedIdsArr,
             imgPath: picState,
         }
@@ -102,7 +108,13 @@ const CreateAgent = () => {
         try {
             const { data } = await addAgent({
                 name: formState.name,
+                industries: formState.industries,
                 bio: formState.bio,
+                acheivements: formState.acheivements,
+                instagram: formState.instagram,
+                twitter: formState.twitter,
+                linkedin: formState.linkedin,
+                rating: formState.rating,
                 expertIn: selectedIdsArr,
                 imgPath: picState,
             });
@@ -140,7 +152,7 @@ const CreateAgent = () => {
                             <Box sx={style} >
                                 <TextField
                                     sx={{ width: "100%" }}
-                                    label="Agent Name"
+                                    label="Name"
                                     name="name"
                                     type='text'
                                     onChange={handleChange}
@@ -149,8 +161,66 @@ const CreateAgent = () => {
                             <Box sx={style} >
                                 <TextField
                                     sx={{ width: "100%" }}
-                                    label="Agent Bio"
+                                    label="Industries"
+                                    name="industries"
+                                    type='text'
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Bio"
                                     name="bio"
+                                    type='text'
+                                    multiline
+                                    rows={4}
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Acheivements"
+                                    name="acheivements"
+                                    type='text'
+                                    multiline
+                                    rows={4}
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Instagram?"
+                                    name="instagram"
+                                    type='text'
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Twitter?"
+                                    name="twitter"
+                                    type='text'
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="LinkedIn?"
+                                    name="linkedin"
+                                    type='text'
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                            <Box sx={style} >
+                                <TextField
+                                    sx={{ width: "100%" }}
+                                    label="Rating (ex: 4.8/5)"
+                                    name="rating"
                                     type='text'
                                     onChange={handleChange}
                                 />

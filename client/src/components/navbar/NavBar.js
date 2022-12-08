@@ -12,7 +12,7 @@ const ResponsiveAppBar = ({ headerSetting = {} }) => {
       <Container maxWidth="xl" >
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           <Link to='/' style={{ textDecoration: 'none' }}>
-            <div style={{ textDecoration: 'none', color: 'white' }}>Vortex</div>
+            <div style={{ textDecoration: 'none', color: '#D5AD6D' }}>Vortex</div>
           </Link>
 
           {Auth.loggedIn() ? (
@@ -21,10 +21,10 @@ const ResponsiveAppBar = ({ headerSetting = {} }) => {
             </a>
           ) : (
             <div style={{ display: 'flex', }}>
-              <Link to='/login' style={{ marginRight: '20px', color: 'white' }}>
+              <Link to='/login' style={{ marginRight: '20px', color: '#D5AD6D' }}>
                 <div>Login</div>
               </Link>
-              <Link to='/signup' style={{ color: 'white' }}>
+              <Link to='/signup' style={{ color: '#D5AD6D' }}>
                 <div>Create an Account</div>
               </Link>
             </div>

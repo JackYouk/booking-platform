@@ -26,16 +26,23 @@ export const LOGIN = gql`
 `;
 
 export const ADD_AGENT = gql`
-  mutation Mutation($name: String!, $bio: String!, $expertIn: [ID], $imgPath: String) {
-    addAgent(name: $name, bio: $bio, expertIn: $expertIn, imgPath: $imgPath) {
+  mutation Mutation($name: String!, $industries: String, $bio: String, $acheivements: String, $instagram: String, $twitter: String, $linkedin: String, $rating: String, $imgPath: String, $expertIn: [ID]) {
+    addAgent(name: $name, industries: $industries, bio: $bio, acheivements: $acheivements, instagram: $instagram, twitter: $twitter, linkedin: $linkedin, rating: $rating, imgPath: $imgPath, expertIn: $expertIn) {
       _id
-      name
       bio
+      acheivements
       expertIn {
         _id
+        imgPath
         type
       }
       imgPath
+      industries
+      instagram
+      linkedin
+      name
+      rating
+      twitter
     }
   }
 `;
@@ -67,17 +74,23 @@ export const DELETE_TAG = gql`
 `;
 
 export const EDIT_AGENT = gql`
-  mutation Mutation($id: ID!, $name: String, $bio: String, $expertIn: [ID], $imgPath: String) {
-    editAgent(_id: $id, name: $name, bio: $bio, expertIn: $expertIn, imgPath: $imgPath) {
+  mutation Mutation($id: ID!, $name: String, $industries: String, $bio: String, $acheivements: String, $instagram: String, $twitter: String, $linkedin: String, $rating: String, $imgPath: String, $expertIn: [ID]) {
+    editAgent(_id: $id, name: $name, industries: $industries, bio: $bio, acheivements: $acheivements, instagram: $instagram, twitter: $twitter, linkedin: $linkedin, rating: $rating, imgPath: $imgPath, expertIn: $expertIn) {
       _id
-      name
       bio
+      acheivements
       expertIn {
         _id
-        type
         imgPath
+        type
       }
       imgPath
+      industries
+      instagram
+      linkedin
+      name
+      rating
+      twitter
     }
   }
 `;

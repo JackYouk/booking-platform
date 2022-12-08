@@ -127,7 +127,7 @@ const FilteredAgents = () => {
                     <CircularProgress />
                 </Box>
             ) : (
-                <div>
+                <div style={{display: 'flex', justifyContent: 'left'}}>
                     <Grid container spacing={2} justifyContent='left'>
                         {data.filteredAgents.map(agentData => {
                             return (
@@ -235,7 +235,7 @@ const Home = () => {
                 <ResponsiveAppBar />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left', margin: '10px', width: '90vw' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left',  width: '90vw' }}>
                     <div style={{width: ''}}>
                         <Searchbar />
                     </div>
@@ -243,23 +243,17 @@ const Home = () => {
                         <Filter />
                     </div>
             </div>
-
-
-
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'left' }}>
-                <FilteredAgents />
-            </div>
-
-            {/* colored line */}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div style={{ margin: '10px', width: '80vw', height: '2px', backgroundColor: '#D4AF37' }}></div>
-            </div>
         
             
             <Grid container justifyContent='center'>
                 <Grid item xs={12} md={11}>
+                <FilteredAgents />
+                </Grid>
+                <div style={{ margin: '10px', width: '80vw', height: '2px', backgroundColor: '#D4AF37' }}></div>
+                <Grid item xs={12} md={11}>
                 <AgentsByTagContainer />
                 </Grid>
+
                 <Grid item xs={12} md={11}>
                 <AllAgents />
                 </Grid>

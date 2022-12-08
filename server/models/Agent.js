@@ -4,12 +4,28 @@ const agentSchema = new Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
+    },
+    industries: {
+        type: String,
     },
     bio: {
         type: String,
-        required: true,
+    },
+    acheivements: {
+        type: String,
+    },
+    instagram: {
+        type: String,
+    },
+    twitter: {
+        type: String,
+    },
+    linkedin: {
+        type: String,
+    },
+    rating: {
+        type: String,
     },
     imgPath: {
         type: String,
@@ -20,12 +36,7 @@ const agentSchema = new Schema({
             ref: 'Tag',
         },
     ],
-    clients: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Profile',
-        },
-    ],
+    
 
 },
 {

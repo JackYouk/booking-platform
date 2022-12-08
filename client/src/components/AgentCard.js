@@ -12,16 +12,16 @@ const AgentCard = (props) => {
                     <CardMedia height='169px'>
                         <img src={props.data.imgPath} alt='agent image' style={{height: '169px'}} />
                     </CardMedia>
-                    <CardContent style={{minHeight: '169px', backgroundColor: 'black', color: 'white'}}>
+                    <CardContent style={{minHeight: '169px', backgroundColor: 'black', color: '#D5AD6D'}}>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.data.name}
                         </Typography>
-                        <Typography sx={{ mb: 1.5 }} >
-                            {props.data.bio}
+                        <Typography sx={{ mb: 1.5, }} >
+                            {props.data.industries}
                         </Typography>
                         {props.data.expertIn.map((tag) => {
                             return (
-                                <Chip label={tag.type} variant="outlined" size='small' style={{marginRight: '3px', color: 'white'}} />
+                                <Chip label={tag.type} variant="outlined" size='small' color='secondary' style={{marginBottom: '4px', color: '#D5AD6D'}} />
                                 // <button>{tag.type}</button>
                             );
                         })}

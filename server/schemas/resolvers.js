@@ -42,7 +42,6 @@ const resolvers = {
         let isDupe = false;
         filteredAgents.forEach(filteredAgent => {
           if(filteredAgent._conditions._id.toString() === checkId.toString()){
-            console.log('trueeeeeeeeeeeeeeeeee')
             isDupe = true;
           }
         });
@@ -99,12 +98,18 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addAgent: async (parent, { name, bio, expertIn, imgPath }, context) => {
+    addAgent: async (parent, { name, industries, bio, acheivements, instagram, twitter, linkedin, rating, expertIn, imgPath }, context) => {
       if (context.user) {
         const createdAgent = await Agent.create({
-          name,
-          bio,
-          expertIn,
+          name, 
+          industries, 
+          bio, 
+          acheivements,
+          instagram, 
+          twitter, 
+          linkedin, 
+          rating, 
+          expertIn, 
           imgPath,
         });
 
@@ -137,9 +142,9 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    editAgent: async (parent, {_id, name, bio, expertIn, imgPath}, context) => {
+    editAgent: async (parent, {_id, name, industries, bio, acheivements, instagram, twitter, linkedin, rating, expertIn, imgPath}, context) => {
       if(context.user){
-        const agent = await Agent.updateOne({_id}, {$set: {name, bio, expertIn, imgPath}});
+        const agent = await Agent.updateOne({_id}, {$set: {name, industries, bio, acheivements, instagram, twitter, linkedin, rating, expertIn, imgPath}});
         return agent;
       }
       throw new AuthenticationError('You need to be logged in!');

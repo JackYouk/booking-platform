@@ -19,13 +19,14 @@ const typeDefs = gql`
     _id: ID
     name: String
     industries: String
-    expertIn: [Tag]
     bio: String
-    credentials: String
+    acheivements: String
+    instagram: String
+    twitter: String
+    linkedin: String
     rating: String
     imgPath: String
-    packages: [String]
-    contacts: [String]
+    expertIn: [Tag]
   }
 
   type Auth {
@@ -47,11 +48,11 @@ const typeDefs = gql`
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
-    addAgent(name: String!, bio: String!, expertIn: [ID], imgPath: String): Agent
+    addAgent(name: String!, industries: String, bio: String, acheivements: String, instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID]): Agent
     deleteAgent(agentId: ID!): Agent
     createTag(type: String!, imgPath: String): Tag
     deleteTag(tagId: ID!): Tag
-    editAgent(_id: ID!, name: String, bio: String, expertIn: [ID], imgPath: String): Agent
+    editAgent(_id: ID!, name: String, industries: String, bio: String, acheivements: String, instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID]): Agent
     editTag(_id: ID!, type: String, imgPath: String): Tag
   }
 `;

@@ -29,59 +29,34 @@ const Agent = () => {
                     <div style={{display: 'flex', justifyContent: 'center', width: '100vw'}}>
                     <Grid container display='flex' justifyContent='center' style={{ width: '100vw'}}>
                         <Grid item sm={10} md={10} xl={6}>
-                            <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+                            <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', marginTop: '50px'}}>
                             <div style={{ display: 'flex', alignItems: 'center', width: '100vw' }}>
                                 <img src={data.agent.imgPath} alt={'picture of ' + data.agent.name} style={{ width: '150px', height: '150px', borderRadius: '50%' }} />
                                 <div style={{ margin: '20px', display: 'flex', flexDirection: 'column' }}>
                                     <h1 style={{ fontSize: '30px', fontWeight: 'bold' }}>{data.agent.name}</h1>
-                                    <h2 style={{ fontSize: '20px' }}>Industries</h2>
+                                    <h2 style={{ fontSize: '20px' }}>{data.agent.industries}</h2>
                                     <div>
-                                        <InstagramIcon />
-                                        <TwitterIcon />
-                                        <LinkedInIcon />
+                                        {data.agent.instagram ? (<a href={data.agent.instagram}><InstagramIcon /></a>) : (<></>)}
+                                        {data.agent.instagram ? (<a href={data.agent.instagram}><TwitterIcon /></a>) : (<></>)}
+                                        {data.agent.instagram ? (<a href={data.agent.instagram}><LinkedInIcon /></a>) : (<></>)}
                                     </div>
                                     <div style={{display: 'flex', alignItems: 'center', marginTop: '4px'}}>
-                                    (5.0)
-                                    <Rating name="rating" value={5} readOnly />
+                                    ({data.agent.rating || '5.0'})
+                                    <Rating name="rating" value={data.agent.rating || 5.0} readOnly />
                                     </div>
                                 </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
                                 <h2 style={{ fontSize: '25px' }}>Bio</h2>
-                                <p style={{ fontSize: '15px', maxWidth: '800px'}}>Verse 1: E-40
-                                    'Member that game Fat Bank Take Skinny Bank?
-                                    Well now we play Skinny Bank Take Fat Bank
-                                    That's because it ain't no work bein' offered main
-                                    They act like they ain't even thinkin' 'bout us main
-                                    I promise I swear the po-po threw my homie in the slammer
-                                    Did him bad, wish I had my candid camera, made me mad
-                                    Penelopes swarmin' like bees, surveillance binoculars hidden in trees
-                                    Reliable sources copping pleas, oh p-uh-please
-                                    One for the life, and two for death
-                                    Three damn strikes no chances left
-                                    Let me tell ya lil 'bout me, E-40 and the C-L-I-C
-                                    We used to have to use sheets for curtains, socks for washtowels
-                                    I was happy as hell when my cousin gave me his hand-me-downs
-                                    This ain't no happy Shirley Temple tale-listic crap
-                                    This here is serious, more realistic than Radio Shack
-                                    Observe as I strike a nerve, reach out and touch my kind
-                                    Open up your photo album, man, and I bet you find
-                                    Folks that passed away, potnas that been blasted away
-                                    I miss you, spill some liquor, mayne, who got some tissue?</p>
+                                <p style={{ fontSize: '15px', maxWidth: '800px'}}>{data.agent.bio}</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
                                 <h2 style={{ fontSize: '30px' }}>Notable Acheivements</h2>
-                                <p style={{ fontSize: '15px', maxWidth: '800px'}}>Verse 1: E-40
-                                    'Member that game Fat Bank Take Skinny Bank?
-                                    Well now we play Skinny Bank Take Fat Bank
-                                    That's because it ain't no work bein' offered main
-                                    They act like they ain't even thinkin' 'bout us main
-                                    I promise I swear the po-po threw my homie in the slammer
-                                    Did him bad, wish I had my candid camera, made me mad</p>
+                                <p style={{ fontSize: '15px', maxWidth: '800px'}}>{data.agent.acheivements}</p>
                             </div>
                             </div>
                         </Grid>
-                        <Grid item sm={10} md={4} style={{ display: 'flex', justifyContent: 'center', }}>
+                        <Grid item sm={10} md={10} xl={4} style={{ display: 'flex', justifyContent: 'center', }}>
                             <div>
                                 <InlineWidget 
                                     url="https://calendly.com/jackyoukstetter1/test"
@@ -91,9 +66,8 @@ const Agent = () => {
                                         hideLandingPageDetails: false,
                                         primaryColor: 'D5AD6D',
                                         textColor: 'black'
-                                      }} 
-                                    width='90vw'
-                                      styles={{width: '90vw', height: '100vh', margin: 'none'}}
+                                    }} 
+                                    styles={{width: '90vw', height: '100vh', margin: '0', padding: '0'}}
                                 />
                             </div>
                         </Grid>

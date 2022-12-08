@@ -11,18 +11,25 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_AGENTS = gql`
-  query Query {
-    agents {
+query Query {
+  agents {
+    _id
+    bio
+    acheivements
+    expertIn {
       _id
-      name
-      bio
-      expertIn {
-        _id
-        type
-      }
       imgPath
+      type
     }
+    imgPath
+    industries
+    instagram
+    linkedin
+    name
+    rating
+    twitter
   }
+}
 `;
 
 export const QUERY_TAGS = gql`
@@ -36,31 +43,45 @@ export const QUERY_TAGS = gql`
 `;
 
 export const QUERY_FILTERED_AGENTS = gql`
-  query FilteredAgents($tagIds: [ID]!) {
-    filteredAgents(tagIds: $tagIds) {
+query Query($tagIds: [ID]!) {
+  filteredAgents(tagIds: $tagIds) {
+    _id
+    bio
+    acheivements
+    expertIn {
       _id
-      name
-      bio
-      expertIn {
-        _id
-        type
-      }
       imgPath
+      type
     }
+    imgPath
+    industries
+    instagram
+    linkedin
+    name
+    rating
+    twitter
   }
+}
 `;
 
 export const QUERY_AGENT = gql`
-  query Agent($agentId: ID!) {
+  query Query($agentId: ID!) {
     agent(agentId: $agentId) {
       _id
-      name
       bio
+      acheivements
       expertIn {
         _id
+        imgPath
         type
       }
       imgPath
+      industries
+      instagram
+      linkedin
+      name
+      rating
+      twitter
     }
   }
 `;
