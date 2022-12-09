@@ -7,6 +7,13 @@ const typeDefs = gql`
     imgPath: String
   }
 
+  type Review {
+    _id: ID
+    username: String
+    review: String
+    rating: String
+  }
+
   type Profile {
     _id: ID
     username: String
@@ -27,6 +34,7 @@ const typeDefs = gql`
     rating: String
     imgPath: String
     expertIn: [Tag]
+    reviews: [Review]
   }
 
   type Auth {
@@ -54,6 +62,7 @@ const typeDefs = gql`
     deleteTag(tagId: ID!): Tag
     editAgent(_id: ID!, name: String, industries: String, bio: String, acheivements: String, instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID]): Agent
     editTag(_id: ID!, type: String, imgPath: String): Tag
+    addReview(agentId: ID!, username: String!, review: String!, rating: String): Review
   }
 `;
 

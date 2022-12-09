@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Profile, Agent, Tag } = require('../models');
+const Review = require('../models/Review');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -72,7 +73,7 @@ const resolvers = {
       }
 
       return filteredAgents;
-    }
+    },
   },
 
   Mutation: {
@@ -152,11 +153,23 @@ const resolvers = {
     editTag: async (parent, {_id, type, imgPath}, context) => {
       if(context.user){
         const tag = await Tag.updateOne({_id}, {$set: {type, imgPath}});
-        console.log(tag);
         return tag;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    addReview: async (parent, {agentId, username, review, rating}, context) => {
+      const newReview = await Review.create({
+        username,
+        review,
+        rating
+      });
+      console.log(newReview, 167);
+      const agent = await Agent.findOne({_id: agentId});
+      const reviews = agent.reviews;
+      reviews.push(newReview._id.toString());
+      await Agent.updateOne({_id: agentId}, {$set: {reviews}});
+      return newReview;
+    }
   },
 };
 

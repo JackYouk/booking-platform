@@ -104,3 +104,14 @@ export const EDIT_TAG = gql`
     }
   }
 `;
+
+export const ADD_REVIEW = gql`
+  mutation Mutation($username: String!, $review: String!, $agentId: ID!, $rating: String) {
+    addReview(username: $username, review: $review, agentId: $agentId, rating: $rating) {
+      _id
+      rating
+      review
+      username
+    }
+  }
+`;

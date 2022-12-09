@@ -36,8 +36,12 @@ const agentSchema = new Schema({
             ref: 'Tag',
         },
     ],
-    
-
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review',
+        },
+    ],
 },
 {
     toJSON: {

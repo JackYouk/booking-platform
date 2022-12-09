@@ -36,9 +36,9 @@ const Agent = () => {
                                     <h1 style={{ fontSize: '30px', fontWeight: 'bold' }}>{data.agent.name}</h1>
                                     <h2 style={{ fontSize: '20px' }}>{data.agent.industries}</h2>
                                     <div>
-                                        {data.agent.instagram ? (<a href={data.agent.instagram}><InstagramIcon /></a>) : (<></>)}
-                                        {data.agent.instagram ? (<a href={data.agent.instagram}><TwitterIcon /></a>) : (<></>)}
-                                        {data.agent.instagram ? (<a href={data.agent.instagram}><LinkedInIcon /></a>) : (<></>)}
+                                        {data.agent.instagram ? (<a href={data.agent.instagram} target='_blank'><InstagramIcon /></a>) : (<></>)}
+                                        {data.agent.instagram ? (<a href={data.agent.instagram} target='_blank'><TwitterIcon /></a>) : (<></>)}
+                                        {data.agent.instagram ? (<a href={data.agent.instagram} target='_blank'><LinkedInIcon /></a>) : (<></>)}
                                     </div>
                                     <div style={{display: 'flex', alignItems: 'center', marginTop: '4px'}}>
                                     ({data.agent.rating || '5.0'})

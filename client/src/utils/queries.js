@@ -68,8 +68,8 @@ export const QUERY_AGENT = gql`
   query Query($agentId: ID!) {
     agent(agentId: $agentId) {
       _id
-      bio
       acheivements
+      bio
       expertIn {
         _id
         imgPath
@@ -81,6 +81,12 @@ export const QUERY_AGENT = gql`
       linkedin
       name
       rating
+      reviews {
+        _id
+        rating
+        review
+        username
+      }
       twitter
     }
   }
