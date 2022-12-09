@@ -103,7 +103,6 @@ const CreateAgent = () => {
     });
 
     const handleSubmit = async (event) => {
-        console.log(selectedIdsArr);
         event.preventDefault();
         try {
             const { data } = await addAgent({

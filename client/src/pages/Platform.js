@@ -8,6 +8,7 @@ import { QUERY_AGENTS, QUERY_FILTERED_AGENTS, QUERY_TAGS } from "../utils/querie
 import AgentCard from "../components/AgentCard";
 import Tag from '../components/Tag';
 import ResponsiveAppBar from '../components/navbar/NavBar';
+import ScrollToTopButton from '../components/ScrollBtn';
 
 
 const Searchbar = () => {
@@ -63,7 +64,7 @@ const Searchbar = () => {
                                     color='secondary'
                                     label={<div style={{ display: 'flex', alignItems: 'center', margin: '10px', color: '#D5AD6D' }}><SearchIcon /> Search by agent</div>}
                                     style={{minWidth: '90vw'}}
-                                    type="text"
+                                    type="search"
                                     {...params.inputProps}
                                     onKeyUp={(event) => {
                                         if (event.key === 'Enter') {
@@ -258,6 +259,10 @@ const Home = () => {
                 <AllAgents />
                 </Grid>
             </Grid>
+
+            <div style={{position: 'fixed', bottom: 0, right: 0}}>
+                <ScrollToTopButton />
+            </div>
         </div>
 
     );

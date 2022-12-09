@@ -33,7 +33,8 @@ const resolvers = {
       return tags;
     },
     agent: async (parent, { agentId }) => {
-      return Agent.findOne({ _id: agentId });
+      const agent = await Agent.findOne({ _id: agentId });
+      return agent.populate('reviews');
     },
     filteredAgents: async (parent, { tagIds }) => {
       let filteredAgents = [];
