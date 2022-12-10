@@ -260,7 +260,7 @@ const Home = () => {
                 </Grid>
             </Grid>
 
-            <div style={{position: 'fixed', bottom: 0, right: 0}}>
+            <div style={{position: 'fixed', bottom: 30, right: 30}}>
                 <ScrollToTopButton />
             </div>
         </div>

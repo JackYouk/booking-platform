@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from '@mui/material';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export default function ScrollToTopButton() {
   // State to track the scroll position
@@ -20,8 +22,10 @@ export default function ScrollToTopButton() {
   }
 
   return (
-    <button
+    <Button
       className="scroll-to-top-btn"
+      variant='outlined'
+      color='secondary'
       style={{ visibility: scrollY > 100 ? 'visible' : 'hidden' }}
       onClick={() => {
         window.scrollTo({
@@ -30,7 +34,7 @@ export default function ScrollToTopButton() {
         });
       }}
     >
-      Scroll to top
-    </button>
+      <ArrowUpwardIcon />
+    </Button>
   );
 }
