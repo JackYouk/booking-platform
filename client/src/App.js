@@ -58,6 +58,9 @@ function App() {
         },
         typography: {
             fontFamily: 'helvetica, Montserrat Semi Bold, arial',
+            button: {
+                textTransform: 'none'
+            }
         },
     })
     return (

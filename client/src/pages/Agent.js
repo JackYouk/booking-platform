@@ -74,7 +74,7 @@ const Agent = () => {
     return (
         <div style={{}}>
             <ResponsiveAppBar />
-            <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', margin: '8vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '8vh' }}>
                 {loading ? (
                     <Box sx={{ display: 'flex' }}>
                         <CircularProgress />
