@@ -34,7 +34,7 @@ const resolvers = {
     },
     agent: async (parent, { agentId }) => {
       const agent = await Agent.findOne({ _id: agentId });
-      return (await agent.populate('reviews')).populate('credentials');
+      return (await agent.populate('reviews'));
     },
     filteredAgents: async (parent, { tagIds }) => {
       let filteredAgents = [];
