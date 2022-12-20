@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const credentialsSchema = new Schema({
+const credentialSchema = new Schema({
     icon: {
         type: String,
         required: true,
@@ -25,7 +25,7 @@ const credentialsSchema = new Schema({
     id: true
 });
 
-const Credential = model('Credential', credentialsSchema);
+const Credential = model('Credential', credentialSchema);
 
 
 module.exports = Credential;

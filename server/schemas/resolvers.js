@@ -34,7 +34,7 @@ const resolvers = {
     },
     agent: async (parent, { agentId }) => {
       const agent = await Agent.findOne({ _id: agentId });
-      return agent.populate('reviews');
+      return (await agent.populate('reviews')).populate('credentials');
     },
     filteredAgents: async (parent, { tagIds }) => {
       let filteredAgents = [];
@@ -170,8 +170,23 @@ const resolvers = {
       reviews.push(newReview._id.toString());
       await Agent.updateOne({_id: agentId}, {$set: {reviews}});
       return newReview;
-    }
+    },
+    addCredential: async (parent, {agentId, icon, title, description, link}, context) => {
+      const newCredential = await Review.create({
+        icon, 
+        title, 
+        description, 
+        link,
+      });
+      console.log(newCredential, 167);
+      const agent = await Agent.findOne({_id: agentId});
+      const credentials = agent.credentials;
+      credentials.push(newCredential._id.toString());
+      await Agent.updateOne({_id: agentId}, {$set: {credentials}});
+      return newCredential;
+    },
   },
+  
 };
 
 module.exports = resolvers;

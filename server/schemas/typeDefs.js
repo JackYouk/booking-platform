@@ -36,6 +36,7 @@ const typeDefs = gql`
     industries: String
     bio: String
     acheivements: String
+    credentials: [Credential]
     instagram: String
     twitter: String
     linkedin: String
@@ -71,6 +72,7 @@ const typeDefs = gql`
     editAgent(_id: ID!, name: String, industries: String, bio: String, acheivements: String, instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID]): Agent
     editTag(_id: ID!, type: String, imgPath: String): Tag
     addReview(agentId: ID!, username: String!, review: String!, rating: String): Review
+    addCredential(agentId: ID!, icon: String!, title: String!, description: String, link: String): Credential
   }
 `;
 
