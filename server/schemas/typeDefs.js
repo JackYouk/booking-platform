@@ -14,6 +14,14 @@ const typeDefs = gql`
     rating: String
   }
 
+  type Credential {
+    _id: ID
+    icon: String
+    title: String
+    description: String
+    link: String
+  }
+
   type Profile {
     _id: ID
     username: String

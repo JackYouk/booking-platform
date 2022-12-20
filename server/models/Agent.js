@@ -15,6 +15,12 @@ const agentSchema = new Schema({
     acheivements: {
         type: String,
     },
+    credentials: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Credential',
+        },
+    ],
     instagram: {
         type: String,
     },
