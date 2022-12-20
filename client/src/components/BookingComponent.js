@@ -174,6 +174,7 @@ const BookingComponent = (props) => {
                                     textColor: 'black',
 
                                 }}
+                                // styles={{maxHeight: '80%'}}
                             // utm={{}}
                             // prefill={{}}
                             />

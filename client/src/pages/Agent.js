@@ -103,7 +103,7 @@ const Agent = () => {
                                 <p style={{ fontSize: '15px', maxWidth: '800px' }}>{data.agent.bio}</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
-                                <h2 style={{ fontSize: '25px' }}>Acheivements</h2>
+                                <h2 style={{ fontSize: '25px' }}>Credentials</h2>
                                 {/* <p style={{ fontSize: '15px', maxWidth: '800px' }}>{data.agent.acheivements}</p> */}
                                 <div style={{ display: 'flex', flexDirection: 'row', }}>
                                     <SchoolIcon />
