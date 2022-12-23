@@ -12,6 +12,7 @@ import { QUERY_TAGS } from "../../utils/queries";
 import auth from "../../utils/auth";
 
 import Tag from "../../components/Tag";
+import CredentialAdder from "../../components/CredentialAdder";
 
 
 const CreateAgent = () => {
@@ -34,6 +35,8 @@ const CreateAgent = () => {
 
     let selectedIdsArr = [];
 
+    // CREDENTIALS STATE ==============================================================================
+    let credentialIdsArr = [];
 
     // FORM STATE ==============================================================================
     const [formState, setFormState] = useState({
@@ -93,6 +96,7 @@ const CreateAgent = () => {
             industries: formState.industries,
             bio: formState.bio,
             acheivements: formState.acheivements,
+            credentials: credentialIdsArr,
             instagram: formState.instagram,
             twitter: formState.twitter,
             linkedin: formState.linkedin,
@@ -110,6 +114,7 @@ const CreateAgent = () => {
                 industries: formState.industries,
                 bio: formState.bio,
                 acheivements: formState.acheivements,
+                credentials: credentialIdsArr,
                 instagram: formState.instagram,
                 twitter: formState.twitter,
                 linkedin: formState.linkedin,
@@ -123,6 +128,7 @@ const CreateAgent = () => {
             console.error(error);
         }
     };
+
 
     
     // STYLING ==============================================================================
@@ -189,6 +195,9 @@ const CreateAgent = () => {
                                 />
                             </Box>
                             <Box sx={style} >
+                                <CredentialAdder credentialIds={credentialIdsArr} />
+                            </Box>
+                            <Box sx={style} >
                                 <TextField
                                     sx={{ width: "100%" }}
                                     label="Instagram?"
@@ -226,7 +235,7 @@ const CreateAgent = () => {
                             </Box>
 
                             <Box sx={style} >
-                                <Button variant="text" onClick={() => cloudinaryWidget.open()}>Upload Image</Button>
+                                <Button variant="contained" onClick={() => cloudinaryWidget.open()}>Upload Image ****Dont forget****</Button>
                                 <img id="uploadedimage" src=""></img>
                             </Box>
 

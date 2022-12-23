@@ -26,11 +26,18 @@ export const LOGIN = gql`
 `;
 
 export const ADD_AGENT = gql`
-  mutation Mutation($name: String!, $industries: String, $bio: String, $acheivements: String, $instagram: String, $twitter: String, $linkedin: String, $rating: String, $imgPath: String, $expertIn: [ID]) {
-    addAgent(name: $name, industries: $industries, bio: $bio, acheivements: $acheivements, instagram: $instagram, twitter: $twitter, linkedin: $linkedin, rating: $rating, imgPath: $imgPath, expertIn: $expertIn) {
+  mutation Mutation($name: String!, $industries: String, $bio: String, $credentials: [ID], $acheivements: String, $instagram: String, $linkedin: String, $twitter: String, $imgPath: String, $expertIn: [ID], $packages: [String], $rating: String) {
+    addAgent(name: $name, industries: $industries, bio: $bio, credentials: $credentials, acheivements: $acheivements, instagram: $instagram, linkedin: $linkedin, twitter: $twitter, imgPath: $imgPath, expertIn: $expertIn, packages: $packages, rating: $rating) {
       _id
-      bio
       acheivements
+      bio
+      credentials {
+        _id
+        description
+        icon
+        link
+        title
+      }
       expertIn {
         _id
         imgPath
@@ -41,8 +48,9 @@ export const ADD_AGENT = gql`
       instagram
       linkedin
       name
-      rating
+      packages
       twitter
+      rating
     }
   }
 `;
@@ -112,6 +120,18 @@ export const ADD_REVIEW = gql`
       rating
       review
       username
+    }
+  }
+`;
+
+export const ADD_CREDENTIAL = gql`
+  mutation Mutation($icon: String!, $title: String!, $description: String, $link: String) {
+    addCredential(icon: $icon, title: $title, description: $description, link: $link) {
+      _id
+      description
+      icon
+      link
+      title
     }
   }
 `;

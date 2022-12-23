@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_AGENT } from "../utils/queries";
 import { CircularProgress, Box, Button, Rating, Grid, TextField } from "@mui/material";
@@ -10,6 +10,8 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import BusinessIcon from '@mui/icons-material/Business';
+import WorkIcon from '@mui/icons-material/Work';
+import LinkIcon from '@mui/icons-material/Link';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import { useState } from "react";
 
@@ -72,9 +74,9 @@ const Agent = () => {
     const [modalState, setModalState] = useState(false);
 
     return (
-        <div style={{}}>
+        <div style={{backgroundColor: '	#71797E'}}>
             <ResponsiveAppBar />
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '8vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '8vh' }}>
                 {loading ? (
                     <Box sx={{ display: 'flex' }}>
                         <CircularProgress />
@@ -104,28 +106,17 @@ const Agent = () => {
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
                                 <h2 style={{ fontSize: '25px' }}>Credentials</h2>
-                                {/* <p style={{ fontSize: '15px', maxWidth: '800px' }}>{data.agent.acheivements}</p> */}
-                                <div style={{ display: 'flex', flexDirection: 'row', }}>
-                                    <SchoolIcon />
-                                    <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '2px', alignItems: 'center'}}>
-                                        <p style={{ fontSize: '15px', marginLeft: '2px',}}>Harvard University</p>
-                                        {/* <p style={{ fontSize: '10px', marginLeft: '2px',}}>MS, Economics</p> */}
-                                    </div>
-                                </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', }}>
-                                    <BusinessIcon />
-                                    <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '2px', alignItems: 'center'}}>
-                                        <p style={{ fontSize: '15px', marginLeft: '2px',}}>Vortex Ventures</p>
-                                        {/* <p style={{ fontSize: '10px', marginLeft: '2px',}}>MS, Economics</p> */}
-                                    </div>
-                                </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', }}>
-                                    <MilitaryTechIcon />
-                                    <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '2px', alignItems: 'center'}}>
-                                        <p style={{ fontSize: '15px', marginLeft: '2px',}}>Voted #1 E-commerce Agent by Forbes</p>
-                                        {/* <p style={{ fontSize: '10px', marginLeft: '2px',}}>MS, Economics</p> */}
-                                    </div>
-                                </div>
+                                <div>{data.agent.credentials?.map(credential => {
+                                    return (
+                                    <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '5px'}}>
+                                        {credential.icon === 'school' ? (<SchoolIcon />) : credential.icon === 'business' ? (<BusinessIcon />) : credential.icon === 'work' ? (<WorkIcon />) : credential.icon === 'award' ? (<MilitaryTechIcon />) : (<></>)}
+                                        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '10px'}}>
+                                            <div style={{ fontSize: '17px', fontWeight: 'bold'}}>{credential.title}</div>
+                                            <div style={{ fontSize: '14px' }}>{credential.description} <a style={{color: '#D5AD6D'}} href={credential.link} target='_blank'><LinkIcon /></a></div>
+                                        </div>
+                                    </div>)
+                                })}</div>
+                                
                             </div>
 
                             {/* scheduling */}
@@ -186,7 +177,7 @@ const Agent = () => {
                         <PopupModal
                             url="https://calendly.com/jackyoukstetter1/test"
                             pageSettings={{
-                                backgroundColor: 'ffffff',
+                                backgroundColor: '71797E',
                                 hideEventTypeDetails: false,
                                 hideLandingPageDetails: false,
                                 primaryColor: 'D5AD6D',

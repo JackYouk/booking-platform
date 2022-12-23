@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Profile, Agent, Tag } = require('../models');
 const Review = require('../models/Review');
+const Credential = require('../models/Credential');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -34,7 +35,9 @@ const resolvers = {
     },
     agent: async (parent, { agentId }) => {
       const agent = await Agent.findOne({ _id: agentId });
-      return (await agent.populate('reviews'));
+      console.log(agent);
+      const populatedAgent = await (await agent.populate('reviews')).populate('credentials');
+      return populatedAgent;
     },
     filteredAgents: async (parent, { tagIds }) => {
       let filteredAgents = [];
@@ -75,6 +78,12 @@ const resolvers = {
 
       return filteredAgents;
     },
+    addedCredentials: async (parent, {credentialIds}) => {
+      const addedCredentials = await Credential.find({
+        _id: {$in: credentialIds}
+      });
+      return addedCredentials;
+    }
   },
 
   Mutation: {
@@ -100,7 +109,7 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addAgent: async (parent, { name, industries, bio, acheivements, instagram, twitter, linkedin, rating, expertIn, imgPath }, context) => {
+    addAgent: async (parent, { name, industries, bio, acheivements, credentials, instagram, twitter, linkedin, rating, expertIn, imgPath }, context) => {
       if (context.user) {
         const createdAgent = await Agent.create({
           name, 
@@ -113,6 +122,7 @@ const resolvers = {
           rating, 
           expertIn, 
           imgPath,
+          credentials,
         });
 
         return createdAgent;
@@ -171,18 +181,13 @@ const resolvers = {
       await Agent.updateOne({_id: agentId}, {$set: {reviews}});
       return newReview;
     },
-    addCredential: async (parent, {agentId, icon, title, description, link}, context) => {
-      const newCredential = await Review.create({
+    addCredential: async (parent, {icon, title, description, link}, context) => {
+      const newCredential = await Credential.create({
         icon, 
         title, 
         description, 
         link,
       });
-      console.log(newCredential, 167);
-      const agent = await Agent.findOne({_id: agentId});
-      const credentials = agent.credentials;
-      credentials.push(newCredential._id.toString());
-      await Agent.updateOne({_id: agentId}, {$set: {credentials}});
       return newCredential;
     },
   },

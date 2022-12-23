@@ -231,15 +231,15 @@ const Home = () => {
 
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '	#71797E' }}>
             <div style={{ marginBottom: '10vh' }}>
                 <ResponsiveAppBar />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left',  width: '90vw' }}>
-                    <div style={{width: ''}}>
+                    {/* <div style={{width: ''}}>
                         <Searchbar />
-                    </div>
+                    </div> */}
                     <div style={{marginTop: '10px'}}>
                         <Filter />
                     </div>

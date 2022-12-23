@@ -44,6 +44,7 @@ const typeDefs = gql`
     imgPath: String
     expertIn: [Tag]
     reviews: [Review]
+    packages: [String]
   }
 
   type Auth {
@@ -59,20 +60,21 @@ const typeDefs = gql`
     tags: [Tag]
     agent(agentId: ID!): Agent
     filteredAgents(tagIds: [ID]!): [Agent]
+    addedCredentials(credentialIds: [ID]!): [Credential]
   }
 
   type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
-    addAgent(name: String!, industries: String, bio: String, acheivements: String, instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID]): Agent
+    addAgent(name: String!, industries: String, bio: String, acheivements: String, credentials: [ID], instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID], packages: [String]): Agent
     deleteAgent(agentId: ID!): Agent
     createTag(type: String!, imgPath: String): Tag
     deleteTag(tagId: ID!): Tag
     editAgent(_id: ID!, name: String, industries: String, bio: String, acheivements: String, instagram: String, twitter: String, linkedin: String, rating: String, imgPath: String, expertIn: [ID]): Agent
     editTag(_id: ID!, type: String, imgPath: String): Tag
     addReview(agentId: ID!, username: String!, review: String!, rating: String): Review
-    addCredential(agentId: ID!, icon: String!, title: String!, description: String, link: String): Credential
+    addCredential(icon: String!, title: String!, description: String, link: String): Credential
   }
 `;
 

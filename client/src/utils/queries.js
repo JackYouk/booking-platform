@@ -65,29 +65,49 @@ query Query($tagIds: [ID]!) {
 `;
 
 export const QUERY_AGENT = gql`
-  query Query($agentId: ID!) {
-    agent(agentId: $agentId) {
+query Query($agentId: ID!) {
+  agent(agentId: $agentId) {
+    _id
+    acheivements
+    bio
+    credentials {
       _id
-      acheivements
-      bio
-      expertIn {
-        _id
-        imgPath
-        type
-      }
+      description
+      icon
+      link
+      title
+    }
+    expertIn {
+      _id
       imgPath
-      industries
-      instagram
-      linkedin
-      name
+      type
+    }
+    imgPath
+    industries
+    instagram
+    linkedin
+    name
+    packages
+    rating
+    reviews {
+      _id
       rating
-      reviews {
-        _id
-        rating
-        review
-        username
-      }
-      twitter
+      review
+      username
+    }
+    twitter
+  }
+}
+`;
+
+export const QUERY_ADDED_CREDENTIALS = gql`
+  query Query($credentialIds: [ID]!) {
+    addedCredentials(credentialIds: $credentialIds) {
+      _id
+      description
+      icon
+      link
+      title
     }
   }
 `;

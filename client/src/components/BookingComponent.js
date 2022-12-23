@@ -167,7 +167,7 @@ const BookingComponent = (props) => {
                             <InlineWidget
                                 url="https://calendly.com/jackyoukstetter1/test"
                                 pageSettings={{
-                                    backgroundColor: 'ffffff',
+                                    backgroundColor: '71797E',
                                     hideEventTypeDetails: false,
                                     hideLandingPageDetails: false,
                                     primaryColor: 'D5AD6D',

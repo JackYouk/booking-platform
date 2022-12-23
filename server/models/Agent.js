@@ -48,6 +48,10 @@ const agentSchema = new Schema({
             ref: 'Review',
         },
     ],
+    packages: {
+        type: [String],
+        default: [],
+    },
 },
 {
     toJSON: {
