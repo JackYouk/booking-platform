@@ -6,11 +6,32 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { InlineWidget, useCalendlyEventListener } from "react-calendly";
+import { PopupModal, useCalendlyEventListener } from "react-calendly";
+import { useState } from 'react';
 
 
 const BookingComponent = (props) => {
-    const steps = ['Select Package', 'Add info', 'Schedule A Call'];
+    const steps = ['Select Package', 'Add info', 'Schedule & Confirm'];
+
+    const [calendlyModalOpen, setCalendlyModalOpen] = useState('false');
+
+    const [formState, setFormState] = useState({
+        username: '',
+        company: '',
+        email: '',
+        message: '',
+    });
+
+    const handleFormChange = (event) => {
+        const key = event.target.name;
+        const value = event.target.value;
+
+        setFormState({
+            ...formState,
+            [key]: value,
+        });
+    };
+
 
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
@@ -61,20 +82,20 @@ const BookingComponent = (props) => {
         onProfilePageViewed: () => console.log("onProfilePageViewed"),
         onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
         onEventTypeViewed: () => console.log("onEventTypeViewed"),
-        onEventScheduled: (e) => console.log(e.data),
+        onEventScheduled: (e) => setActiveStep(activeStep++),
     });
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%', backgroundColor: 'gray', padding: '10px', borderRadius: '10px' }}>
             <Stepper color='secondary' activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
-                    if (isStepOptional(index)) {
-                        labelProps.optional = (
-                            <Typography variant="caption">Optional</Typography>
-                        );
-                    }
+                    // if (isStepOptional(index)) {
+                    //     labelProps.optional = (
+                    //         <Typography variant="caption">Optional</Typography>
+                    //     );
+                    // }
                     if (isStepSkipped(index)) {
                         stepProps.completed = false;
                     }
@@ -124,25 +145,38 @@ const BookingComponent = (props) => {
                         </>) : (<></>)}
                     {activeStep === 1 ? (
                         <>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 <TextField
                                     sx={{ width: '320px', margin: '5px' }}
                                     label="Name"
                                     name="username"
                                     type='text'
                                     color='secondary'
-                                    // onChange={handleChange}
-                                    variant="outlined"
+                                    value={formState.username}
+                                    onChange={handleFormChange}
+                                    variant="filled"
+                                    size="small"
+                                />
+                                <TextField
+                                    sx={{ width: '320px', margin: '5px' }}
+                                    label="Company (Optional)"
+                                    name="company"
+                                    type='text'
+                                    color='secondary'
+                                    value={formState.company}
+                                    onChange={handleFormChange}
+                                    variant="filled"
                                     size="small"
                                 />
                                 <TextField
                                     sx={{ width: '320px', margin: '5px' }}
                                     label="Email"
                                     name="email"
-                                    type='text'
+                                    type='email'
                                     color='secondary'
-                                    // onChange={handleChange}
-                                    variant="outlined"
+                                    value={formState.email}
+                                    onChange={handleFormChange}
+                                    variant="filled"
                                     size="small"
                                 />
                                 <TextField
@@ -151,37 +185,45 @@ const BookingComponent = (props) => {
                                     name="message"
                                     type='text'
                                     color='secondary'
-                                    // onChange={handleChange}
-                                    variant="outlined"
+                                    value={formState.message}
+                                    onChange={handleFormChange}
+                                    variant="filled"
                                     size="small"
                                     multiline
                                     rows={4}
                                 />
                             </div>
                         </>) : (<></>)}
+
+
                     {activeStep === 2 ? (
                         <>
-                            {/* <Button variant='outlined' size='small' color='secondary' sx={{ width: '100px', }} onClick={() => props.setModal(true)}>
-                                Schedule
-                            </Button> */}
-                            <InlineWidget
+                            <Button onClick={() => setCalendlyModalOpen(true)} style={{margin: '10px', width: '95%'}} color='secondary' variant='contained'>Schedule Meeting</Button>
+                            <PopupModal
                                 url="https://calendly.com/jackyoukstetter1/test"
                                 pageSettings={{
-                                    backgroundColor: '71797E',
+                                    backgroundColor: 'ffffff',
                                     hideEventTypeDetails: false,
                                     hideLandingPageDetails: false,
-                                    primaryColor: 'D5AD6D',
-                                    textColor: 'black',
-
+                                    primaryColor: '00a2ff',
+                                    textColor: '4d5055'
                                 }}
-                                // styles={{maxHeight: '80%'}}
-                            // utm={{}}
-                            // prefill={{}}
+                                // utm={}
+                                prefill={{
+                                    email: formState.email,
+                                    name: formState.username,
+                                    customAnswers: {
+                                        a1: formState.company,
+                                        a2: formState.message,
+                                    }
+                                }}
+                                onModalClose={() => setCalendlyModalOpen(false)}
+                                open={calendlyModalOpen}
+                                rootElement={document.getElementById("root")}
                             />
+
                         </>
-                    ) : (
-                        <></>
-                    )}
+                    ) : (<></>)}
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
@@ -205,6 +247,8 @@ const BookingComponent = (props) => {
                     </Box>
                 </React.Fragment>
             )}
+
+
         </Box>
     );
 }
