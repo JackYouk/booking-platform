@@ -26,11 +26,10 @@ export const LOGIN = gql`
 `;
 
 export const ADD_AGENT = gql`
-  mutation Mutation($name: String!, $industries: String, $bio: String, $credentials: [ID], $acheivements: String, $instagram: String, $linkedin: String, $twitter: String, $imgPath: String, $expertIn: [ID], $packages: [String], $rating: String) {
-    addAgent(name: $name, industries: $industries, bio: $bio, credentials: $credentials, acheivements: $acheivements, instagram: $instagram, linkedin: $linkedin, twitter: $twitter, imgPath: $imgPath, expertIn: $expertIn, packages: $packages, rating: $rating) {
+  mutation Mutation($name: String!, $industries: String, $bio: String, $acheivements: String, $credentials: [ID], $instagram: String, $twitter: String, $linkedin: String, $rating: String, $imgPath: String, $expertIn: [ID], $packages: [String]) {
+    addAgent(name: $name, industries: $industries, bio: $bio, acheivements: $acheivements, credentials: $credentials, instagram: $instagram, twitter: $twitter, linkedin: $linkedin, rating: $rating, imgPath: $imgPath, expertIn: $expertIn, packages: $packages) {
       _id
       acheivements
-      bio
       credentials {
         _id
         description
@@ -38,6 +37,7 @@ export const ADD_AGENT = gql`
         link
         title
       }
+      bio
       expertIn {
         _id
         imgPath
@@ -49,8 +49,14 @@ export const ADD_AGENT = gql`
       linkedin
       name
       packages
-      twitter
       rating
+      reviews {
+        _id
+        rating
+        review
+        username
+      }
+      twitter
     }
   }
 `;

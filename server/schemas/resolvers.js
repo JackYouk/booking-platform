@@ -109,7 +109,7 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addAgent: async (parent, { name, industries, bio, acheivements, credentials, instagram, twitter, linkedin, rating, expertIn, imgPath }, context) => {
+    addAgent: async (parent, { name, industries, bio, acheivements, credentials, instagram, twitter, linkedin, rating, expertIn, imgPath, packages }, context) => {
       if (context.user) {
         const createdAgent = await Agent.create({
           name, 
@@ -123,6 +123,7 @@ const resolvers = {
           expertIn, 
           imgPath,
           credentials,
+          packages
         });
 
         return createdAgent;

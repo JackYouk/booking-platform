@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { PopupModal, useCalendlyEventListener } from "react-calendly";
 import { useState } from 'react';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 
 const BookingComponent = (props) => {
@@ -82,7 +83,9 @@ const BookingComponent = (props) => {
         onProfilePageViewed: () => console.log("onProfilePageViewed"),
         onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
         onEventTypeViewed: () => console.log("onEventTypeViewed"),
-        onEventScheduled: (e) => setActiveStep(activeStep++),
+        onEventScheduled: (e) => {
+            setActiveStep(steps.length);
+        },
     });
 
     return (
@@ -108,9 +111,12 @@ const BookingComponent = (props) => {
             </Stepper>
             {activeStep === steps.length ? (
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>
-                        Meeting scheduled successful: check your email for further information, including the zoom link.
-                    </Typography>
+                    <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'greenyellow' }}>
+                        <div style={{marginRight: '8px'}}>
+                            <TaskAltIcon />
+                        </div>
+                        Scheduling Successful. Check your email inbox for zoom link and more details.
+                    </div>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
                         <Button color='secondary' onClick={handleReset}>Reset</Button>

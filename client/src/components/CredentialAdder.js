@@ -32,6 +32,10 @@ const CredentialAdder = (props) => {
         });
     };
 
+    const addToIdArr = (credentialId) => {
+        props.credentialIds.push(credentialId);
+    }
+
     const [addCredential] = useMutation(ADD_CREDENTIAL, {
         variables: {
             icon: iconState,
@@ -51,7 +55,7 @@ const CredentialAdder = (props) => {
                 link: addCredentialFormState.link,
             });
             console.log(data)
-            props.credentialIds.push(data.addCredential._id);
+            addToIdArr(data.addCredential._id);
             refetch();
             return data;
         } catch (error) {

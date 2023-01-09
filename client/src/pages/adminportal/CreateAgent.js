@@ -38,6 +38,21 @@ const CreateAgent = () => {
     // CREDENTIALS STATE ==============================================================================
     let credentialIdsArr = [];
 
+    // PACKAGES STATE ==============================================================================
+    const [packageInput, setPackageInput] = useState('');
+    const handlePackageInputChange = (event) => {
+        setPackageInput(event.target.value);
+    }
+
+    const [packagesArr, setPackagesArr] = useState([]);
+    const handleAddPackage = (event) => {
+        event.preventDefault();
+        const tempPackagesArr = packagesArr;
+        tempPackagesArr.push(packageInput);
+        setPackagesArr(tempPackagesArr);
+        setPackageInput('');
+    }
+
     // FORM STATE ==============================================================================
     const [formState, setFormState] = useState({
         name: '',
@@ -103,6 +118,7 @@ const CreateAgent = () => {
             rating: formState.rating,
             expertIn: selectedIdsArr,
             imgPath: picState,
+            packages: packagesArr,
         }
     });
 
@@ -121,6 +137,7 @@ const CreateAgent = () => {
                 rating: formState.rating,
                 expertIn: selectedIdsArr,
                 imgPath: picState,
+                packages: packagesArr,
             });
             window.location.href = '/';
             return data;
@@ -152,6 +169,11 @@ const CreateAgent = () => {
                         >
                             <Box sx={style}>
                                 <Typography component='h1' variant="h4">Create Agent</Typography>
+                            </Box>
+
+                            <Box sx={style} >
+                                <Button variant="contained" onClick={() => cloudinaryWidget.open()}>Upload Image ****Dont forget****</Button>
+                                <img id="uploadedimage" src=""></img>
                             </Box>
 
                             <Box sx={style} >
@@ -194,9 +216,7 @@ const CreateAgent = () => {
                                     onChange={handleChange}
                                 />
                             </Box>
-                            <Box sx={style} >
-                                <CredentialAdder credentialIds={credentialIdsArr} />
-                            </Box>
+                            
                             <Box sx={style} >
                                 <TextField
                                     sx={{ width: "100%" }}
@@ -234,9 +254,21 @@ const CreateAgent = () => {
                                 />
                             </Box>
 
-                            <Box sx={style} >
-                                <Button variant="contained" onClick={() => cloudinaryWidget.open()}>Upload Image ****Dont forget****</Button>
-                                <img id="uploadedimage" src=""></img>
+                            <Box sx={style}>
+                                <div>Packages</div>
+                                <ul>{packagesArr.map(packageText => {
+                                    return (
+                                        <li>{packageText}</li>
+                                    )
+                                })}</ul>
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <TextField
+                                        type='text'
+                                        value={packageInput}
+                                        onChange={handlePackageInputChange}
+                                    />
+                                    <Button onClick={handleAddPackage} variant="outlined">Add</Button>
+                                </div>
                             </Box>
 
                             <Box sx={style} >
@@ -253,6 +285,10 @@ const CreateAgent = () => {
                                 <Link to="/createTag" style={{ textDecoration: 'none' }}>
                                     <Button variant="text">Create a new tag (Link)</Button>
                                 </Link>
+                            </Box>
+
+                            <Box sx={style} >
+                                <CredentialAdder credentialIds={credentialIdsArr} />
                             </Box>
 
                             <Box sx={style}>
