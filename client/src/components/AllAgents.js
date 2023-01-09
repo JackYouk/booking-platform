@@ -9,7 +9,7 @@ const AllAgents = () => {
 
     return (
         <div style={{ margin: '10px' }}>
-            <h3 style={{ display: 'flex', justifyContent: "left" }}>All Agents</h3>
+            <div className='goldBg' style={{marginLeft: '10px', borderRadius: '5px', padding: '3px', fontWeight: 'bold', fontSize: '20px', display: 'flex', justifyContent: 'center', maxWidth: '220px', marginBottom: '15px' }}>All Agents</div>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />

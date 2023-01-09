@@ -26,16 +26,16 @@ const Tag = (props) => {
     return (
         <div>
             {isSelected ? (
-                <Button color='secondary' variant='contained'  onClick={() => {
+                <div onClick={() => {
                     handleChange();
                     setSelected(!isSelected);
                 }}>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div className='goldBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>
                         {props.iconUrl ? (
                             <>
                                 <img
                                     src={props.iconUrl}
-                                    style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }}
+                                    style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }}
                                     alt='tag img'
                                 />
                             </>
@@ -45,9 +45,9 @@ const Tag = (props) => {
                         )}
                         {props.type}
                     </div>
-                </Button>
+                </div>
             ) : (
-                <Button color='secondary' variant='outlined' style={{backgroundColor: 'black'}} onClick={() => {
+                <div className='obsBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', color: 'black', cursor: 'pointer' }} onClick={() => {
                     handleChange();
                     setSelected(!isSelected);
                 }}>
@@ -56,7 +56,7 @@ const Tag = (props) => {
                             <>
                                 <img
                                     src={props.iconUrl}
-                                    style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }}
+                                    style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }}
                                     alt='tag img'
                                 />
                             </>
@@ -66,7 +66,7 @@ const Tag = (props) => {
                         )}
                         {props.type}
                     </div>
-                </Button>
+                </div>
             )}
         </div>
     );

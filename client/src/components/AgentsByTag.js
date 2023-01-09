@@ -45,7 +45,7 @@ const AgentsByTagContainer = () => {
                     {data.tags.map(tag => {
                         return (
                             <>
-                                <h3 style={{marginLeft: '10px'}}>{tag.type}</h3>
+                                <div className='goldBg' style={{marginLeft: '10px', borderRadius: '5px', padding: '3px', fontWeight: 'bold', fontSize: '20px', display: 'flex', justifyContent: 'center', maxWidth: '220px',}}>{tag.type}</div>
                                 <AgentsByTag tagId={tag._id} />
                             </>
                         );

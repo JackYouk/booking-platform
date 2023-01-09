@@ -18,7 +18,10 @@ const FilteredAgents = ({selectedTags}) => {
                 </Box>
             ) : (
                 <div style={{display: 'flex', justifyContent: 'left'}}>
-                    <Grid container spacing={2} justifyContent='left'>
+                    {data.filteredAgents.length > 0 ? (
+                        <>
+                        {/* <div>Filtered Agents</div> */}
+                        <Grid container spacing={2} justifyContent='left'>
                         {data.filteredAgents.map(agentData => {
                             return (
                                 <Grid item xs="auto" key={agentData._id}>
@@ -26,7 +29,12 @@ const FilteredAgents = ({selectedTags}) => {
                                 </Grid>
                             );
                         })}
-                    </Grid>
+                        </Grid>
+                        </>
+                    ) : (
+                        <></>
+                    )}
+                    
                 </div>
             )}
         </div>

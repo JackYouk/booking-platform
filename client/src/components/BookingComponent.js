@@ -88,6 +88,8 @@ const BookingComponent = (props) => {
         },
     });
 
+    console.log(props.agentPackages)
+
     return (
         <Box sx={{ width: '100%', backgroundColor: 'gray', padding: '10px', borderRadius: '10px' }}>
             <Stepper color='secondary' activeStep={activeStep}>
@@ -112,7 +114,7 @@ const BookingComponent = (props) => {
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'greenyellow' }}>
-                        <div style={{marginRight: '8px'}}>
+                        <div style={{ marginRight: '8px' }}>
                             <TaskAltIcon />
                         </div>
                         Scheduling Successful. Check your email inbox for zoom link and more details.
@@ -138,15 +140,18 @@ const BookingComponent = (props) => {
                                 </div>
                             </div>
                             <div>
+                                {props.agentPackages.length > 0 ? (
+                                <>
                                 <Typography sx={{ mt: 2, fontWeight: 'bold' }}>
                                     Packages
                                 </Typography>
                                 <div>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>1-Quarter Contract</Button>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>Build a business pipeline</Button>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>Coffee Date</Button>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>Meet once a week</Button>
+                                    {props.agentPackages.map(agentPackage => {
+                                        return (<Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>{agentPackage}</Button>)
+                                    })}
                                 </div>
+                                </>
+                                ) : (<></>)}
                             </div>
                         </>) : (<></>)}
                     {activeStep === 1 ? (
@@ -204,7 +209,7 @@ const BookingComponent = (props) => {
 
                     {activeStep === 2 ? (
                         <>
-                            <Button onClick={() => setCalendlyModalOpen(true)} style={{margin: '10px', width: '95%'}} color='secondary' variant='contained'>Schedule Meeting</Button>
+                            <Button onClick={() => setCalendlyModalOpen(true)} style={{ margin: '10px', width: '95%' }} color='secondary' variant='contained'>Schedule Meeting</Button>
                             <PopupModal
                                 url="https://calendly.com/jackyoukstetter1/test"
                                 pageSettings={{

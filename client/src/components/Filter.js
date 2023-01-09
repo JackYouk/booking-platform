@@ -4,6 +4,7 @@ import { CircularProgress, Box, Grid } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { QUERY_TAGS } from "../utils/queries";
 import Tag from '../components/Tag';
+import Searchbar from './Searchbar';
 
 const Filter = ({selectedTags}) => {
 
@@ -20,6 +21,10 @@ const Filter = ({selectedTags}) => {
                 </Box>
             ) : (
                 <Grid container spacing={1}>
+                    <Grid item xs="auto">
+                        <Searchbar />
+                    </Grid>
+                     
                     {data.tags.map(tagData => {
                         if (!tagData.type) {
                             refetch();

@@ -122,7 +122,7 @@ const Agent = () => {
                             {/* scheduling */}
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
                                 <h2 style={{ fontSize: '25px' }}>Book A Meeting</h2>
-                                <BookingComponent setModal={setModalState}/>
+                                <BookingComponent setModal={setModalState} agentPackages={data.agent.packages}/>
                             </div>
                             
                             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>

@@ -8,6 +8,7 @@ import Filter from '../components/Filter';
 import FilteredAgents from '../components/FilteredAgents';
 import AllAgents from '../components/AllAgents';
 import AgentsByTagContainer from '../components/AgentsByTag';
+import '../components/platform.css'
 
 let selectedTags = [];
 
@@ -15,15 +16,9 @@ const Home = () => {
 
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '	#71797E' }}>
-            <div style={{ marginBottom: '10vh' }}>
-                <ResponsiveAppBar />
-            </div>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'black' }}>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'left',  width: '90vw' }}>
-                    {/* <div style={{width: ''}}>
-                        <Searchbar />
-                    </div> */}
                     <div style={{marginTop: '10px'}}>
                         <Filter selectedTags={selectedTags} />
                     </div>
@@ -34,7 +29,6 @@ const Home = () => {
                 <Grid item xs={12} md={11}>
                     <FilteredAgents selectedTags={selectedTags} />
                 </Grid>
-                <div style={{ margin: '10px', width: '80vw', height: '2px', backgroundColor: '#D4AF37' }}></div>
                 <Grid item xs={12} md={11}>
                     <AgentsByTagContainer />
                 </Grid>
