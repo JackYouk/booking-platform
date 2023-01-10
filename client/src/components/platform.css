@@ -14,3 +14,55 @@
     background: transparent;
     border: 0;
 }
+
+.appbar {
+    width: 20%;
+    min-height: 87vh;
+}
+
+.contentarea {
+    width: 80%;
+    min-height: 87vh;
+}
+
+.filters {
+    height: 10vh;
+    margin: 10px;
+    margin-top: 15px;
+    border-radius: 7px;
+    display: flex;
+    padding: 30px;
+    justify-content: start;
+    align-items: center;
+}
+
+.cards {
+    background-color: #1a1a1a;
+    min-height: 74vh;
+    margin: 10px;
+    border-radius: 7px;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.agentcard {
+    height: 30vh;
+    width: 30vw;
+}
+
+@media only screen and (max-width: 1200px) {
+    /* styles to apply when screen width is 600px or less */
+    .agentcard {
+        height: 30vh;
+        width: 50vw;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    /* styles to apply when screen width is 600px or less */
+    .agentcard {
+        height: 30vh;
+        width: 80vw;
+    }
+  }

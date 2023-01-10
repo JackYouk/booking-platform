@@ -30,7 +30,7 @@ const Tag = (props) => {
                     handleChange();
                     setSelected(!isSelected);
                 }}>
-                    <div className='goldBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>
+                    <div className='obsBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>
                         {props.iconUrl ? (
                             <>
                                 <img
@@ -47,7 +47,7 @@ const Tag = (props) => {
                     </div>
                 </div>
             ) : (
-                <div className='obsBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', color: 'black', cursor: 'pointer' }} onClick={() => {
+                <div className='goldBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', color: 'black', cursor: 'pointer' }} onClick={() => {
                     handleChange();
                     setSelected(!isSelected);
                 }}>

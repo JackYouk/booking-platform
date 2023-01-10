@@ -14,16 +14,16 @@ const Filter = ({selectedTags}) => {
     }
 
     return (
-        <div >
+        <div>
             {loading ? (
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>
             ) : (
-                <Grid container spacing={1}>
-                    <Grid item xs="auto">
+                <Grid container justifyContent={'center'} spacing={3}>
+                    {/* <Grid item xs="auto">
                         <Searchbar />
-                    </Grid>
+                    </Grid> */}
                      
                     {data.tags.map(tagData => {
                         if (!tagData.type) {

@@ -21,10 +21,10 @@ const FilteredAgents = ({selectedTags}) => {
                     {data.filteredAgents.length > 0 ? (
                         <>
                         {/* <div>Filtered Agents</div> */}
-                        <Grid container spacing={2} justifyContent='left'>
+                        <Grid container display='flex' justifyContent='center'>
                         {data.filteredAgents.map(agentData => {
                             return (
-                                <Grid item xs="auto" key={agentData._id}>
+                                <Grid item xs={10} md={8} lg={4} marginBottom={4} key={agentData._id}>
                                     <AgentCard key={agentData._id} data={agentData} />
                                 </Grid>
                             );
