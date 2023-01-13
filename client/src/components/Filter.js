@@ -6,7 +6,7 @@ import { QUERY_TAGS } from "../utils/queries";
 import Tag from '../components/Tag';
 import Searchbar from './Searchbar';
 
-const Filter = ({selectedTags}) => {
+const Filter = ({selectedTagsState, setSelectedTagsState}) => {
 
     const { loading, error, data, refetch } = useQuery(QUERY_TAGS);
     if (error) {
@@ -31,7 +31,7 @@ const Filter = ({selectedTags}) => {
                         }
                         return (
                             <Grid item xs="auto" key={tagData._id}>
-                                <Tag type={tagData.type} id={tagData._id} selectedIds={selectedTags} iconUrl={tagData.imgPath} />
+                                <Tag type={tagData.type} id={tagData._id} selectedTagsState={selectedTagsState} setSelectedTagsState={setSelectedTagsState} iconUrl={tagData.imgPath} />
                             </Grid>
                         );
                     })}

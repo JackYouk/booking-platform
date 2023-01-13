@@ -111,3 +111,39 @@ export const QUERY_ADDED_CREDENTIALS = gql`
     }
   }
 `;
+
+export const QUERY_REGEX_AGENTS = gql`
+  query Query($key: String) {
+    regexAgents(key: $key) {
+      _id
+      acheivements
+      bio
+      credentials {
+        _id
+        description
+        icon
+        link
+        title
+      }
+      expertIn {
+        _id
+        imgPath
+        type
+      }
+      imgPath
+      industries
+      linkedin
+      instagram
+      name
+      packages
+      rating
+      reviews {
+        _id
+        rating
+        review
+        username
+      }
+      twitter
+    }
+  }
+`;

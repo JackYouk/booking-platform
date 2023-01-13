@@ -2,25 +2,29 @@ import { useState } from "react";
 import { Button, ToggleButton } from "@mui/material";
 
 
-const Tag = (props) => {
+const Tag = (selectedTagsState, setSelectedTagsState, iconUrl, type, id) => {
+
     const [isSelected, setSelected] = useState(false);
 
     const handleChange = () => {
-        const tagId = props.id
+        const tagId = id;
         if (!isSelected) {
-
-            props.selectedIds.push(tagId);
+            setSelected(!isSelected);
+            setSelectedTagsState(selectedTagsState.map().push(tagId));
+            return;
         }
         if (isSelected) {
-            props.selectedIds.map((selectedId, index) => {
-                if (selectedId === tagId) {
-                    props.selectedIds.splice(index, 1);
+            selectedTagsState.map((selectedTag, index) => {
+                if (selectedTag === tagId) {
+                    ;
+                    setSelected(!isSelected);
+                    setSelectedTagsState(selectedTagsState.map().splice(index, 1));
                     return;
                 }
             });
 
         }
-        setSelected(!isSelected);
+        
     }
 
     return (
@@ -31,10 +35,10 @@ const Tag = (props) => {
                     setSelected(!isSelected);
                 }}>
                     <div className='obsBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>
-                        {props.iconUrl ? (
+                        {iconUrl ? (
                             <>
                                 <img
-                                    src={props.iconUrl}
+                                    src={iconUrl}
                                     style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }}
                                     alt='tag img'
                                 />
@@ -43,7 +47,7 @@ const Tag = (props) => {
                             <>
                             </>
                         )}
-                        {props.type}
+                        {type}
                     </div>
                 </div>
             ) : (
@@ -52,10 +56,10 @@ const Tag = (props) => {
                     setSelected(!isSelected);
                 }}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        {props.iconUrl ? (
+                        {iconUrl ? (
                             <>
                                 <img
-                                    src={props.iconUrl}
+                                    src={iconUrl}
                                     style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }}
                                     alt='tag img'
                                 />
@@ -64,7 +68,7 @@ const Tag = (props) => {
                             <>
                             </>
                         )}
-                        {props.type}
+                        {type}
                     </div>
                 </div>
             )}

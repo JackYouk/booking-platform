@@ -83,6 +83,19 @@ const resolvers = {
         _id: {$in: credentialIds}
       });
       return addedCredentials;
+    },
+    regexAgents: async(parent, {key}) => {
+      // query agents by key String using mongodb regex method
+      const regexAgents = await Agent.find({
+        $or: [
+          {"name": {$regex: key, $options: "i"}}, {"industries": {$regex: key, $options: "i"}}, {"bio": {$regex: key, $options: "i"}}
+        ]
+      });
+      if(regexAgents.length < 1){
+        const allAgents = await Agent.find();
+        return allAgents;
+      }
+      return regexAgents;
     }
   },
 
