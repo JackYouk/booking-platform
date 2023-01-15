@@ -133,10 +133,10 @@ const BookingComponent = (props) => {
                                     Quick Talk
                                 </Typography>
                                 <div>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>15min</Button>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>30min</Button>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>45min</Button>
-                                    <Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>60min</Button>
+                                    <Button className='goldBg' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>15min</Button>
+                                    <Button className='goldBg' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>30min</Button>
+                                    <Button className='goldBg' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>45min</Button>
+                                    <Button className='goldBg' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>60min</Button>
                                 </div>
                             </div>
                             <div>
@@ -147,7 +147,7 @@ const BookingComponent = (props) => {
                                 </Typography>
                                 <div>
                                     {props.agentPackages.map(agentPackage => {
-                                        return (<Button color='secondary' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>{agentPackage}</Button>)
+                                        return (<Button className='goldBg' size='small' sx={{ marginRight: '4px', mb: '5px' }} variant='contained'>{agentPackage}</Button>)
                                     })}
                                 </div>
                                 </>

@@ -6,15 +6,19 @@ const RegexAgents = ({ data }) => {
 
     return (
 
-        <>{data.regexAgents.map(agent => {
+        <>
+        <Grid container width='70vw' display='flex' justifyContent='center'>
+        {data.regexAgents.map(agent => {
             return (
                 <>
-                    <Grid item xs={10} md={8} lg={4} marginBottom={4} key={agent._id}>
+                    <Grid item xs={8} md={5} xl={5} margin={1} key={agent._id} >
                         <AgentCard key={agent._id} data={agent} />
                     </Grid>
                 </>
             );
-        })}</>
+        })}
+        </Grid>
+        </>
     );
 }
 

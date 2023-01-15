@@ -1,13 +1,13 @@
 .goldBg {
-    background: 
-    radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    background:
+        radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 }
 
 .obsBg {
-    background: 
-    radial-gradient(ellipse farthest-corner at right bottom, #4d4c4c 0%, #4d4c4c 8%, #4d4c4c 30%, #4d4c4c 40%, transparent 80%),
-    radial-gradient(ellipse farthest-corner at left top, #1a1a1a 0%, #1a1a1a 8%, #1a1a1a 25%, #1a1a1a 62.5%, #1a1a1a 100%);
+    background:
+        radial-gradient(ellipse farthest-corner at right bottom, #4d4c4c 0%, #4d4c4c 8%, #4d4c4c 30%, #4d4c4c 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #1a1a1a 0%, #1a1a1a 8%, #1a1a1a 25%, #1a1a1a 62.5%, #1a1a1a 100%);
 }
 
 .searchBarInput {
@@ -51,18 +51,32 @@
     width: 30vw;
 }
 
+.searchBar {
+    border-radius: 25px;
+    border: 2px solid white;
+    padding: 6px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+}
+.searchBar:focus {
+    outline-color: #FEDB37;
+}
+
 @media only screen and (max-width: 1200px) {
+
     /* styles to apply when screen width is 600px or less */
     .agentcard {
         height: 30vh;
         width: 50vw;
     }
-  }
+}
 
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
+
     /* styles to apply when screen width is 600px or less */
     .agentcard {
         height: 30vh;
         width: 80vw;
     }
-  }
+}
