@@ -88,7 +88,10 @@ const resolvers = {
       // query agents by key String using mongodb regex method
       const regexAgents = await Agent.find({
         $or: [
-          {"name": {$regex: key, $options: "i"}}, {"industries": {$regex: key, $options: "i"}}, {"bio": {$regex: key, $options: "i"}}
+          {"name": {$regex: key, $options: "i"}}, 
+          {"industries": {$regex: key, $options: "i"}}, 
+          {"bio": {$regex: key, $options: "i"}},
+          {"expertIn": {$elemMatch: {"type": {$regex: key, $options: "i"}}}},
         ]
       });
       if(regexAgents.length < 1){

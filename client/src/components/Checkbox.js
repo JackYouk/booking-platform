@@ -6,61 +6,58 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
+import { useQuery } from '@apollo/client';
+import { QUERY_TAGS } from '../utils/queries';
 
-export default function CheckboxesGroup() {
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
-  });
+export default function CheckboxesGroup({setFilterState}) {
 
-  const handleChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
-  };
+    const { loading, data } = useQuery(QUERY_TAGS);
+    let tagTypes = {};
+    if (loading) {
+        return (<></>);
+    }
+    data.tags.map(tag => {
+        const key = tag.type;
+        tagTypes = {
+            ...tagTypes,
+            key: false,
+        }
+    })
+    const handleChange = (event) => {
+        tagTypes = {
+            ...tagTypes,
+            [event.target.name]: event.target.checked,
+        };
+    };
 
-  const { gilad, jason, antoine } = state;
 
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <FormControl  component="fieldset" variant="standard">
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
-            }
-            label="Tag"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={jason} onChange={handleChange} name="jason" />
-            }
-            label="Tag"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={jason} onChange={handleChange} name="jason" />
-            }
-            label="Tag"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={jason} onChange={handleChange} name="jason" />
-            }
-            label="Tag"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={jason} onChange={handleChange} name="jason" />
-            }
-            label="Tag"
-          />
-        </FormGroup>
-        
-        <FormHelperText></FormHelperText>
-      </FormControl>
-    </Box>
-  );
+
+    return (
+        <>
+            {loading ? (
+                <>
+                </>
+            ) : (
+                <Box sx={{ display: 'flex' }}>
+                    <FormControl component="fieldset" variant="standard">
+                        <FormGroup>
+                            {data.tags.map(tag => {
+                                return (
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox checked={tagTypes[tag.type]} onChange={handleChange} name={tag.type} />
+                                        }
+                                        label={tag.type}
+                                    />
+                                )
+                            })}
+                        </FormGroup>
+
+                        <FormHelperText></FormHelperText>
+                    </FormControl>
+                </Box>
+            )}
+        </>
+
+    );
 }

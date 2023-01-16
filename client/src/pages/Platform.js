@@ -34,7 +34,7 @@ const Home = () => {
                 <div style={{minHeight: '80vh', width: '25vw', backgroundColor: 'black'}}>
                     <div style={{width: '20vw', margin: '2vw', padding: '15px', borderRadius: '5px'}} className='goldBg'>
                         <h3 style={{ fontSize: '20px'}}>Filter by Expertise</h3>
-                        <CheckboxesGroup />
+                        <CheckboxesGroup setFilterState={setFilterState} />
                     </div>
                     
                 </div>
