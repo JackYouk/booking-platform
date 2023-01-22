@@ -12,14 +12,31 @@ import CheckboxesGroup from '../components/Checkbox';
 
 const Home = () => {
     const [filterState, setFilterState] = useState('');
-    const {loading, data, refetch} = useQuery(QUERY_REGEX_AGENTS, {
-        variables: {key: filterState}
+    const { loading, data, refetch } = useQuery(QUERY_REGEX_AGENTS, {
+        variables: { key: filterState }
     });
 
     return (
         <>
-        <div style={{minHeight: '95vh', backgroundColor: 'black'}}>
-            <div style={{minHeight: '15vh', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+            {/* <nav>
+                <div class="logo">
+                    <img src={vortexlogo} alt="Logo" />
+                </div>
+                <ul>
+                    <li><a href="#">Button 1</a></li>
+                    <li><a href="#">Button 2</a></li>
+                    <li><a href="#">Button 3</a></li>
+                    <li><a href="#">Button 4</a></li>
+                    <li><a href="#">Button 5</a></li>
+                </ul>
+                <form>
+                    <input type="text" placeholder="Search" />
+                        <button type="submit">Search</button>
+                    
+                </form>
+            </nav> */}
+            <div style={{minHeight: '95vh', backgroundColor: 'white'}}>
+            <div style={{minHeight: '15vh', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                 <Link to='/'><img src={vortexlogo} alt='vive logo' style={{margin: '20px', maxHeight: '13vh', maxWidth: '22vw'}} /></Link>
                 <input style={{marginLeft: '7vw', minWidth: '40vw'}} className='searchBar' placeholder='Search' onChange={(event) => {
                     
@@ -30,20 +47,13 @@ const Home = () => {
                     <AccountNav />
                 </div>
             </div>
-            <div style={{minHeight: '80vh', backgroundColor: 'black', display: 'flex'}}>
-                <div style={{minHeight: '80vh', width: '25vw', backgroundColor: 'black'}}>
-                    <div style={{width: '20vw', margin: '2vw', padding: '15px', borderRadius: '5px'}} className='goldBg'>
-                        <h3 style={{ fontSize: '20px'}}>Filter by Expertise</h3>
-                        <CheckboxesGroup setFilterState={setFilterState} />
-                    </div>
-                    
-                </div>
-                <div style={{minHeight: '80vh', width: '75vw',}}>
+            <div style={{minHeight: '80vh', backgroundColor: 'white', display: 'flex', justifyContent: 'center'}}>
+                <div style={{minHeight: '80vh', width: '100vw',}}>
                     {loading ? (<CircularProgress />) : (<RegexAgents data={data}/>)}
                 </div>
             </div>
         </div>
-        {/* <div style={{backgroundColor: 'black', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '95vh'}}>
+            {/* <div style={{backgroundColor: 'black', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '95vh'}}>
             <Link to='/'><img src={vortexlogo} alt='vive logo' style={{margin: '20px'}} /></Link>
             <input placeholder='Search' onChange={(event) => {
                 setFilterState(event.target.value);

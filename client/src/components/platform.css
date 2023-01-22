@@ -37,7 +37,7 @@
 }
 
 .cards {
-    background-color: #1a1a1a;
+    background-color: #FFFFFF;
     min-height: 74vh;
     margin: 10px;
     border-radius: 7px;
@@ -45,6 +45,44 @@
     padding: 10px;
     justify-content: center;
 }
+
+.card {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    transition: transform 0.5s ease;
+    background-color: #FFFFFF;
+    border: 4px solid black;
+    /* add a 2px black solid border to the card */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* increase the scale by 5% */
+}
+
+
+.card .text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 33.33%;
+    padding: 20px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: block;
+    background-color: rgba(217, 184, 51, 0.5);
+    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+    opacity: 1;
+}
+
+.card .text .subtitle {
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
 
 .agentcard {
     height: 30vh;
@@ -59,9 +97,72 @@
     color: white;
     padding-left: 20px;
 }
+
 .searchBar:focus {
     outline-color: #FEDB37;
 }
+
+nav {
+    display: flex; /* use flex to align elements horizontally */
+    align-items: center; /* align elements vertically */
+    background-color: #333;
+    color: #fff;
+    padding: 0 20px;
+  }
+  
+  nav .logo {
+    flex: 1; /* take up all available space */
+  }
+  
+  nav .logo img {
+    width: 100px; /* adjust the width of the logo */
+  }
+  
+  nav ul {
+    display: flex; /* use flex to align buttons horizontally */
+    list-style: none; /* remove bullet points */
+    margin: 0; /* remove default margin */
+    padding: 0; /* remove default padding */
+  }
+  
+  nav ul li {
+    margin: 0 10px; /* add margin between buttons */
+  }
+  
+  nav ul li a {
+    color: #000;
+    text-decoration: none; /* remove underline */
+    transition: color 0.2s; /* add transition to color on hover */
+  }
+  
+  nav ul li a:hover {
+    color: #fff; /* change color on hover */
+  }
+  
+  nav form {
+    margin-left: auto; /* push form to the right */
+  }
+  
+  nav form input {
+    border: none; /* remove border */
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+  }
+  
+  nav form button {
+    border: none; /* remove border */
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+
+
+
+
+
 
 @media only screen and (max-width: 1200px) {
 
