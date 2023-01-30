@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { CircularProgress, Box, Grid } from '@mui/material';
 import { useQuery } from '@apollo/client';
-import { QUERY_TAGS } from "../utils/queries";
-import Tag from '../components/Tag';
+import { QUERY_TAGS } from "../../utils/queries";
+import Tag from './Tag';
 import Searchbar from './Searchbar';
 
 const Filter = ({selectedTagsState, setSelectedTagsState}) => {

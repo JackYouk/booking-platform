@@ -1,16 +1,13 @@
 // imports
-import '../components/platform.css'
-import vortexlogo from '../components/vortexlogo.png'
+import '../styles/platform.css'
 import simplelogo from '../images/simplelogo.png'
 import { Link } from 'react-router-dom';
-import RegexAgents from '../components/RegexAgents';
+import RegexAgents from '../components/platform/RegexAgents';
 import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { QUERY_REGEX_AGENTS } from '../utils/queries';
-import AccountNav from '../components/AccountNav';
-import CheckboxesGroup from '../components/Checkbox';
-import SearchIcon from '@mui/icons-material/Search';
+import AccountNav from '../components/navbar/AccountNav';
 
 const Home = () => {
     const [filterState, setFilterState] = useState('');

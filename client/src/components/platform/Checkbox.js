@@ -7,7 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import { useQuery } from '@apollo/client';
-import { QUERY_TAGS } from '../utils/queries';
+import { QUERY_TAGS } from '../../utils/queries';
 
 export default function CheckboxesGroup({setFilterState}) {
 

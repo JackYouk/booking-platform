@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import AgentCard from "../components/AgentCard";
+import AgentCard from "./AgentCard";
 
 
 const RegexAgents = ({ data }) => {

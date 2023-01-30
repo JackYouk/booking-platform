@@ -4,6 +4,7 @@
         radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 }
 
+
 .obsBg {
     background:
         radial-gradient(ellipse farthest-corner at right bottom, #4d4c4c 0%, #4d4c4c 8%, #4d4c4c 30%, #4d4c4c 40%, transparent 80%),

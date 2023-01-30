@@ -11,8 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import blankprofile from '../images/blankprofile.png'
-import AuthService from '../utils/auth.js'
+import blankprofile from '../../images/blankprofile.png'
+import AuthService from '../../utils/auth.js'
 import { Link } from 'react-router-dom';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

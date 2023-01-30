@@ -18,7 +18,7 @@ import { useState } from "react";
 
 import { InlineWidget, PopupModal } from "react-calendly";
 import { ADD_REVIEW } from "../utils/mutations";
-import BookingComponent from "../components/BookingComponent";
+import BookingComponent from "../components/agentPage/BookingComponent";
 
 const Agent = () => {
     const paramId = useParams()['*'];
@@ -74,7 +74,7 @@ const Agent = () => {
     const [modalState, setModalState] = useState(false);
 
     return (
-        <div style={{backgroundColor: '	#71797E'}}>
+        <div style={{backgroundColor: 'white'}}>
             <ResponsiveAppBar />
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '8vh' }}>
                 {loading ? (

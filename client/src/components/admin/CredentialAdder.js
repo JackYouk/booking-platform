@@ -1,4 +1,4 @@
-import { ADD_CREDENTIAL } from "../utils/mutations";
+import { ADD_CREDENTIAL } from "../../utils/mutations";
 import { Button, TextField, Typography, MenuItem, Select, InputLabel, Box, CircularProgress} from "@mui/material";
 import { useMutation, useQuery, } from '@apollo/client';
 import { useState } from "react";
@@ -7,7 +7,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import BusinessIcon from '@mui/icons-material/Business';
 import SchoolIcon from '@mui/icons-material/School';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
-import { QUERY_ADDED_CREDENTIALS } from "../utils/queries";
+import { QUERY_ADDED_CREDENTIALS } from "../../utils/queries";
 
 const CredentialAdder = (props) => {
     const [addCredentialFormState, setAddCredentialFormState] = useState({

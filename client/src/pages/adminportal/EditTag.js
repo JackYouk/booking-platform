@@ -11,7 +11,7 @@ import { EDIT_AGENT, EDIT_TAG } from "../../utils/mutations";
 import { QUERY_TAGS } from "../../utils/queries";
 import auth from "../../utils/auth";
 
-import Tag from "../../components/Tag";
+import Tag from "../../components/platform/Tag";
 
 const TagSelect = (props) => {
     const { loading, data } = useQuery(QUERY_TAGS);

@@ -1,6 +1,6 @@
 import { CircularProgress, Box, Grid } from '@mui/material';
 import { useQuery } from '@apollo/client';
-import { QUERY_AGENTS } from "../utils/queries";
+import { QUERY_AGENTS } from "../../utils/queries";
 import AgentCard from "../components/AgentCard";
 
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CircularProgress, Box, Grid } from '@mui/material';
 import { useQuery } from '@apollo/client';
-import { QUERY_FILTERED_AGENTS, QUERY_TAGS } from "../utils/queries";
+import { QUERY_FILTERED_AGENTS, QUERY_TAGS } from "../../utils/queries";
 import AgentCard from "../components/AgentCard";
 
 const AgentsByTag = (tagId) => {

@@ -11,7 +11,7 @@ import { EDIT_AGENT } from "../../utils/mutations";
 import { QUERY_AGENTS, QUERY_TAGS } from "../../utils/queries";
 import auth from "../../utils/auth";
 
-import Tag from "../../components/Tag";
+import Tag from "../../components/platform/Tag";
 
 const AgentSelect = (props) => {
     const { loading, data } = useQuery(QUERY_AGENTS);

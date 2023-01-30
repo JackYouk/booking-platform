@@ -21,7 +21,7 @@ import DeleteTag from './pages/adminportal/DeleteTag';
 import Admin from './pages/adminportal/Admin';
 import EditAgent from './pages/adminportal/EditAgent';
 import EditTag from './pages/adminportal/EditTag'
-import Footer from './components/Footer';
+import Footer from './components/general/Footer';
 
 const httpLink = createHttpLink({
     uri: '/graphql',

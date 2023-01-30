@@ -1,7 +1,7 @@
 import { CircularProgress, Box, TextField, Autocomplete, styled } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useQuery } from '@apollo/client';
-import { QUERY_AGENTS } from "../utils/queries";
+import { QUERY_AGENTS } from "../../utils/queries";
 import { useState } from 'react';
 
 const Searchbar = () => {

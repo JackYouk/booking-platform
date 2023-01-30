@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { CardActionArea, Box, Typography, CardMedia, Card, CardContent, Button, Chip } from '@mui/material';
-import blankprofile from '../images/blankprofile.png'
 import { Link } from 'react-router-dom';
-import vortexlogo from './vortexlogo.png'
+
 
 const AgentCard = (props) => {
     return (

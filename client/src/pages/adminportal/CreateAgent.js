@@ -11,8 +11,8 @@ import { ADD_AGENT } from "../../utils/mutations";
 import { QUERY_TAGS } from "../../utils/queries";
 import auth from "../../utils/auth";
 
-import Tag from "../../components/Tag";
-import CredentialAdder from "../../components/CredentialAdder";
+import Tag from "../../components/platform/Tag";
+import CredentialAdder from "../../components/admin/CredentialAdder";
 
 
 const CreateAgent = () => {
