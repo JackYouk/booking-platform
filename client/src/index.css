@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    @apply ml-7 w-24 md:w-16 text-center;
+  }
+
+  .header {
+    @apply h-[5rem] w-[100%];
+  }
+
+  .nav {
+    @apply container relative flex items-center h-[5rem] border-none rounded-lg justify-between;
+  }
+
+  .togglenav {
+    @apply absolute top-20 h-[10rem] sm:w-[100%]  flex flex-col items-center justify-evenly bg-gray-800 z-20;
+  }
+
+  .togglenavElse {
+    @apply w-[30%] flex justify-evenly sm:hidden xsm:hidden;
+  }
+
+  .leftNavBtn {
+    @apply bg-gray-600 p-4 w-60 lg:w-[11rem] md:w-24 border-none rounded-md hover:scale-[1.1] transition-all duration-300 font-bold text-2xl sm:text-xl flex items-center justify-center ease-in text-white;
+  }
+
+  .navBtn {
+    @apply p-1 w-36 lg:w-28 md:w-20 bg-gray-700 border-4 border-black rounded-3xl sm:w-[80%]  hover:scale-[1.1] transition-all duration-300 font-bold text-2xl md:text-xl flex items-center justify-center ease-in text-white;
+  }
+
+  .input {
+    @apply w-[40%] h-[40px] border-4 border-black rounded-3xl  mx-1 md:mr-4 pl-4;
+  }
+
+  .toggleMenu {
+    @apply hidden cursor-pointer sm:flex xsm:flex;
+  }
+
+  .userIcon {
+    @apply h-[40px] w-10 flex items-center justify-center border-none rounded-[50%]  mr-1 cursor-pointer;
+  }
+  .main {
+    @apply flex w-[100%] h-[87vh] smd:flex-col smd:items-center smd:relative;
+  }
+  .leftNavContainer {
+    @apply w-[25%] md:w-[15%] h-[87vh] flex flex-col justify-around items-center smd:flex-row sm:mt-4 smd:w-full;
+  }
+  .leftBtnContainer {
+    @apply flex-[70%] flex flex-col items-center justify-evenly smd:flex-row;
+  }
+  .rightContent {
+    @apply w-[75%] md:w-[85%] h-[87vh] flex flex-col smd:w-full;
+  }
+}
