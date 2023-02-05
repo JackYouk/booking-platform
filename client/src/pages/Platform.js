@@ -9,24 +9,26 @@ import { useQuery } from "@apollo/client";
 import { QUERY_REGEX_AGENTS } from "../utils/queries";
 import AccountNav from "../components/navbar/AccountNav";
 import MenuIcon from "@mui/icons-material/Menu";
-import Button from "./adminportal/platform ui/Button";
+import Button from "../components/platform/platform ui/Button";
+import Tagz from "../components/platform/Tag";
 
 const Home = () => {
   const [toggleNav, setToggleNav] = useState(false);
   const toggleHandler = () => {
     setToggleNav(!toggleNav);
   };
-
+  
   const [filterState, setFilterState] = useState("");
   const { loading, data, refetch } = useQuery(QUERY_REGEX_AGENTS, {
     variables: { key: filterState },
   });
 
+
   return (
     <>
       <div className=" bg-white">
         <header className="header ">
-          <nav className="nav">
+          <nav className="nav" style={{width: '97vw'}}>
             <Link to="/">
               <img
                 src={simplelogo}
@@ -68,25 +70,24 @@ const Home = () => {
         </header>
         <main className="main">
           {/* left Nav */}
-          <div className="leftNavContainer">
-            <div className="leftBtnContainer">
-              <Button style={"leftNavBtn"} text={"Button"} />
-              <Button style={"leftNavBtn"} text={"Button"} />
-              <Button style={"leftNavBtn"} text={"Button"} />
-              <Button style={"leftNavBtn"} text={"Button"} />
-            </div>
-            <div className="flex-[30%] flex-col flex justify-center items-center  smd:absolute smd:top-[34rem] sm:top-[34rem] ">
-              <div className="h-[100px] bg-yellow-600 w-60 lg:w-[11rem] md:w-24 smd:w-[20rem]">
-                ads
-              </div>
-            </div>
-          </div>
+          <Tagz />
+
           {/* Right side */}
           <div className="rightContent">
             <div className="flex-[10%] mt-7 smd:mt-0 sm:mt-7  flex items-center justify-center">
-              <h1 className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl font-bold shadow-lg">
-                BANNER
-              </h1>
+              <div style={{
+                backgroundColor: 'black', 
+                width: '60vw', 
+                height: '90px', 
+                color: 'white', 
+                fontWeight: 'bold', 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                borderRadius: '5px'
+              }}>
+                Vive Ventures Consulting Portal
+              </div>
             </div>
             <div className="mb-3 flex-[90%] flex-col flex justify-evenly">
               {loading ? <CircularProgress /> : <RegexAgents data={data} />}

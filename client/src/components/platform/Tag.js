@@ -1,79 +1,29 @@
 import { useState } from "react";
-import { Button, ToggleButton } from "@mui/material";
+import Button from "./platform ui/Button";
 
+const Tagz = () => {
 
-const Tag = (selectedTagsState, setSelectedTagsState, iconUrl, type, id) => {
-
-    const [isSelected, setSelected] = useState(false);
-
-    const handleChange = () => {
-        const tagId = id;
-        if (!isSelected) {
-            setSelected(!isSelected);
-            setSelectedTagsState(selectedTagsState.map().push(tagId));
-            return;
-        }
-        if (isSelected) {
-            selectedTagsState.map((selectedTag, index) => {
-                if (selectedTag === tagId) {
-                    ;
-                    setSelected(!isSelected);
-                    setSelectedTagsState(selectedTagsState.map().splice(index, 1));
-                    return;
-                }
-            });
-
-        }
-        
-    }
-
+    let yourImageURL = 'https://imgs.search.brave.com/3bAjDdDF6GYbRte5go5AfjWYJ8Kgow9CFMVgoIHykwk/rs:fit:1200:1200:1/g:ce/aHR0cDovL3BhcGVy/cy5jby93YWxscGFw/ZXIvcGFwZXJzLmNv/LW1zMjMtc2FkLWtp/dHRlbi1jYXQtYW5p/bWFsLW5hdHVyZS1j/dXRlLTM1LTM4NDB4/MjE2MC00ay13YWxs/cGFwZXIuanBn';
     return (
-        <div>
-            {isSelected ? (
-                <div onClick={() => {
-                    handleChange();
-                    setSelected(!isSelected);
-                }}>
-                    <div className='obsBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>
-                        {iconUrl ? (
-                            <>
-                                <img
-                                    src={iconUrl}
-                                    style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }}
-                                    alt='tag img'
-                                />
-                            </>
-                        ) : (
-                            <>
-                            </>
-                        )}
-                        {type}
+        <>
+            <div className="leftNavContainer">
+                <div className="leftBtnContainer">
+                    <div className={"leftNavBtn"} style={{
+                        backgroundImage: `url(${yourImageURL})`,
+                        backgroundSize: 'cover',
+                    }} text={"div"} />
+                    <Button tailwind={"leftNavBtn"} text={"Button"} />
+                    <Button tailwind={"leftNavBtn"} text={"Button"} />
+                    <Button tailwind={"leftNavBtn"} text={"Button"} />
+                </div>
+                <div className="flex-[30%] flex-col flex justify-center items-center  smd:absolute smd:top-[34rem] sm:top-[34rem] ">
+                    <div className="h-[100px] bg-yellow-600 w-60 lg:w-[11rem] md:w-24 smd:w-[20rem]">
+                        ads
                     </div>
                 </div>
-            ) : (
-                <div className='goldBg' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', borderRadius: '5px', fontWeight: 'bold', color: 'black', cursor: 'pointer' }} onClick={() => {
-                    handleChange();
-                    setSelected(!isSelected);
-                }}>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        {iconUrl ? (
-                            <>
-                                <img
-                                    src={iconUrl}
-                                    style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }}
-                                    alt='tag img'
-                                />
-                            </>
-                        ) : (
-                            <>
-                            </>
-                        )}
-                        {type}
-                    </div>
-                </div>
-            )}
-        </div>
+            </div>
+        </>
     );
 }
 
-export default Tag;
+export default Tagz;

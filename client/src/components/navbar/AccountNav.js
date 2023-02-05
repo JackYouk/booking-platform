@@ -29,7 +29,7 @@ function AccountNav() {
   };
 
   return (
-    <Box sx={{ flexGrow: 0, margin: 2 }}>
+    <Box sx={{ flexGrow: 0,  }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} >
           <Avatar sx={{ p: 1, width: '6vh', height: '6vh', backgroundColor: 'black' }} ><img style={{ width: '6vh' }} src={blankprofile} /></Avatar>

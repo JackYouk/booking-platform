@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // mui
 import * as React from "react";
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField, Container } from "@mui/material";
 
 import Auth from '../utils/auth';
 
@@ -10,6 +10,32 @@ import { useMutation } from '@apollo/client';
 import { ADD_PROFILE, LOGIN } from "../utils/mutations";
 import { Link } from "react-router-dom";
 import ResponsiveAppBar from "../components/navbar/NavBar";
+
+import Avatar from '@mui/material/Avatar';
+import CssBaseline from '@mui/material/CssBaseline';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" to="/">
+        Vive Ventures
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const theme = createTheme();
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -47,50 +73,96 @@ const Login = () => {
   };
 
   return (
-    <div >
-      <ResponsiveAppBar />
-      <div style={{ marginTop: '15vh' }}>
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <CssBaseline />
         <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={3}
-        >
-          <Grid item xs={12}>
-            <h1>Login</h1>
-          </Grid>
-
-          <Grid item xs={12}>
-            <TextField
-              id="standard-basic"
-              label="Email"
-              variant="outlined"
-              name="email"
-              value={formState.email}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id="standard-basic"
-              label="Password"
-              variant="outlined"
-              name="password"
-              type='password'
-              value={formState.password}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button variant="contained" style={{ backgroundColor: 'black' }} onClick={handleSubmit}>
-              Login
-            </Button>
-          </Grid>
-          <Grid item xs={12}>Don't have an account? <Link to='/signup'>Create one here</Link></Grid>
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                autoComplete="email"
+                autoFocus
+                label="Email"
+                variant="outlined"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Password"
+                variant="outlined"
+                name="password"
+                type='password'
+                value={formState.password}
+                onChange={handleChange}
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/signup" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 5 }} />
+            </Box>
+          </Box>
         </Grid>
-      </div>
-    </div>
+      </Grid>
+    </ThemeProvider>
   );
 };
 
@@ -131,60 +203,88 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <ResponsiveAppBar />
-      <div style={{ marginTop: '15vh' }}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={3}
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          <Grid item xs={12}>
-            <h1>Sign Up</h1>
-          </Grid>
-
-          <Grid item xs={12}>
-            <TextField
-              id="standard-basic"
-              label="Username"
-              variant="outlined"
-              name="username"
-              value={formState.username}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id="standard-basic"
-              label="Email"
-              variant="outlined"
-              name="email"
-              value={formState.email}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id="standard-basic"
-              label="Password"
-              variant="outlined"
-              name="password"
-              type='password'
-              value={formState.password}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button variant="contained" style={{ backgroundColor: 'black' }} onClick={handleSubmit}>
-              Sign up
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  label="Username"
+                  variant="outlined"
+                  name="username"
+                  value={formState.username}
+                  onChange={handleChange}
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  label="Email"
+                  variant="outlined"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  label="Password"
+                  variant="outlined"
+                  name="password"
+                  type='password'
+                  value={formState.password}
+                  onChange={handleChange}
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
             </Button>
-          </Grid>
-          <Grid item xs={12}>Already have an account? <Link to='/login'>Login here</Link></Grid>
-        </Grid>
-      </div>
-    </div>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link to="/login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
   );
 };
 
