@@ -29,7 +29,7 @@ function AccountNav() {
   };
 
   return (
-    <Box sx={{ flexGrow: 0,  }}>
+    <Box sx={{ flexGrow: 0, }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} >
           <Avatar sx={{ p: 1, width: '6vh', height: '6vh', backgroundColor: 'black' }} ><img style={{ width: '6vh' }} src={blankprofile} /></Avatar>
@@ -58,19 +58,26 @@ function AccountNav() {
               ))} */}
 
         {AuthService.loggedIn() ? (
-          <MenuItem onClick={() => {
-            handleCloseUserMenu()
-            AuthService.logout()
-          }}>
-            <Typography textAlign="center">Signout</Typography>
-          </MenuItem>
+          <>
+            <MenuItem onClick={() => {
+              handleCloseUserMenu()
+              AuthService.logout()
+            }}>
+              <Typography textAlign="center">Signout</Typography>
+            </MenuItem>
+            <Link to='/admin'>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">admin portal</Typography>
+              </MenuItem>
+            </Link>
+          </>
         ) : (
           <Link to='/login'>
             <MenuItem onClick={handleCloseUserMenu}>
               <Typography textAlign="center">Login</Typography>
             </MenuItem>
           </Link>
-          )}
+        )}
       </Menu>
     </Box>
   );

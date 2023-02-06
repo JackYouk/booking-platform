@@ -5,7 +5,7 @@ const AgentCard = (props) => {
   return (
     <Link to={`/agent/${props.data._id}`} className="no-underline bg-white">
       <div
-        className="h-[150px] w-44 lg:w-[8.5rem] md:w-[7rem] sm:w-[12rem] sm:my-3 relative border-4 border-black hover:scale-[1.05] card"
+        className="h-[240px] w-44 lg:w-[10rem] md:w-[10rem] sm:w-[12rem] sm:my-3 relative border-4 border-black hover:scale-[1.05] card"
         style={{
           backgroundImage: `url(${props.data.imgPath})`,
           backgroundSize: "cover",

@@ -11,6 +11,7 @@ import AccountNav from "../components/navbar/AccountNav";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "../components/platform/platform ui/Button";
 import Tagz from "../components/platform/Tag";
+import vortexlogo from '../images/vortexlogo.png'
 
 const Home = () => {
   const [toggleNav, setToggleNav] = useState(false);
@@ -50,8 +51,8 @@ const Home = () => {
               }}
             />
             <div className={toggleNav ? "togglenav" : "togglenavElse"}>
-              <Button style={"navBtn"} text={"Button"} />
-              <Button style={"navBtn"} text={"Button"} />
+              <Link to='/'><Button style={"navBtn"} text={"Vive Consulting"} /></Link>
+              <Link to='/'><Button style={"navBtn"} text={"Other Link"} /></Link>
             </div>
             <div className="userIcon">
               <AccountNav />
@@ -84,12 +85,13 @@ const Home = () => {
                 display: 'flex', 
                 justifyContent: 'center', 
                 alignItems: 'center',
-                borderRadius: '5px'
+                borderRadius: '5px',
+                padding: '80px'
               }}>
-                Vive Ventures Consulting Portal
+                <img src={vortexlogo} alt='vortex banner'/>
               </div>
             </div>
-            <div className="mb-3 flex-[90%] flex-col flex justify-evenly">
+            <div className="mb-3 flex-[90%] flex-col flex mt-5">
               {loading ? <CircularProgress /> : <RegexAgents data={data} />}
             </div>
           </div>

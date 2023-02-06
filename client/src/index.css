@@ -29,7 +29,7 @@
   }
 
   .leftNavBtn {
-    @apply bg-gray-600 p-4 w-60 lg:w-[11rem] md:w-24 border-none rounded-md hover:scale-[1.1] transition-all duration-300 font-bold text-2xl sm:text-xl flex items-center justify-center ease-in text-white;
+    @apply bg-gray-600 p-4 w-80 lg:w-[11rem] md:w-24 border-none rounded-md hover:scale-[1.1] transition-all duration-300 font-bold text-2xl sm:text-xl flex items-center justify-center ease-in text-white;
   }
 
   .navBtn {
@@ -51,7 +51,7 @@
     @apply flex w-[100%] h-[87vh] smd:flex-col smd:items-center smd:relative;
   }
   .leftNavContainer {
-    @apply w-[25%] md:w-[15%] h-[87vh] flex flex-col justify-around items-center smd:flex-row sm:mt-4 smd:w-full;
+    @apply  w-[30%] md:w-[15%] h-[87vh] flex flex-col justify-around items-center smd:flex-row sm:mt-4 smd:w-full;
   }
   .leftBtnContainer {
     @apply flex-[70%] flex flex-col items-center justify-evenly smd:flex-row;
