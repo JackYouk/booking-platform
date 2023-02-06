@@ -64,14 +64,14 @@ const Tagz = () => {
                             </>
                             );
                         })}
-                        <div className={"leftNavBtn"} style={{
+                        {/* <div className={"leftNavBtn"} style={{
                                 backgroundImage: `url(${yourImageURL})`,
                                 backgroundSize: 'cover',
                                 color: 'black',
                                 padding: '55px',
                             }}>
                                 ADS
-                            </div>
+                            </div> */}
                     </div>
                     
                 </div>
